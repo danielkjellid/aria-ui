@@ -10,16 +10,23 @@
   "author": "Daniel Kjellid",
   "license": "ISC",
   "peerDependencies": {
+    "autoprefixer": "^10.4.0",
+    "tailwindcss": "^2.2.19",
+    "postcss": "^8.4.4",
     "vue": "^3.2.23"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@vue/compiler-sfc": "^3.2.23",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
     "rollup": "^2.60.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.31.1",
     "rollup-plugin-vue": "^6.0.0",
+    "tailwindcss": "^2.2.19",
     "typescript": "^4.5.2",
     "vue": "^3.2.23"
   }

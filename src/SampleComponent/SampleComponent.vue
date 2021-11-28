@@ -1,5 +1,5 @@
 <template>
-  <button>This is a button with text: {{ sampleText }}</button>
+  <button class="bg-brand-600 py-2 px-1 text-white">This is a button with text: {{ sampleText }}</button>
 </template>
 
 <script>
