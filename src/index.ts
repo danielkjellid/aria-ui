@@ -1,5 +1,4 @@
 import './tailwind.css'
 
-import SampleComponent from './SampleComponent/SampleComponent.vue'
-
-export { SampleComponent }
+import Button from './Button/Button.vue'
+export { Button }
