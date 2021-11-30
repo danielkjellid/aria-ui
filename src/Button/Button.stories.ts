@@ -2,13 +2,13 @@ import { Meta, Story } from '@storybook/vue3'
 import Button from './Button.vue'
 
 interface ButtonProps {
-  icon: Boolean
-  light: Boolean
-  to: String
-  activeClass: String
-  buttonType: String
-  plain: Boolean
-  outlined: Boolean
+  icon?: Boolean
+  light?: Boolean
+  to?: String
+  activeClass?: String
+  buttonType?: String
+  plain?: Boolean
+  outlined?: Boolean
 }
 
 export default {
