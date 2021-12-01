@@ -12,6 +12,9 @@ interface CheckboxProps {
 export default {
   title: 'forms/Checkbox',
   component: Checkbox,
+  parameters: {
+    viewMode: 'docs'
+  },
   argTypes: {
     onClick: {}
   }
