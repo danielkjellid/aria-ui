@@ -6,7 +6,6 @@
     :type="buttonType"
     class="inline-flex items-center flex-shrink-0 transition duration-150 ease-in-out"
     :class="renderClasses()"
-    v-bind="$attrs"
   >
     <slot>Button</slot>
   </component>
@@ -16,7 +15,7 @@
 import { computed } from 'vue'
 
 export default {
-  name: 'BaseButton',
+  name: 'AriaButton',
   props: {
     // designates the button as icon - round and flat
     icon: {

@@ -5,16 +5,16 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          '50': '#FCF8F7',
-          '100': '#F5E1D5',
-          '200': '#F2CFBB',
-          '300': '#F0C1A6',
-          '400': '#F3B693',
-          '500': '#EDA17A',
-          '600': '#EA9264',
-          '700': '#DE8456',
-          '800': '#D87846',
-          '900': '#C76C3D'
+          '50': '#f9fafb',
+          '100': '#F7FAFC',
+          '200': '#EDF2F7',
+          '300': '#E2E8F0',
+          '400': '#CBD5E0',
+          '500': '#A0AEC0',
+          '600': '#718096',
+          '700': '#4A5568',
+          '800': '#2D3748',
+          '900': '#1A202C',
         }
       }
     },
@@ -22,5 +22,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 }
