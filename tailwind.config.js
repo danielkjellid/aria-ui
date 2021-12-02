@@ -16,6 +16,9 @@ module.exports = {
           '800': '#2D3748',
           '900': '#1A202C',
         }
+      },
+      animation: {
+        'bounce-slow': 'bounce 2s infinite',
       }
     },
   },

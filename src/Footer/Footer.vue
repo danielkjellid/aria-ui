@@ -32,7 +32,7 @@
 
 <script lang="ts">
 export default {
-  name: 'BaseFooter',
+  name: 'AriaFooter',
   props: {
     instagramLink: {
       type: String,

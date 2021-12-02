@@ -1,4 +1,4 @@
-import './tailwind.css'
+import '../static/css/tailwind.css'
 
 import Breadcrumbs from './Breadcrumbs/Breadcrumbs.vue'
 export { Breadcrumbs }
@@ -14,3 +14,6 @@ export { ErrorBanner }
 
 import Footer from './Footer/Footer.vue'
 export { Footer }
+
+import ImageHeader from './ImageHeader/ImageHeader.vue'
+export { ImageHeader }
