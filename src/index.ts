@@ -17,3 +17,6 @@ export { Footer }
 
 import ImageHeader from './ImageHeader/ImageHeader.vue'
 export { ImageHeader }
+
+import Input from './Input/Input.vue'
+export { Input }
