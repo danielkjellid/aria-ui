@@ -11,3 +11,6 @@ export { Checkbox }
 
 import ErrorBanner from './ErrorBanner/ErrorBanner.vue'
 export { ErrorBanner }
+
+import Footer from './Footer/Footer.vue'
+export { Footer }
