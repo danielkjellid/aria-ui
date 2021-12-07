@@ -16,7 +16,7 @@ interface InputProps {
 }
 
 export default {
-  title: 'forms/Input',
+  title: 'Forms/Input',
   component: Input,
   parameter: {
     viewMode: 'docs'
@@ -52,7 +52,7 @@ API.args = { id:'defaultInput', label: 'Name'}
 API.parameters = {
   docs: {
     source: {
-      code: `<Input id="name" :label="Name" />`,  
+      code: `<Input id="name" label="Name" v-model="var" />`,  
     }
   }
 }
@@ -65,10 +65,11 @@ WithPlaceholder.parameters = {
       code: 
 `<Input 
   id="name" 
-  :label="Name" 
+  label="Name" 
   :error="error" 
   placeholder="Input your name here"
   block
+  v-model="var"
 />`,  
     }
   }
@@ -82,9 +83,10 @@ WithHiddenLabel.parameters = {
       code: 
 `<Input 
   id="name" 
-  :label="Name"
+  label="Name"
   :hiddenLabel="false"
   placeholder="Input your name here" 
+  v-model="var"
 />`,  
     }
   }
@@ -101,9 +103,10 @@ import { MailIcon } from '@heroicons/vue/solid'
 
 <Input 
   id="name" 
-  :label="Name"
+  label="Name"
   :hiddenLabel="false"
   placeholder="Input your name here"
+  v-model="var"
 >
   <MailIcon class="h-5 w-5 text-gray-400" />
 </Input>`,  
@@ -119,10 +122,11 @@ Fluid.parameters = {
       code: 
 `<Input 
   id="name" 
-  :label="Name"
+  label="Name"
   :hiddenLabel="false"
   placeholder="Input your name here"
   fluid 
+  v-model="var"
 />`,  
     }
   }
@@ -144,10 +148,11 @@ import { SearchIcon } from '@heroicons/vue/outline'
 
 <Input 
   id="name" 
-  :label="Search"
+  label="Search"
   placeholder="Search users by name, email or phone number"
   plain
   hiddenLabel
+  v-model="var"
 >
   <SearchIcon class="h-5 w-5 text-gray-800" />
 </Input>`,  
@@ -163,10 +168,11 @@ WithError.parameters = {
       code: 
 `<Input 
   id="name" 
-  :label="Name"
+  label="Name"
   :hiddenLabel="false"
   placeholder="Input your name here"
   error='This field cant be empty'
+  v-model="var"
 />`,  
     }
   }

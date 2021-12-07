@@ -10,7 +10,7 @@ interface CheckboxProps {
 }
 
 export default {
-  title: 'forms/Checkbox',
+  title: 'Forms/Checkbox',
   component: Checkbox,
   parameters: {
     viewMode: 'docs'
