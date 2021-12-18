@@ -6,8 +6,6 @@ export { AnimateFadeOut }
 import Breadcrumbs from './Breadcrumbs/Breadcrumbs.vue'
 export { Breadcrumbs }
 
-import Button from './Button/Button.vue'
-export { Button }
 
 import Checkbox from './CheckBox/Checkbox.vue'
 export { Checkbox }
@@ -32,3 +30,6 @@ export { Notification }
 
 import Select from './Select/Select.vue'
 export { Select }
+
+// ----
+export { default as Button } from './Button/Button.vue'
