@@ -40,7 +40,7 @@ const alignSelfOptions: ButtonAlignSelf[] = [
 ]
 
 export default {
-  title: 'Button',
+  title: 'UI Elements/Button',
   component: Button,
   argTypes: {
     size: {
