@@ -22,9 +22,9 @@
           </div>
         </div>
         <div class="absolute bottom-0 left-0 right-0 mb-8 text-center">
-          <Button icon light plain @click="onNavigateToContent">
+          <button @click="onNavigateToContent">
             <ChevronDownIcon class="hover:text-gray-300 animate-bounce-slow w-12 h-12 text-white" />
-          </Button>
+          </button>
         </div>
       </div>
     </article>
@@ -35,17 +35,21 @@
 import { PropType } from '@vue/runtime-core'
 import Button from '../Button/Button.vue'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
-import { ImageHeaderType } from './types'
+import { FullWidthImageType } from './types'
 
 export default {
-  name: 'AriaImageHeader',
+  name: 'FullWidthImage',
   components: {
     Button,
     ChevronDownIcon
   },
   props: {
+    /**
+    * Images to display. Uses srcset to toggle between the sizes 2048x1150, 
+    * 1536x860, 1024x575, 1024x1024, 640x275 and 512x512.
+    */
     imageObj: {
-      type: Object as PropType<ImageHeaderType>,
+      type: Object as PropType<FullWidthImageType>,
       required: false,
       default: {
         name: 'Name',

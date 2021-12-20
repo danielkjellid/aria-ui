@@ -1,4 +1,4 @@
-export interface ImageHeaderImageType {
+export interface FullWidthImageImagesType {
   apply_filter: boolean
   image_512x512: string
   image_640x275: string
@@ -8,11 +8,11 @@ export interface ImageHeaderImageType {
   image_2048x1150: string
 }
 
-export interface ImageHeaderType {
+export interface FullWidthImageType {
   name: string
-  images: ImageHeaderImageType
+  images: FullWidthImageImagesType
 }
 
 export interface ImageHeaderProps {
-  imageObj: ImageHeaderType
+  imageObj: FullWidthImageType
 }

@@ -42,6 +42,9 @@ const alignSelfOptions: ButtonAlignSelf[] = [
 export default {
   title: 'UI Elements/Button',
   component: Button,
+  parameters: {
+    viewMode: 'docs'
+  },
   argTypes: {
     size: {
       options: sizes,

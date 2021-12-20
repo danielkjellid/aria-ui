@@ -1,21 +1,33 @@
 import { Meta, Story } from '@storybook/vue3'
-import ImageHeader from './ImageHeader.vue'
+import FullWidthImage from './FullWidthImage.vue'
 import { ImageHeaderProps } from './types'
 
 export default {
-  title: 'UI Elements/ImageHeader',
-  component: ImageHeader,
+  title: 'UI Elements/FullWidthImage',
+  component: FullWidthImage,
   parameters: {
     viewMode: 'docs'
+  },
+  argTypes: {
+    imageObj: {
+      table: {
+        type: {
+          summary: '[{ name: str, applyFilter: bool, images: [ image_512x512: str, ... ]}]'
+        }
+      }
+    },
+    default: {
+      description: 'Replaces the image title. Can be used to add additional context or subtitles etc.'
+    }
   }
 } as Meta
 
 const Template: Story<ImageHeaderProps> = (args: ImageHeaderProps) => ({
-  components: { ImageHeader },
+  components: { FullWidthImage },
   setup() {
     return { args }
   },
-  template: '<ImageHeader v-bind="args" />'
+  template: '<FullWidthImage v-bind="args" />'
 })
 
 export const API = Template.bind({})
@@ -23,7 +35,7 @@ API.parameters = {
   docs: {
       source: {
         code: 
-`<ImageHeader 
+`<FullWidthImage 
   :imageObj="{ name: 'Name', images: {applyFilter: false, image_512x512: 'some/image/path.jpeg'...}}"
   @onNavigateToContent="someMethod"
 />`
@@ -50,7 +62,7 @@ ExampleWithImage.parameters = {
   docs: {
     source: {
       code: 
-`<ImageHeader 
+`<FullWidthImage 
   :imageObj="{ name: 'With image!', images: {applyFilter: false, image_512x512: 'https://source.unsplash.com/random'...}}"
   @onNavigateToContent="someMethod"
 />`

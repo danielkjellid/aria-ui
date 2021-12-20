@@ -16,14 +16,8 @@ export { ErrorBanner }
 import Footer from './Footer/Footer.vue'
 export { Footer }
 
-import ImageHeader from './ImageHeader/ImageHeader.vue'
-export { ImageHeader }
-
 import Input from './Input/Input.vue'
 export { Input }
-
-import NoData from './NoData/NoData.vue'
-export { NoData }
 
 import Notification from './Notification/Notification.vue'
 export { Notification }
@@ -33,3 +27,5 @@ export { Select }
 
 // ----
 export { default as Button } from './Button/Button.vue'
+export { default as NoData } from './NoData/NoData.vue'
+export { default as FullWidthImage } from './FullWidthImage/FullWidthImage.vue'
