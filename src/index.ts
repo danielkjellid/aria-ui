@@ -28,4 +28,4 @@ export { Select }
 // ----
 export { default as Button } from './Button/Button.vue'
 export { default as NoData } from './NoData/NoData.vue'
-export { default as FullWidthImage } from './FullWidthImage/FullWidthImage.vue'
+export { default as Image } from './FullWidthImage/Image.vue'
