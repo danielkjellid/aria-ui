@@ -1,7 +1,7 @@
 export interface BreadcrumbType {
   text: string
   href: string
-  disabled?: boolean
+  current?: boolean
 }
 
 export interface BreadcrumbsType {

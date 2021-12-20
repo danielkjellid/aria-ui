@@ -10,7 +10,7 @@
     </nav>
     <nav class="sm:flex items-center hidden text-sm font-semibold leading-5">
       <div v-for="(breadcrumb, index) in breadcrumbs" :key="index" class="flex items-center">
-        <template v-if="!breadcrumb.disabled">
+        <template v-if="!breadcrumb.current">
           <nuxt-link :to="breadcrumb.href" class="hover:text-brand-600 text-gray-900 transition duration-150 ease-in-out">
             {{ breadcrumb.text }}
           </nuxt-link>
@@ -33,6 +33,9 @@ import { BreadcrumbsType } from './types'
 export default {
   name: 'AriaBreadcrumbs',
   props: {
+    /**
+    * Shows a path in the hierarchy of which the user is currently at.
+    */
     breadcrumbs: {
       type: Array as PropType<BreadcrumbsType[]>,
       required: true

@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { computed, PropType } from '@vue/runtime-core'
+import { PropType } from '@vue/runtime-core'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
 import { ImageWidth, ImageType } from './types'
 

@@ -13,6 +13,15 @@ export default {
   parameters: {
     viewMode: 'docs'
   },
+  argTypes: {
+    breadcrumbs: {
+      table: {
+        type: {
+          summary: '[{ href: str, text: str, current: bool}]'
+        }
+      }
+    }
+  }
 } as Meta
 
 const Template: Story<BreadcrumbsProps> = (args: BreadcrumbsProps) => ({
@@ -26,20 +35,15 @@ const Template: Story<BreadcrumbsProps> = (args: BreadcrumbsProps) => ({
 export const API = Template.bind({})
 API.args = { 
   breadcrumbs: [
-    { href: 'some/path/', text: 'Home', disabled: false }, 
-    { href: 'some/past/path/', text: 'Previous', disabled: false},
-    { href: 'some/other/path/', text: 'Current', disabled: true}
+    { href: 'some/path/', text: 'Home', current: false }, 
+    { href: 'some/past/path/', text: 'Previous', current: false },
+    { href: 'some/other/path/', text: 'Current', current: true }
   ]
-}
-API.argTypes = {
-  breadcrumbs: {
-    description: '<code>array[{ href: string, text: string, disabled: bool }]</code>'
-  }
 }
 API.parameters = {
   docs: {
     source: {
-      code: `<Breadcrumbs :breadcrumbs="breadcrumbs" />`
+      code: `<Breadcrumbs :breadcrumbs="[{ href: 'some/path/', text: 'Home', current: false }, { href: 'some/past/path/', text: 'Previous', current: false}, { href: 'some/other/path/', text: 'Current', current: true}]" />`
     }
   }
 }
