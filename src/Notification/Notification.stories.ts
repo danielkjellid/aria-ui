@@ -1,12 +1,13 @@
 import { Meta, Story } from '@storybook/vue3'
 import Notification from './Notification.vue'
+import { NotificationProps, NotificationVariant } from './types'
 
-interface NotificationProps {
-  success?: boolean
-  display?: boolean
-  title: string
-  subtitle?: string
-}
+const variants: NotificationVariant[] = [
+  'danger',
+  'warning',
+  'info',
+  'success'
+] 
 
 export default {
   title: 'UI elements/Notification',
@@ -14,6 +15,17 @@ export default {
   parameter: {
     viewMode: 'docs',
   },
+  argTypes: {
+    variant: {
+      options: variants,
+      defaultValue: 'success',
+      table: {
+        type: {
+          summary: variants.join(',').replace(/,/g, ' | ')
+        }
+      }
+    }
+  }
 } as Meta
 
 const Template: Story<NotificationProps> = (args: NotificationProps) => ({
@@ -25,17 +37,17 @@ const Template: Story<NotificationProps> = (args: NotificationProps) => ({
 })
 
 export const API = Template.bind({})
-API.args = { success: true, display: true, title: 'Account created!', subtitle: 'Your account was created successfully' }
+API.args = { variant: "success", display: true, title: 'Account created!', subtitle: 'Your account was created successfully.' }
 API.parameters = {
   docs: {
     source: {
       code: 
   `
 <Notification
-  :success="true"
-  :display="true"
   title="Account created!"
-  subtitle="Your account was created successfully"
+  subtitle="Your account was created successfully."
+  variant="success"
+  :display="true"
   @closeNotification="someMethod"
 />
   `,  
@@ -44,20 +56,17 @@ API.parameters = {
 }
 
 export const Danger = Template.bind({})
-Danger.args = { success: false, display: true, title: 'Something went wrong!', subtitle: 'There was a problem creating your account.' }
+Danger.args = { variant: 'danger', display: true, title: 'Something went wrong!', subtitle: 'There was a problem creating your account.' }
 Danger.parameters = {
   docs: {
-    description: {
-      story: 'Notifications can also be used to inform of an unsuccessful action.'
-    },
     source: {
       code: 
   `
 <Notification
-  :success="false"
-  :display="true"
   title="Something went wrong!"
   subtitle="There was a problem creating your account."
+  variant="danger"
+  :display="true"
   @closeNotification="someMethod"
 />
   `,  
@@ -65,38 +74,59 @@ Danger.parameters = {
   }
 }
 
-export const WithoutSubtitle = Template.bind({})
-WithoutSubtitle.args = { success: true, display: true, title: 'Account created!' }
-WithoutSubtitle.parameters = {
+export const Warning = Template.bind({})
+Warning.args = { variant: 'warning', display: true, title: 'We are struggling!', subtitle: 'There might be occurrences of degraded performance.' }
+Warning.parameters = {
   docs: {
-      source: {
-        code: 
-    `
+    source: {
+      code: 
+  `
 <Notification
-  :success="true"
+  title="We are struggling!"
+  subtitle="There might be occurrences of degraded performance."
+  variant="warning"
   :display="true"
-  title="Account created!"
   @closeNotification="someMethod"
 />
-    `,  
-      }
+  `,  
     }
+  }
 }
 
-export const DangerWithoutSubtitle = Template.bind({})
-DangerWithoutSubtitle.args = { success: false, display: true, title: 'Something went wrong!' }
-DangerWithoutSubtitle.parameters = {
+export const Info = Template.bind({})
+Info.args = { variant: 'info', display: true, title: 'New feature!', subtitle: 'You can now add products as favorites.' }
+Info.parameters = {
   docs: {
-      source: {
-        code: 
-    `
+    source: {
+      code: 
+  `
 <Notification
-  :success="false"
+  title="New feature!"
+  subtitle="You can now add products as favorites."
+  variant="info"
   :display="true"
-  title="Something went wrong!"
   @closeNotification="someMethod"
 />
-    `,  
-      }
+  `,  
     }
+  }
+}
+
+export const Success = Template.bind({})
+Success.args = { variant: 'success', display: true, title: 'Account created!', subtitle: 'Your account was created successfully.' }
+Success.parameters = {
+  docs: {
+    source: {
+      code: 
+  `
+<Notification
+  title="Account created!"
+  subtitle="Your account was created successfully."
+  variant="success"
+  :display="true"
+  @closeNotification="someMethod"
+/>
+  `,  
+    }
+  }
 }

@@ -6,12 +6,10 @@
           <div class="p-4">
             <div class="flex" :class="subtitle ? 'items-start' : 'items-center'">
               <div class="flex-shrink-0">
-                <svg v-if="success" class="w-6 h-6 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <svg v-else class="w-6 h-6 text-red-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <XCircleIcon v-if="variant === 'danger'" class="w-5 h-5 text-red-400" />
+                <ExclamationCircleIcon v-else-if="variant === 'warning'" class="w-5 h-5 text-yellow-400" />
+                <InformationCircleIcon v-else-if="variant === 'info'" class="w-5 h-5 text-blue-400" />
+                <CheckCircleIcon v-else-if="variant === 'success'" class="w-5 h-5 text-green-400" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-semibold leading-5 text-gray-900">
@@ -37,27 +35,50 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onUpdated } from '@vue/runtime-core'
+import { onMounted, onUpdated, PropType } from '@vue/runtime-core'
 import AnimateFadeOut from '../AnimateFadeOut/AnimateFadeOut.vue'
+import { ExclamationCircleIcon, XCircleIcon, CheckCircleIcon, InformationCircleIcon } from '@heroicons/vue/outline'
+import { NotificationVariant } from './types'
 
 export default {
   name: 'Notification',
-  components: { AnimateFadeOut },
+  components: { 
+    AnimateFadeOut,
+    ExclamationCircleIcon,
+    XCircleIcon,
+    CheckCircleIcon,
+    InformationCircleIcon,
+  },
   props: {
-    success: {
-      type: Boolean,
-      default: true
-    },
-    display: {
-      type: Boolean,
-      default: false
-    },
+    /**
+    * Title of the notification.
+    */
     title: {
-      required: true
+      required: true,
+      type: String
     },
+    /**
+    * Subtitle of the notification.
+    */
     subtitle: {
-      required: false
-    }
+      required: false,
+      type: String
+    },
+    /**
+    * The notification variant.
+    */
+    variant: {
+      required: false,
+      default: 'success',
+      type: String as PropType<NotificationVariant>
+    },
+    /**
+    * Display the variant or not. Typically we only want to display the notification until its dismissed or no longer relevant.
+    */
+    display: {
+      default: false,
+      type: Boolean
+    },
   },
   setup(_, { emit }) {
 

@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/vue3'
 import Callout from './Callout.vue'
-import { CalloutVariant } from './types'
+import { CalloutVariant, CalloutProps } from './types'
 
 const variants: CalloutVariant[] = [
   'danger',
@@ -33,7 +33,7 @@ export default {
   }
 } as Meta
 
-const Template: Story<any> = (args: any) => ({
+const Template: Story<CalloutProps> = (args: CalloutProps) => ({
   components: { Callout },
   setup() {
     return { args }

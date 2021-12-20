@@ -70,6 +70,9 @@ export default {
     InformationCircleIcon,
   },
   props: {
+    /**
+    * Initial heading message.
+    */
     message: {
       required: false,
       default: 'Callout',
