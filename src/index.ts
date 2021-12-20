@@ -10,9 +10,6 @@ export { Breadcrumbs }
 import Checkbox from './CheckBox/Checkbox.vue'
 export { Checkbox }
 
-import ErrorBanner from './ErrorBanner/ErrorBanner.vue'
-export { ErrorBanner }
-
 import Footer from './Footer/Footer.vue'
 export { Footer }
 
@@ -27,5 +24,6 @@ export { Select }
 
 // ----
 export { default as Button } from './Button/Button.vue'
+export { default as Callout } from './Callout/Callout.vue'
 export { default as NoData } from './NoData/NoData.vue'
 export { default as Image } from './FullWidthImage/Image.vue'
