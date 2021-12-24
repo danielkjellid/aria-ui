@@ -1,29 +1,13 @@
 import '../static/css/tailwind.css'
 
-import AnimateFadeOut from './AnimateFadeOut/AnimateFadeOut.vue'
-export { AnimateFadeOut }
-
-import Breadcrumbs from './Breadcrumbs/Breadcrumbs.vue'
-export { Breadcrumbs }
-
-
-import Checkbox from './CheckBox/Checkbox.vue'
-export { Checkbox }
-
-import Footer from './Footer/Footer.vue'
-export { Footer }
-
-import Input from './Input/Input.vue'
-export { Input }
-
-import Notification from './Notification/Notification.vue'
-export { Notification }
-
-import Select from './Select/Select.vue'
-export { Select }
-
-// ----
-export { default as Button } from './Button/Button.vue'
-export { default as Callout } from './Callout/Callout.vue'
-export { default as NoData } from './NoData/NoData.vue'
-export { default as Image } from './FullWidthImage/Image.vue'
+export { default as AriaAnimateFadeOut } from './AriaAnimateFadeOut/AriaAnimateFadeOut.vue'
+export { default as AriaBreadcrumbs } from './AriaBreadcrumbs/AriaBreadcrumbs.vue'
+export { default as AriaButton } from './AriaButton/AriaButton.vue'
+export { default as AriaCallout } from './AriaCallout/AriaCallout.vue'
+export { default as AriaCheckbox } from './AriaCheckBox/AriaCheckbox.vue'
+export { default as AriaFooter } from './AriaFooter/AriaFooter.vue'
+export { default as AriaImage } from './AriaImage/AriaImage.vue'
+export { default as AriaInput } from './AriaInput/AriaInput.vue'
+export { default as AriaNoData } from './AriaNoData/AriaNoData.vue' 
+export { default as AriaNotification } from './AriaNotification/AriaNotification.vue'
+export { default as AriaSelect } from './AriaSelect/AriaSelect.vue'

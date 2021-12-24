@@ -1,7 +1,7 @@
 <template>
   <div>
     <form v-if="showSearchbar" @submit.prevent="emitQuery" class="px-2 mb-4">
-      <Input
+      <aria-input
         plain
         label="search"
         hiddenLabel
@@ -9,7 +9,7 @@
         v-model="query"
       >
         <SearchIcon class="w-5 h-5 text-gray-800" />
-      </Input>
+      </aria-input>
     </form>
     <div class="overflow-x-auto">
       <table class="min-w-full">
@@ -68,7 +68,7 @@
         <tbody v-else>
           <tr>
             <td :colspan="headers.length" class="px-5">
-              <NoData />
+              <aria-no-data />
             </td>
           </tr>
         </tbody>
@@ -94,8 +94,8 @@
 </template>
 
 <script lang="ts">
-import Input from '../Input/Input.vue'
-import NoData from '../NoData/NoData.vue'
+import AriaInput from '../AriaInput/AriaInput.vue'
+import AriaNoData from '../AriaNoData/AriaNoData.vue'
 import { SearchIcon } from '@heroicons/vue/outline'
 import { computed, ref } from '@vue/reactivity'
 import { TableMeta } from './types'
@@ -104,8 +104,8 @@ import { PropType } from '@vue/runtime-core'
 export default {
   name: 'AriaTable',
   components: {
-    Input,
-    NoData,
+    AriaInput,
+    AriaNoData,
     SearchIcon
   },
   props: {
