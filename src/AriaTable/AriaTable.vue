@@ -109,47 +109,54 @@ export default {
     SearchIcon
   },
   props: {
-    // sets the table headers
+    /**
+     * Sets the table headers.
+     */
     headers: {
       type: Array,
       required: true
     },
-    // sets the table items (rows)
+    /**
+     * Sets the table items (rows).
+     */
     items: {
       type: [Object, Array],
       required: true
     },
-    // boolean to show/hide table actions
+    /**
+     * Show table actions (horizontal dots on each row)
+     */
     showTableActions: {
       type: Boolean,
       required: false,
       default: false,
     },
-    // icon to be displayed in input (if any), e.g. search
-    tableActionInputIcon: {
-      type: String,
-      required: false,
-      default: null
-    },
-    // boolean to display searchbar above table
+    /**
+     * Display searchbar above table.
+     */
     showSearchbar: {
       type: Boolean,
       required: false,
       default: false,
     },
-    // string to display placeholder in search input
-    // searchBar needs to be displayed
+    /**
+     * Display placeholder in search input - searchBar needs to be displayed
+     */
     searchbarPlaceholder: {
       type: String,
       required: false
     },
-    // boolean to display pagination bellow table
+    /**
+     * Show pagination bellow table.
+     */
     showPagination: {
       type: Boolean,
       required: false,
       default: false
     },
-    // shows which range the table is currently showing in table - only needed if pagination is showing
+    /**
+     * Show current range of the table showing - only needed if pagination is enabled.
+     */
     meta: {
       type: Object as PropType<TableMeta>,
       required: false
