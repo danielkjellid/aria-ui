@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/vue3'
 import AriaAnimateFadeOutExample from './AriaAnimateFadeOutExample.vue'
 
 export default {
-  title: 'Animations/AnimateFadeOut',
+  title: 'Animations/FadeOut',
   component: AriaAnimateFadeOutExample,
   parameter: {
     viewMode: 'docs'
@@ -23,9 +23,6 @@ const Template: Story = (args) => ({
 export const API = Template.bind({})
 API.parameters = {
   docs: {
-    description: {
-      story: 'A light button is usually used as a secondary options where it indicates an action, but not the primary action.'
-    },
     source: {
       code: 
   `<aria-animate-fade-out>
