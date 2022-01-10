@@ -1,18 +1,37 @@
-import '../static/css/tailwind.css'
+import { App as Application } from 'vue'
 
-export { default as AriaAnimateFadeOut } from './AriaAnimateFadeOut/AriaAnimateFadeOut.vue'
-export { default as AriaBreadcrumbs } from './AriaBreadcrumbs/AriaBreadcrumbs.vue'
-export { default as AriaButton } from './AriaButton/AriaButton.vue'
-export { default as AriaCallout } from './AriaCallout/AriaCallout.vue'
-export { default as AriaCheckbox } from './AriaCheckBox/AriaCheckbox.vue'
-export { default as AriaContainer } from './AriaContainer/AriaContainer.vue'
-export { default as AriaFooter } from './AriaFooter/AriaFooter.vue'
-export { default as AriaImage } from './AriaImage/AriaImage.vue'
-export { default as AriaInput } from './AriaInput/AriaInput.vue'
-export { default as AriaMessage } from './AriaMessage/AriaMessage.vue'
-export { default as AriaNavbar } from './AriaNavbar/AriaNavbar.vue'
-export { default as AriaNoData } from './AriaNoData/AriaNoData.vue' 
-export { default as AriaNotification } from './AriaNotification/AriaNotification.vue'
-export { default as AriaSection } from './AriaSection/AriaSection.vue'
-export { default as AriaSelect } from './AriaSelect/AriaSelect.vue'
-export { default as AriaTable } from './AriaTable/AriaTable.vue'
+import '../static/css/tailwind.css'
+import * as components from './components'
+
+import { merge } from './utils/helpers'
+import config, { ConfigType, setOptions, setVueInstance } from './utils/config'
+import { use, registerComponentProgrammatic } from './utils/plugins'
+
+import configComponent from './utils/configComponent'
+
+const AriaUI = {
+  install(instance: Application, options = {} as ConfigType) {
+    setVueInstance(instance)
+    // Options
+    setOptions(merge(options, config, true))
+    // Components
+    for (let componentKey in components) {
+      // @ts-ignore
+      instance.use(components[componentKey]) 
+    }
+    // Config component
+    registerComponentProgrammatic(instance, 'config', configComponent)
+
+    instance.config.globalProperties.$ariaUI.globalNoticeInterval = null
+  }
+}
+
+use(AriaUI)
+
+export default AriaUI
+
+// export all components as vue plugin
+export * from './components'
+
+// export all helpers
+export * from './utils/helpers'

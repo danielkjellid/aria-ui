@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "declarationDir": "lib",
+    "declarationDir": "dist",
     "target": "es2019",
     "module": "es2015",
-    "outDir": "lib",
+    "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
     "importHelpers": true,
     "strict": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*.ts", "src/**/*.vue"],
-  "exclude": ["node_modules", "lib"]
+  "include": ["src/**/*.ts", "src/**/*.vue", "src/components/Breadcrumbs/index.js"],
+  "exclude": ["node_modules", "dist"]
 }

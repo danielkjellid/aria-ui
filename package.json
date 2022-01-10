@@ -2,16 +2,18 @@
   "name": "aria-ui",
   "version": "1.0.0",
   "description": "A component library for the Aria project.",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "unpkg": "dist/ariaUI.min.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && rollup -c --environment MINIFY",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "author": "Daniel Kjellid",
   "license": "ISC",
   "peerDependencies": {
+    "@heroicons/vue": "^1.0.5",
     "@storybook/addon-actions": "^6.4.0",
     "@storybook/addon-essentials": "^6.4.0",
     "@storybook/addon-links": "^6.4.0",
@@ -20,8 +22,7 @@
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19",
-    "vue": "^3.2.23",
-    "@heroicons/vue": "^1.0.5"
+    "vue": "^3.2.23"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -46,5 +47,11 @@
     "typescript": "^4.5.2",
     "vue": "^3.2.23",
     "vue-loader": "^16.8.3"
+  },
+  "dependencies": {
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
