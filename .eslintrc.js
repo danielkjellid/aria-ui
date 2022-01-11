@@ -4,7 +4,7 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['plugin:vue/vue3-essential', '@vue/airbnb', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ['plugin:vue/vue3-essential', '@vue/airbnb', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
   },
