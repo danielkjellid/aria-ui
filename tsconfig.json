@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "declarationDir": "lib",
+    "declarationDir": "dist/",
     "target": "es2019",
     "module": "es2015",
-    "outDir": "lib",
+    "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
     "importHelpers": true,
     "strict": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types", "static/images"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue"],
-  "exclude": ["node_modules", "lib"]
+  "include": ["src/**/**/*.ts", "src/**/**/*.vue", "static/images/index.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }
