@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/vue3'
+import { CheckIcon } from '@heroicons/vue/solid'
 import AButton from './Button.vue'
 import {
   ButtonLoadingState,
@@ -7,7 +8,6 @@ import {
   ButtonProps,
   ButtonAlignSelf,
 } from './types'
-import { CheckIcon } from '@heroicons/vue/solid'
 
 type StoryArgs = ButtonProps & {
   default: string
@@ -190,7 +190,7 @@ AsLink.args = { default: 'Take me to example.com', to: 'http://example.com/' }
 AsLink.parameters = {
   docs: {
     source: {
-      code: `<a-button to="http://example.com">Take me to example.com</a-button>`,
+      code: '<a-button to="http://example.com">Take me to example.com</a-button>',
     },
   },
 }

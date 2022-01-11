@@ -26,7 +26,7 @@ API.parameters = {
         'A light button is usually used as a secondary options where it indicates an action, but not the primary action.',
     },
     source: {
-      code: `<a-no-data />`,
+      code: '<a-no-data />',
     },
   },
 }
@@ -40,7 +40,7 @@ CustomErrorMessage.parameters = {
         'If needed, a custom error message can also be provided for these cases.',
     },
     source: {
-      code: `<a-no-data errorMessage="This is a custom error message" />`,
+      code: '<a-no-data errorMessage="This is a custom error message" />',
     },
   },
 }

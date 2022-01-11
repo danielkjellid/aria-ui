@@ -1,7 +1,8 @@
+/* eslint no-template-curly-in-string: "off" */
 import { Meta, Story } from '@storybook/vue3'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/solid'
 import ATable from './Table.vue'
 import { TableProps } from './types'
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/solid'
 
 export default {
   title: 'UI Elements/Table',
@@ -24,8 +25,7 @@ const TemplateWithSlots: Story<TableProps> = (args: TableProps) => ({
   setup() {
     return { args }
   },
-  template:
-    '<a-table v-bind=args><template #profile="{ item }"><div class="flex items-center"><div :style="`background-color: ${item.profile.avatar_color}`" class="flex items-center justify-center w-6 h-6 mr-2 text-xs text-white rounded-full">{{item.profile.initial}}</div>{{ item.profile.full_name }}</div></template><template #is_active="{ item }"><div v-if="item.is_active" class="flex items-center"><CheckCircleIcon class="h-5 w-5 text-green-400 mr-2" />Active</div><div v-else class="flex items-center"><XCircleIcon class="h-5 w-5 text-red-400 mr-2" />Inactive</div></template><template #action="{ item }"><a href="#" class="hover:bg-gray-200 flex items-center px-4 py-2 text-sm text-gray-800">View user</a><a href="#" class="hover:bg-gray-200 flex items-center px-4 py-2 text-sm text-gray-800">Edit user</a></template></a-table>',
+  template: '<a-table v-bind=args><template #profile="{ item }"><div class="flex items-center"><div :style="`background-color: ${item.profile.avatar_color}`" class="flex items-center justify-center w-6 h-6 mr-2 text-xs text-white rounded-full">{{item.profile.initial}}</div>{{ item.profile.full_name }}</div></template><template #is_active="{ item }"><div v-if="item.is_active" class="flex items-center"><CheckCircleIcon class="h-5 w-5 text-green-400 mr-2" />Active</div><div v-else class="flex items-center"><XCircleIcon class="h-5 w-5 text-red-400 mr-2" />Inactive</div></template><template #action="{ item }"><a href="#" class="hover:bg-gray-200 flex items-center px-4 py-2 text-sm text-gray-800">View user</a><a href="#" class="hover:bg-gray-200 flex items-center px-4 py-2 text-sm text-gray-800">Edit user</a></template></a-table>',
 })
 
 export const API = Template.bind({})

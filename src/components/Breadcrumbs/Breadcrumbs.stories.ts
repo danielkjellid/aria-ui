@@ -42,7 +42,7 @@ API.args = {
 API.parameters = {
   docs: {
     source: {
-      code: `<a-breadcrumbs :breadcrumbs="[{ href: 'some/path/', text: 'Home', current: false }, { href: 'some/past/path/', text: 'Previous', current: false}, { href: 'some/other/path/', text: 'Current', current: true}]" />`,
+      code: '<a-breadcrumbs :breadcrumbs="[{ href: \'some/path/\', text: \'Home\', current: false }, { href: \'some/past/path/\', text: \'Previous\', current: false}, { href: \'some/other/path/\', text: \'Current\', current: true}]" />',
     },
   },
 }

@@ -27,7 +27,7 @@ export const API = Template.bind({})
 API.parameters = {
   docs: {
     source: {
-      code: `<a-section title="Section title">Content</a-section>`,
+      code: '<a-section title="Section title">Content</a-section>',
     },
   },
 }
@@ -37,7 +37,7 @@ NonCollapsable.args = { title: 'Non collapsable', disableCollapse: true }
 NonCollapsable.parameters = {
   docs: {
     source: {
-      code: `<a-section title="Non collapsable" disableCollapse>Content</a-section>`,
+      code: '<a-section title="Non collapsable" disableCollapse>Content</a-section>',
     },
   },
 }

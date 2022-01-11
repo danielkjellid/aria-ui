@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/vue3'
-import AInput from './Input.vue'
 import { SearchIcon } from '@heroicons/vue/outline'
 import { MailIcon } from '@heroicons/vue/solid'
+import AInput from './Input.vue'
 import { InputProps } from './types'
 
 export default {
@@ -43,7 +43,7 @@ API.args = { id: 'defaultInput', label: 'Name' }
 API.parameters = {
   docs: {
     source: {
-      code: `<a-input id="name" label="Name" v-model="var" />`,
+      code: '<a-input id="name" label="Name" v-model="var" />',
     },
   },
 }

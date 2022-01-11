@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/vue3'
-import ASelect from './Select.vue'
 import { PrinterIcon } from '@heroicons/vue/solid'
+import ASelect from './Select.vue'
 
 interface SelectProps {
   id: string

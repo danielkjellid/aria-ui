@@ -1,3 +1,4 @@
+/* eslint import/no-mutable-exports: "off" */
 import { App as Application } from 'vue'
 
 export interface ConfigType {
@@ -26,8 +27,8 @@ export const setOptions = (options: ConfigType) => {
   config = options
 }
 
+export let VueInstance: Application
+
 export const setVueInstance = (instance: Application) => {
   VueInstance = instance
 }
-
-export let VueInstance: Application

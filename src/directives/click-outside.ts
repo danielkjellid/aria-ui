@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { DirectiveBinding } from 'vue'
 
 interface ClickOutsideElement extends HTMLElement {
@@ -5,7 +6,7 @@ interface ClickOutsideElement extends HTMLElement {
 }
 
 export default {
-  beforeMount: function (el: ClickOutsideElement, binding: DirectiveBinding) {
+  beforeMount(el: ClickOutsideElement, binding: DirectiveBinding) {
     const clickEventHandler = (event: MouseEvent) => {
       if (!el.contains(event.target as HTMLElement) && el !== event.target) {
         binding.value(event)
@@ -16,7 +17,7 @@ export default {
 
     document.addEventListener('click', clickEventHandler)
   },
-  unmounted: function (el: ClickOutsideElement) {
+  unmounted(el: ClickOutsideElement) {
     document.removeEventListener('click', el.__vueClickEventHandler__)
   },
 }
