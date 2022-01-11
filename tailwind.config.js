@@ -1,8 +1,6 @@
+/* eslint global-require: "off" */
 module.exports = {
-  content: [
-    './src/components/**/*.{js,ts,vue}'
-  ],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/components/**/*.{js,ts,vue}'],
   theme: {
     extend: {
       colors: {

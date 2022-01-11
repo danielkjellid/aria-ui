@@ -100,13 +100,13 @@
 
 <script lang="ts">
 import { computed, PropType, defineComponent } from '@vue/runtime-core'
+import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/vue/solid'
 import {
   ButtonSize,
   ButtonVariant,
   ButtonLoadingState,
   ButtonAlignSelf,
 } from './types'
-import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/vue/solid'
 
 export default defineComponent({
   name: 'AButton',

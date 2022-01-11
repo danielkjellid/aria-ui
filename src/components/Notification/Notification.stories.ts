@@ -47,7 +47,7 @@ API.parameters = {
   subtitle="Your account was created successfully."
   variant="success"
   :display="true"
-  @closeNotification="someMethod"
+  @on-close-notification="someMethod"
 />
   `,
     },
@@ -70,7 +70,7 @@ Danger.parameters = {
   subtitle="There was a problem creating your account."
   variant="danger"
   :display="true"
-  @closeNotification="someMethod"
+  @on-close-notification="someMethod"
 />
   `,
     },
@@ -93,7 +93,7 @@ Warning.parameters = {
   subtitle="There might be occurrences of degraded performance."
   variant="warning"
   :display="true"
-  @closeNotification="someMethod"
+  @on-close-notification="someMethod"
 />
   `,
     },
@@ -116,7 +116,7 @@ Info.parameters = {
   subtitle="You can now add products as favorites."
   variant="info"
   :display="true"
-  @closeNotification="someMethod"
+  @on-close-notification="someMethod"
 />
   `,
     },
@@ -139,7 +139,7 @@ Success.parameters = {
   subtitle="Your account was created successfully."
   variant="success"
   :display="true"
-  @closeNotification="someMethod"
+  @on-close-notification="someMethod"
 />
   `,
     },

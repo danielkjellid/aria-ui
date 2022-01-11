@@ -36,8 +36,8 @@
 
 <script lang="ts">
 import { PropType } from '@vue/runtime-core'
-import { MessageVariant } from './types'
 import { BellIcon } from '@heroicons/vue/outline'
+import { MessageVariant } from './types'
 
 import AContainer from '../Container'
 

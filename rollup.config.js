@@ -5,6 +5,7 @@ import babel from 'rollup-plugin-babel'
 import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import image from 'rollup-plugin-img'
 import { terser } from 'rollup-plugin-terser'
 
 import fs, { truncateSync } from 'fs'
@@ -26,9 +27,7 @@ const componentsFolder = 'components/'
 
 const components = fs
   .readdirSync(baseFolder + componentsFolder)
-  .filter((f) =>
-    fs.statSync(path.join(baseFolder + componentsFolder, f)).isDirectory()
-  )
+  .filter((f) => fs.statSync(path.join(baseFolder + componentsFolder, f)).isDirectory())
 
 const entries = {
   index: './src/index.ts',
@@ -56,43 +55,42 @@ const vuePluginConfig = {
 }
 
 export default () => {
-  const mapComponent = (name) => {
-    return [
-      {
-        input: baseFolder + componentsFolder + `${name}/index.ts`,
-        external: ['vue', '@heroicons/vue/solid', '@heroicons/vue/outline'],
-        output: {
-          format: 'umd',
-          name: capitalize(name),
-          file: `dist/components/${name}/index.js`,
-          banner: bannerTxt,
-          exports: 'named',
-          globals: {
-            vue: 'Vue',
-            '@heroicons/vue/solid': '@heroicons/vue/solid',
-            '@heroicons/vue/outline': '@heroicons/vue/outline',
-          },
+  const mapComponent = (name) => [
+    {
+      input: `${baseFolder + componentsFolder}${name}/index.ts`,
+      external: ['vue', '@heroicons/vue/solid', '@heroicons/vue/outline'],
+      output: {
+        format: 'umd',
+        name: capitalize(name),
+        file: `dist/components/${name}/index.js`,
+        banner: bannerTxt,
+        exports: 'named',
+        globals: {
+          vue: 'Vue',
+          '@heroicons/vue/solid': '@heroicons/vue/solid',
+          '@heroicons/vue/outline': '@heroicons/vue/outline',
         },
-        plugins: [
-          typescript({ useTsconfigDeclarationDir: true }),
-          vue(vuePluginConfig),
-          peerDepsExternal(),
-          node({
-            extensions: ['.vue', '.js', '.ts'],
-          }),
-          postcss({
-            config: {
-              path: './postcss.config.js',
-            },
-            extensions: ['.css'],
-            extract: false,
-          }),
-          cjs(),
-          babel(babelConfig),
-        ],
       },
-    ]
-  }
+      plugins: [
+        typescript({ useTsconfigDeclarationDir: true }),
+        vue(vuePluginConfig),
+        peerDepsExternal(),
+        node({
+          extensions: ['.vue', '.js', '.ts'],
+        }),
+        postcss({
+          config: {
+            path: './postcss.config.js',
+          },
+          extensions: ['.css'],
+          extract: false,
+        }),
+        cjs(),
+        babel(babelConfig),
+        image({ output: 'dist/images' }),
+      ],
+    },
+  ]
 
   let config = [
     {
@@ -100,7 +98,7 @@ export default () => {
       external: ['vue', '@heroicons/vue/solid', '@heroicons/vue/outline'],
       output: {
         format: 'esm',
-        dir: `dist/esm`,
+        dir: 'dist/esm',
       },
       plugins: [
         typescript({ useTsconfigDeclarationDir: true }),
@@ -118,6 +116,7 @@ export default () => {
           extract: false,
         }),
         cjs(),
+        image({ output: 'dist/images' }),
       ],
     },
     {
@@ -129,7 +128,7 @@ export default () => {
         exports: 'named',
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: true}),
+        typescript({ useTsconfigDeclarationDir: true }),
         vue(vuePluginConfig),
         peerDepsExternal(),
         node({
@@ -144,6 +143,7 @@ export default () => {
           extract: false,
         }),
         cjs(),
+        image({ output: 'dist/images' }),
       ],
     },
     {
@@ -177,6 +177,7 @@ export default () => {
           extract: false,
         }),
         cjs(),
+        image({ output: 'dist/images' }),
       ],
     },
     {
@@ -203,6 +204,7 @@ export default () => {
           extract: false,
         }),
         cjs(),
+        image({ output: 'dist/images' }),
       ],
     },
     // individual components
@@ -218,7 +220,7 @@ export default () => {
           output: {
             comments: '/^!/',
           },
-        })
+        }),
       )
     })
   }

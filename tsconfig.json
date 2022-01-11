@@ -9,8 +9,9 @@
     "declaration": true,
     "importHelpers": true,
     "strict": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types", "static/images"]
   },
-  "include": ["src/**/**/*.ts", "src/**/**/*.vue"],
+  "include": ["src/**/**/*.ts", "src/**/**/*.vue", "static/images/index.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

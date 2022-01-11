@@ -20,7 +20,7 @@
               </p>
             </div>
             <div class="shrink-0 flex ml-4">
-              <button @click="closeNotification" class="focus:outline-none focus:text-gray-600 inline-flex text-gray-500 transition duration-150 ease-in-out">
+              <button @click="onCloseNotification" class="focus:outline-none focus:text-gray-600 inline-flex text-gray-500 transition duration-150 ease-in-out">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
@@ -88,13 +88,13 @@ export default defineComponent({
     },
   },
   setup(_, { emit }) {
-    const closeNotification = (): void => {
-      emit('closeNotification')
+    const onCloseNotification = (): void => {
+      emit('on-close-notification')
     }
 
     const closeAfterThreeSeconds = (): void => {
-      setTimeout(function () {
-        closeNotification()
+      setTimeout(() => {
+        onCloseNotification()
       }, 3000)
     }
 
@@ -107,7 +107,7 @@ export default defineComponent({
     })
 
     return {
-      closeNotification,
+      onCloseNotification,
     }
   },
 })

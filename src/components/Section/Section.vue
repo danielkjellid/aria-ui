@@ -52,7 +52,7 @@ export default defineComponent({
     },
   },
   setup() {
-    let collapsed = ref<boolean>(false)
+    const collapsed = ref<boolean>(false)
 
     return { collapsed }
   },

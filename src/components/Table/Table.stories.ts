@@ -79,9 +79,9 @@ API.parameters = {
   showPagination
   showSearchbar
   searchbarPlaceholder="Search name, email or phone number"
-  @onSearch="searchMethod"
-  @onPrevious="previousPageMethod"
-  @onNext="nextPageMethod"
+  @on-search="searchMethod"
+  @on-prev="previousPageMethod"
+  @on-next="nextPageMethod"
 />`,
     },
   },
@@ -154,9 +154,9 @@ WithSlots.parameters = {
   showPagination
   showSearchbar
   searchbarPlaceholder="Search name, email or phone number"
-  @onSearch="searchMethod"
-  @onPrevious="previousPageMethod"
-  @onNext="nextPageMethod"
+  @on-search="searchMethod"
+  @on-prev="previousPageMethod"
+  @on-next="nextPageMethod"
 >
   <template #profile="{ item }">
     <div class="flex items-center">

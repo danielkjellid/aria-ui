@@ -1,13 +1,7 @@
 <template>
   <div>
     <form v-if="showSearchbar" @submit.prevent="emitQuery" class="px-2 mb-4">
-      <a-input
-        plain
-        label="search"
-        hiddenLabel
-        :placeholder="searchbarPlaceholder"
-        v-model="query"
-      >
+      <a-input plain label="search" hiddenLabel :placeholder="searchbarPlaceholder" v-model="query">
         <SearchIcon class="w-5 h-5 text-gray-800" />
       </a-input>
     </form>
@@ -16,59 +10,31 @@
         <thead>
           <tr class="rounded-md">
             <!-- loop through the headers, setting alignment and border radius accordingly -->
-            <th
-              v-for="(header, index) in headers"
-              :key="index"
-              :class="{
+            <th v-for="(header, index) in headers" :key="index" :class="{
                 'rounded-l-md': index === 0,
                 'rounded-r-md': index === headers.length - 1,
                 'text-left': header.align === undefined || 'left',
                 'text-center': header.align === 'center',
                 'text-right': header.align === 'right',
-              }"
-              class="bg-gray-50 px-6 py-3 text-sm font-normal text-gray-500"
-            >
+              }" class="bg-gray-50 px-6 py-3 text-sm font-normal text-gray-500">
               {{ header.text }}
             </th>
           </tr>
         </thead>
         <tbody v-if="items && items.length > 0" class="bg-white">
           <!-- loop through items in the row items array -->
-          <tr
-            v-for="(item, index) in items"
-            :key="index"
-            class="hover:bg-gray-50 rounded-md"
-          >
-            <td
-              v-for="(value, property, index) in item"
-              :key="index"
-              class="whitespace-nowrap px-6 py-3 text-sm leading-5 text-gray-900"
-              :class="{ 'rounded-l-md': index === 0 }"
-            >
+          <tr v-for="(item, index) in items" :key="index" class="hover:bg-gray-50 rounded-md">
+            <td v-for="(value, property, index) in item" :key="index" class="whitespace-nowrap px-6 py-3 text-sm leading-5 text-gray-900" :class="{ 'rounded-l-md': index === 0 }">
               <!-- add slot to be able to style/edit each column according to content presented -->
               <slot :name="property" :item="item">
                 {{ value }}
               </slot>
             </td>
             <!-- icon to go to the detail of the data presented -->
-            <td
-              v-if="hasActions"
-              class="whitespace-nowrap rounded-r-md relative px-6 py-3 text-right"
-            >
+            <td v-if="hasActions" class="whitespace-nowrap rounded-r-md relative px-6 py-3 text-right">
               <button @click="displayActions(item.id)">
-                <svg
-                  class="w-5 h-5 text-gray-800"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                  />
+                <svg class="w-5 h-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                 </svg>
               </button>
               <div v-show="clickedItemId == item.id">
@@ -80,11 +46,7 @@
                 <!-- dummy element to force action closed, since data range is dynamic -->
               </div>
             </td>
-            <div
-              v-if="clickedItemId == item.id"
-              @click="closeActions"
-              class="absolute inset-0 z-10 bg-transparent"
-            ></div>
+            <div v-if="clickedItemId == item.id" @click="closeActions" class="absolute inset-0 z-10 bg-transparent"></div>
           </tr>
         </tbody>
         <tbody v-else>
@@ -95,55 +57,18 @@
           </tr>
         </tbody>
       </table>
-      <div
-        v-if="items && items.length > 0 && showPagination"
-        class="flex items-center justify-between px-6 mt-8"
-      >
-        <span class="text-sm text-gray-800"
-          >{{ meta.currentRange }} av {{ meta.totalInstances }}</span
-        >
+      <div v-if="items && items.length > 0 && showPagination" class="flex items-center justify-between px-6 mt-8">
+        <span class="text-sm text-gray-800">{{ meta.currentRange }} av {{ meta.totalInstances }}</span>
         <div class="flex items-center">
-          <button
-            v-if="meta.currentPage != 1"
-            @click="emitPrev"
-            class="hover:text-gray-900 text-gray-800"
-          >
-            <svg
-              class="w-5 h-5 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
+          <button v-if="meta.currentPage != 1" @click="emitPrev" class="hover:text-gray-900 text-gray-800">
+            <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
           </button>
-          <span class="mx-2 text-sm text-gray-800"
-            >{{ meta.currentPage }} av {{ meta.totalPages }}</span
-          >
-          <button
-            v-if="meta.currentPage != meta.totalPages"
-            @click="emitNext"
-            class="hover:text-gray-900 text-gray-800"
-          >
-            <svg
-              class="w-5 h-5 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
+          <span class="mx-2 text-sm text-gray-800">{{ meta.currentPage }} av {{ meta.totalPages }}</span>
+          <button v-if="meta.currentPage != meta.totalPages" @click="emitNext" class="hover:text-gray-900 text-gray-800">
+            <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </button>
         </div>
@@ -153,12 +78,12 @@
 </template>
 
 <script lang="ts">
-import AInput from '../Input'
-import ANoData from '../NoData'
 import { SearchIcon } from '@heroicons/vue/outline'
 import { computed, ref } from '@vue/reactivity'
-import { TableMeta } from './types'
 import { defineComponent, PropType } from '@vue/runtime-core'
+import AInput from '../Input'
+import ANoData from '../NoData'
+import { TableMeta } from './types'
 
 export default defineComponent({
   name: 'ATable',
@@ -222,33 +147,33 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
-    /***********
+    /** *********
      ** Search **
-     ***********/
+     ********** */
 
-    let query: string = ''
+    const query = ''
 
     const emitQuery = () => {
-      emit('onSearch', query)
+      emit('on-search', query)
     }
 
-    /******************
+    /** ****************
      ** Table actions **
-     ******************/
+     ***************** */
 
     const emitPrev = () => {
-      emit('onPrev')
+      emit('on-prev')
     }
 
     const emitNext = () => {
-      emit('onNext')
+      emit('on-next')
     }
 
-    /*****************
+    /** ***************
      ** Item actions **
-     *****************/
+     **************** */
 
-    let clickedItemId = ref<number | null>(null)
+    const clickedItemId = ref<number | null>(null)
 
     interface HeaderObj {
       value: string
@@ -257,13 +182,12 @@ export default defineComponent({
     const hasActions = computed(() => {
       if (
         props.headers.filter(
-          (header) => (header as HeaderObj).value === 'actions'
+          (header) => (header as HeaderObj).value === 'actions',
         ).length > 0
       ) {
         return true
-      } else {
-        return false
       }
+      return false
     })
 
     const displayActions = (id: number) => {

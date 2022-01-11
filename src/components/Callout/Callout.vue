@@ -42,13 +42,13 @@
 
 <script lang="ts">
 import { PropType } from '@vue/runtime-core'
-import { CalloutVariant } from './types'
 import {
   ExclamationCircleIcon,
   XCircleIcon,
   CheckCircleIcon,
   InformationCircleIcon,
 } from '@heroicons/vue/solid'
+import { CalloutVariant } from './types'
 
 export default {
   name: 'ACallout',
