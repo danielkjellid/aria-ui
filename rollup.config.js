@@ -7,7 +7,7 @@ import postcss from 'rollup-plugin-postcss'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { terser } from 'rollup-plugin-terser'
 
-import fs from 'fs'
+import fs, { truncateSync } from 'fs'
 import path from 'path'
 
 import pack from './package.json'
@@ -34,6 +34,7 @@ const entries = {
   index: './src/index.ts',
   helpers: './src/utils/helpers.ts',
   config: './src/utils/configComponent.ts',
+  directives: './src/directives/index.ts',
   ...components.reduce((obj, name) => {
     obj[name] = baseFolder + componentsFolder + name
     return obj
@@ -128,7 +129,7 @@ export default () => {
         exports: 'named',
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
+        typescript({ useTsconfigDeclarationDir: true}),
         vue(vuePluginConfig),
         peerDepsExternal(),
         node({
@@ -161,7 +162,7 @@ export default () => {
         },
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
+        typescript({ useTsconfigDeclarationDir: truncateSync }),
         vue(vuePluginConfig),
         peerDepsExternal(),
         node({
