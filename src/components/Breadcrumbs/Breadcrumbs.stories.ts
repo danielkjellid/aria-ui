@@ -1,10 +1,7 @@
 import { Meta, Story } from '@storybook/vue3'
 import ABreadcrumbs from './Breadcrumbs.vue'
-import { BreadcrumbType } from './types'
-
-interface BreadcrumbsProps {
-  breadcrumbs: BreadcrumbType[]
-}
+import ABreadcrumbItem from './BreadcrumbItem.vue'
+import { BreadcrumbsProps } from './types'
 
 export default {
   title: 'UI Elements/Breadcrumbs',
@@ -12,37 +9,26 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
-  argTypes: {
-    breadcrumbs: {
-      table: {
-        type: {
-          summary: '[{ href: str, text: str, current: bool}]',
-        },
-      },
-    },
-  },
 } as Meta
 
 const Template: Story<BreadcrumbsProps> = (args: BreadcrumbsProps) => ({
-  components: { ABreadcrumbs },
+  components: { ABreadcrumbs, ABreadcrumbItem },
   setup() {
     return { args }
   },
-  template: '<a-breadcrumbs v-bind="args" />',
+  template:
+    '<a-breadcrumbs v-bind="args"><a-breadcrumb-item tag="a" href="#">Home</a-breadcrumb-item><a-breadcrumb-item tag="a" href="#">Previous</a-breadcrumb-item><a-breadcrumb-item tag="span" href="#" active>Current</a-breadcrumb-item></a-breadcrumbs>',
 })
 
 export const API = Template.bind({})
-API.args = {
-  breadcrumbs: [
-    { href: 'some/path/', text: 'Home', current: false },
-    { href: 'some/past/path/', text: 'Previous', current: false },
-    { href: 'some/other/path/', text: 'Current', current: true },
-  ],
-}
 API.parameters = {
   docs: {
     source: {
-      code: '<a-breadcrumbs :breadcrumbs="[{ href: \'some/path/\', text: \'Home\', current: false }, { href: \'some/past/path/\', text: \'Previous\', current: false}, { href: \'some/other/path/\', text: \'Current\', current: true}]" />',
+      code: `<a-breadcrumbs homeTitle="Hjem" homePath="/">
+  <a-breadcrumb-item tag="a" href="#">Home</a-breadcrumb-item>
+  <a-breadcrumb-item tag="a" href="#">Previous</a-breadcrumb-item>
+  <a-breadcrumb-item tag="span" active>Current</a-breadcrumb-item>
+</a-breadcrumbs>`,
     },
   },
 }

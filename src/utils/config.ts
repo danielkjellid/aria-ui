@@ -2,11 +2,13 @@
 import { App as Application } from 'vue'
 
 export interface ConfigType {
+  defaultHomePath: string
   defaultLinkTags: string[]
   defaultBreadcrumbTag: string
 }
 
 let config: ConfigType = {
+  defaultHomePath: '/',
   defaultLinkTags: [
     'a',
     'button',

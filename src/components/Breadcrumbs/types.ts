@@ -1,9 +1,9 @@
-export interface BreadcrumbType {
-  text: string
-  href: string
-  current?: boolean
+export interface BreadcrumbsProps {
+  homeTitle?: string
+  homePath?: string
 }
 
-export interface BreadcrumbsType {
-  breadcrumbs: BreadcrumbType[]
+export interface BreadcrumbItemProps {
+  tag?: string
+  active?: boolean
 }
