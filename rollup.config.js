@@ -73,6 +73,7 @@ export default () => {
                     }
                 },
                 plugins: [
+                    typescript({ useTsconfigDeclarationDir: true }),
                     vue(vuePluginConfig),
                     peerDepsExternal(), 
                     node({
@@ -87,7 +88,6 @@ export default () => {
                     }),
                     cjs(),
                     babel(babelConfig),
-                    typescript()
                 ]
             }
         ]
@@ -102,6 +102,7 @@ export default () => {
                 dir: `dist/esm`
             },
             plugins: [
+                typescript({ useTsconfigDeclarationDir: true }),
                 vue(vuePluginConfig),
                 peerDepsExternal(), 
                 node({
@@ -116,7 +117,6 @@ export default () => {
                   extract: false
                 }),
                 cjs(),
-                typescript()
             ]
         },
         {
@@ -128,6 +128,7 @@ export default () => {
                 exports: 'named'
             },
             plugins: [
+                typescript({ useTsconfigDeclarationDir: true }),
                 vue(vuePluginConfig),
                 peerDepsExternal(), 
                 node({
@@ -142,7 +143,6 @@ export default () => {
                   extract: false
                 }),
                 cjs(),
-                typescript()
             ]
         },
         {
@@ -161,6 +161,7 @@ export default () => {
                 }
             },
             plugins: [
+                typescript({ useTsconfigDeclarationDir: true }),
                 vue(vuePluginConfig),
                 peerDepsExternal(), 
                 node({
@@ -175,7 +176,6 @@ export default () => {
                   extract: false
                 }),
                 cjs(),
-                typescript()
             ]
         },
         {
@@ -187,6 +187,7 @@ export default () => {
                 banner: bannerTxt
             },
             plugins: [
+                typescript({ useTsconfigDeclarationDir: true }),
                 vue(vuePluginConfig),
                 peerDepsExternal(), 
                 node({
@@ -201,7 +202,6 @@ export default () => {
                   extract: false
                 }),
                 cjs(),
-                typescript()
             ]
         },
         // individual components
