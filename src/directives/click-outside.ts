@@ -5,7 +5,7 @@ interface ClickOutsideElement extends HTMLElement {
 }
 
 export default {
-  beforeMount: function(el: ClickOutsideElement, binding: DirectiveBinding) {
+  beforeMount: function (el: ClickOutsideElement, binding: DirectiveBinding) {
     const clickEventHandler = (event: MouseEvent) => {
       if (!el.contains(event.target as HTMLElement) && el !== event.target) {
         binding.value(event)
@@ -16,7 +16,7 @@ export default {
 
     document.addEventListener('click', clickEventHandler)
   },
-  unmounted: function(el: ClickOutsideElement) {
-    document.removeEventListener("click", el.__vueClickEventHandler__)
-  }
+  unmounted: function (el: ClickOutsideElement) {
+    document.removeEventListener('click', el.__vueClickEventHandler__)
+  },
 }

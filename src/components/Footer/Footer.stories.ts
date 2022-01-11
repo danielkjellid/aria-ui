@@ -6,8 +6,8 @@ export default {
   title: 'Menus/Footer',
   component: AFooter,
   parameters: {
-    viewMode: 'docs'
-  }
+    viewMode: 'docs',
+  },
 } as Meta
 
 const Template: Story<FooterProps> = (args: FooterProps) => ({
@@ -15,7 +15,7 @@ const Template: Story<FooterProps> = (args: FooterProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-footer v-bind="args" />'
+  template: '<a-footer v-bind="args" />',
 })
 
 export const API = Template.bind({})
@@ -24,19 +24,18 @@ API.args = {
   facebookLink: '/some/facebook/link',
   mailLink: '/some/mail/link',
   copyrightYear: '2020',
-  legalName: 'FK-JKE Design AS'
+  legalName: 'FK-JKE Design AS',
 }
 API.parameters = {
   docs: {
     source: {
-      code: 
-  `<a-footer 
+      code: `<a-footer 
     instagramLink="/some/instagram/link"
     facebookLink="/some/facebook/link"
     mailLink="/some/mail/link"
     copyrightYear="2020"
     legalName="FK-JKE Design AS"
-/>`
-      }
-    }
+/>`,
+    },
+  },
 }

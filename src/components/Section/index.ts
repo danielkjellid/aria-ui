@@ -6,7 +6,7 @@ import { use, registerComponent } from '../../utils/plugins'
 const Plugin = {
   install(instance: Application) {
     registerComponent(instance, Section)
-  }
+  },
 }
 
 use(Plugin)

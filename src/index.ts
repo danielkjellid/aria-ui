@@ -17,13 +17,13 @@ const AriaUI = {
     // Components
     for (let componentKey in components) {
       // @ts-ignore
-      instance.use(components[componentKey]) 
+      instance.use(components[componentKey])
     }
     // Config component
     registerComponentProgrammatic(instance, 'config', configComponent)
 
     instance.config.globalProperties.$ariaUI.globalNoticeInterval = null
-  }
+  },
 }
 
 use(AriaUI)

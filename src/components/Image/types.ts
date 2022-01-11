@@ -1,4 +1,4 @@
-export type ImageWidth = | 'half' | 'full'
+export type ImageWidth = 'half' | 'full'
 export interface ImageType {
   applyFilter: boolean
   imageXs: string // 512x512

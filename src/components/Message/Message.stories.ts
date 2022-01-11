@@ -2,33 +2,28 @@ import { Meta, Story } from '@storybook/vue3'
 import AMessage from './Message.vue'
 import { MessageVariant, MessageProps } from './types'
 
-const variants: MessageVariant[] = [
-  'success',
-  'info',
-  'warning',
-  'danger'
-]
+const variants: MessageVariant[] = ['success', 'info', 'warning', 'danger']
 
 const config = {
   title: 'UI Elements/Message',
   component: AMessage,
   parameter: {
-    viewMode: 'docs'
+    viewMode: 'docs',
   },
   argTypes: {
     display: {
-      defaultValue: true
+      defaultValue: true,
     },
     variant: {
       options: variants,
       defaultValue: 'warning',
       table: {
         type: {
-          summary: variants.join(',').replace(/,/g, ' | ')
-        }
-      }
-    }
-  }
+          summary: variants.join(',').replace(/,/g, ' | '),
+        },
+      },
+    },
+  },
 } as Meta
 
 export default config
@@ -38,7 +33,8 @@ const Template: Story<MessageProps> = (args: MessageProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-message v-bind="args"><p class="text-sm font-normal text-gray-900">Some message content</p></a-message>'
+  template:
+    '<a-message v-bind="args"><p class="text-sm font-normal text-gray-900">Some message content</p></a-message>',
 })
 
 export const API = Template.bind({})
@@ -51,9 +47,9 @@ API.parameters = {
   variant="warning"
 >
   <p class="text-sm font-normal text-gray-900">Some message content</p>
-</a-message>`
-    }
-  }
+</a-message>`,
+    },
+  },
 }
 
 export const Success = Template.bind({})
@@ -67,9 +63,9 @@ Success.parameters = {
   variant="success"
 >
   <p class="text-sm font-normal text-gray-900">Some message content</p>
-</a-message>`
-    }
-  }
+</a-message>`,
+    },
+  },
 }
 
 export const Info = Template.bind({})
@@ -83,9 +79,9 @@ Info.parameters = {
   variant="info"
 >
   <p class="text-sm font-normal text-gray-900">Some message content</p>
-</a-message>`
-    }
-  }
+</a-message>`,
+    },
+  },
 }
 
 export const Warning = Template.bind({})
@@ -99,9 +95,9 @@ Warning.parameters = {
   variant="warning"
 >
   <p class="text-sm font-normal text-gray-900">Some message content</p>
-</a-message>`
-    }
-  }
+</a-message>`,
+    },
+  },
 }
 
 export const Danger = Template.bind({})
@@ -115,7 +111,7 @@ Danger.parameters = {
   variant="danger"
 >
   <p class="text-sm font-normal text-gray-900">Some message content</p>
-</a-message>`
-    }
-  }
+</a-message>`,
+    },
+  },
 }

@@ -7,5 +7,5 @@ export default {
   },
   setOptions(options: ConfigType) {
     setOptions(merge(config, options, true))
-  }
+  },
 }

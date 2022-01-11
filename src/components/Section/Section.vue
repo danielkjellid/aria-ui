@@ -1,8 +1,8 @@
 <template>
   <section>
-    <div 
+    <div
       class="bg-gray-50 px-4 py-3 text-sm font-medium text-gray-900 rounded-lg"
-      :class="{'flex items-center justify-between' : !disableCollapse}"
+      :class="{ 'flex items-center justify-between': !disableCollapse }"
     >
       <h1>{{ title }}</h1>
       <button
@@ -16,9 +16,7 @@
     </div>
     <div class="px-4 my-6">
       <div v-show="!collapsed">
-        <slot>
-          Content
-        </slot>
+        <slot> Content </slot>
       </div>
     </div>
   </section>
@@ -33,7 +31,7 @@ export default defineComponent({
   name: 'ASection',
   components: {
     ChevronUpIcon,
-    ChevronDownIcon
+    ChevronDownIcon,
   },
   props: {
     /**
@@ -42,7 +40,7 @@ export default defineComponent({
     title: {
       type: String,
       required: true,
-      default: 'Section title'
+      default: 'Section title',
     },
     /**
      * Prevents the section from being collapsable.
@@ -50,13 +48,13 @@ export default defineComponent({
     disableCollapse: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
   setup() {
     let collapsed = ref<boolean>(false)
-    
+
     return { collapsed }
-  }
+  },
 })
 </script>

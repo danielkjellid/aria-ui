@@ -9,14 +9,14 @@ const maxWidthOptions: MaxWidthOptions[] = [
   'sm',
   'md',
   'xl',
-  '2xl'
-] 
+  '2xl',
+]
 
 export default {
   title: 'UI Elements/Container',
   component: AContainer,
   parameter: {
-    viewMode: 'docs'
+    viewMode: 'docs',
   },
   argTypes: {
     maxWidth: {
@@ -24,11 +24,11 @@ export default {
       defaultValue: undefined,
       table: {
         type: {
-          summary: maxWidthOptions.join(',').replace(/,/g, ' | ')
-        }
-      }
-    }
-  }
+          summary: maxWidthOptions.join(',').replace(/,/g, ' | '),
+        },
+      },
+    },
+  },
 } as Meta
 
 const Template: Story = (args) => ({
@@ -36,7 +36,8 @@ const Template: Story = (args) => ({
   setup() {
     return { args }
   },
-  template: '<div><h1 class="text-green-400 text-center">Screen</h1><div class="border-4 border-dashed border-green-200 rounded-lg"><a-container v-bind="args"><h1 class="text-gray-400 text-center">Container</h1><div class="border-4 border-dashed border-gray-200 rounded-lg h-96" /></a-container></div></div>'
+  template:
+    '<div><h1 class="text-green-400 text-center">Screen</h1><div class="border-4 border-dashed border-green-200 rounded-lg"><a-container v-bind="args"><h1 class="text-gray-400 text-center">Container</h1><div class="border-4 border-dashed border-gray-200 rounded-lg h-96" /></a-container></div></div>',
 })
 
 export const API = Template.bind({})

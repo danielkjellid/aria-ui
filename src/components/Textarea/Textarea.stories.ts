@@ -6,7 +6,7 @@ export default {
   title: 'Forms/Textarea',
   component: ATextarea,
   parameter: {
-    viewMode: 'docs'
+    viewMode: 'docs',
   },
 } as Meta
 
@@ -15,11 +15,15 @@ const Template: Story<TextareaProps> = (args: TextareaProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-textarea v-bind="args"></a-textarea>'
+  template: '<a-textarea v-bind="args"></a-textarea>',
 })
 
 export const API = Template.bind({})
-API.args = { id: 'some-id', label: 'Textarea', placeholder: 'Type something...', }
+API.args = {
+  id: 'some-id',
+  label: 'Textarea',
+  placeholder: 'Type something...',
+}
 API.parameters = {
   docs: {
     source: {
@@ -32,13 +36,13 @@ API.parameters = {
 >
   ...
 </a-textarea>
-      `
-    }
-  }
+      `,
+    },
+  },
 }
 
 export const WithError = Template.bind({})
-WithError.args = {...API.args, error: 'Some field error...', value: 'Content'}
+WithError.args = { ...API.args, error: 'Some field error...', value: 'Content' }
 WithError.parameters = {
   docs: {
     source: {
@@ -52,7 +56,7 @@ WithError.parameters = {
 >
   ...
 </a-textarea>
-      `
-    }
-  }
+      `,
+    },
+  },
 }

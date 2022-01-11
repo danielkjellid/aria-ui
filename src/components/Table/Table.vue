@@ -21,7 +21,7 @@
               :key="index"
               :class="{
                 'rounded-l-md': index === 0,
-                'rounded-r-md': index === headers.length -1,
+                'rounded-r-md': index === headers.length - 1,
                 'text-left': header.align === undefined || 'left',
                 'text-center': header.align === 'center',
                 'text-right': header.align === 'right',
@@ -34,12 +34,16 @@
         </thead>
         <tbody v-if="items && items.length > 0" class="bg-white">
           <!-- loop through items in the row items array -->
-          <tr v-for="(item, index) in items" :key="index" class="hover:bg-gray-50 rounded-md">
+          <tr
+            v-for="(item, index) in items"
+            :key="index"
+            class="hover:bg-gray-50 rounded-md"
+          >
             <td
               v-for="(value, property, index) in item"
               :key="index"
               class="whitespace-nowrap px-6 py-3 text-sm leading-5 text-gray-900"
-              :class="{'rounded-l-md': index === 0}"
+              :class="{ 'rounded-l-md': index === 0 }"
             >
               <!-- add slot to be able to style/edit each column according to content presented -->
               <slot :name="property" :item="item">
@@ -47,10 +51,24 @@
               </slot>
             </td>
             <!-- icon to go to the detail of the data presented -->
-            <td v-if="hasActions" class="whitespace-nowrap rounded-r-md relative px-6 py-3 text-right">
+            <td
+              v-if="hasActions"
+              class="whitespace-nowrap rounded-r-md relative px-6 py-3 text-right"
+            >
               <button @click="displayActions(item.id)">
-                <svg class="w-5 h-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                <svg
+                  class="w-5 h-5 text-gray-800"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                  />
                 </svg>
               </button>
               <div v-show="clickedItemId == item.id">
@@ -62,7 +80,11 @@
                 <!-- dummy element to force action closed, since data range is dynamic -->
               </div>
             </td>
-            <div v-if="clickedItemId == item.id" @click="closeActions" class="absolute inset-0 z-10 bg-transparent"></div>
+            <div
+              v-if="clickedItemId == item.id"
+              @click="closeActions"
+              class="absolute inset-0 z-10 bg-transparent"
+            ></div>
           </tr>
         </tbody>
         <tbody v-else>
@@ -73,18 +95,55 @@
           </tr>
         </tbody>
       </table>
-      <div v-if="items && items.length > 0 && showPagination" class="flex items-center justify-between px-6 mt-8">
-        <span class="text-sm text-gray-800">{{ meta.currentRange }} av {{ meta.totalInstances }}</span>
+      <div
+        v-if="items && items.length > 0 && showPagination"
+        class="flex items-center justify-between px-6 mt-8"
+      >
+        <span class="text-sm text-gray-800"
+          >{{ meta.currentRange }} av {{ meta.totalInstances }}</span
+        >
         <div class="flex items-center">
-          <button v-if="meta.currentPage != 1" @click="emitPrev" class="hover:text-gray-900 text-gray-800">
-            <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          <button
+            v-if="meta.currentPage != 1"
+            @click="emitPrev"
+            class="hover:text-gray-900 text-gray-800"
+          >
+            <svg
+              class="w-5 h-5 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
             </svg>
           </button>
-          <span class="mx-2 text-sm text-gray-800">{{ meta.currentPage }} av {{ meta.totalPages }}</span>
-          <button v-if="meta.currentPage != meta.totalPages" @click="emitNext" class="hover:text-gray-900 text-gray-800">
-            <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          <span class="mx-2 text-sm text-gray-800"
+            >{{ meta.currentPage }} av {{ meta.totalPages }}</span
+          >
+          <button
+            v-if="meta.currentPage != meta.totalPages"
+            @click="emitNext"
+            class="hover:text-gray-900 text-gray-800"
+          >
+            <svg
+              class="w-5 h-5 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
             </svg>
           </button>
         </div>
@@ -106,7 +165,7 @@ export default defineComponent({
   components: {
     AInput,
     ANoData,
-    SearchIcon
+    SearchIcon,
   },
   props: {
     /**
@@ -114,14 +173,14 @@ export default defineComponent({
      */
     headers: {
       type: Array,
-      required: true
+      required: true,
     },
     /**
      * Sets the table items (rows).
      */
     items: {
       type: [Object, Array],
-      required: true
+      required: true,
     },
     /**
      * Show table actions (horizontal dots on each row)
@@ -144,7 +203,7 @@ export default defineComponent({
      */
     searchbarPlaceholder: {
       type: String,
-      required: false
+      required: false,
     },
     /**
      * Show pagination bellow table.
@@ -152,21 +211,20 @@ export default defineComponent({
     showPagination: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     /**
      * Show current range of the table showing - only needed if pagination is enabled.
      */
     meta: {
       type: Object as PropType<TableMeta>,
-      required: false
-    }
+      required: false,
+    },
   },
   setup(props, { emit }) {
-
     /***********
-    ** Search **
-    ***********/
+     ** Search **
+     ***********/
 
     let query: string = ''
 
@@ -175,8 +233,8 @@ export default defineComponent({
     }
 
     /******************
-    ** Table actions **
-    ******************/
+     ** Table actions **
+     ******************/
 
     const emitPrev = () => {
       emit('onPrev')
@@ -187,8 +245,8 @@ export default defineComponent({
     }
 
     /*****************
-    ** Item actions **
-    *****************/
+     ** Item actions **
+     *****************/
 
     let clickedItemId = ref<number | null>(null)
 
@@ -197,7 +255,11 @@ export default defineComponent({
     }
 
     const hasActions = computed(() => {
-      if (props.headers.filter((header) => (header as HeaderObj).value === 'actions').length > 0) {
+      if (
+        props.headers.filter(
+          (header) => (header as HeaderObj).value === 'actions'
+        ).length > 0
+      ) {
         return true
       } else {
         return false
@@ -220,9 +282,8 @@ export default defineComponent({
       clickedItemId,
       hasActions,
       displayActions,
-      closeActions
+      closeActions,
     }
-
-  }
+  },
 })
 </script>

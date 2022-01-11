@@ -6,13 +6,13 @@ export default {
   title: 'UI Elements/Section',
   component: ASection,
   parameter: {
-    viewMode: 'docs'
+    viewMode: 'docs',
   },
   argTypes: {
     title: {
-      control: { type: 'text' }
-    }
-  }
+      control: { type: 'text' },
+    },
+  },
 } as Meta
 
 const Template: Story<SectionProps> = (args: SectionProps) => ({
@@ -20,16 +20,16 @@ const Template: Story<SectionProps> = (args: SectionProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-section v-bind="args"></a-section>'
+  template: '<a-section v-bind="args"></a-section>',
 })
 
 export const API = Template.bind({})
 API.parameters = {
   docs: {
     source: {
-      code: `<a-section title="Section title">Content</a-section>`
-    }
-  }
+      code: `<a-section title="Section title">Content</a-section>`,
+    },
+  },
 }
 
 export const NonCollapsable = Template.bind({})
@@ -37,7 +37,7 @@ NonCollapsable.args = { title: 'Non collapsable', disableCollapse: true }
 NonCollapsable.parameters = {
   docs: {
     source: {
-      code: `<a-section title="Non collapsable" disableCollapse>Content</a-section>`
-    }
-  }
+      code: `<a-section title="Non collapsable" disableCollapse>Content</a-section>`,
+    },
+  },
 }

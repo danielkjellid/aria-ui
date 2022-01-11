@@ -1,6 +1,12 @@
 import { Meta, Story } from '@storybook/vue3'
 import AButton from './Button.vue'
-import { ButtonLoadingState, ButtonSize, ButtonVariant, ButtonProps, ButtonAlignSelf } from './types'
+import {
+  ButtonLoadingState,
+  ButtonSize,
+  ButtonVariant,
+  ButtonProps,
+  ButtonAlignSelf,
+} from './types'
 import { CheckIcon } from '@heroicons/vue/solid'
 
 type StoryArgs = ButtonProps & {
@@ -9,25 +15,21 @@ type StoryArgs = ButtonProps & {
   rightIcon: any
 }
 
-const sizes: ButtonSize[] = [
-  's',
-  'm',
-  'l'
-]
+const sizes: ButtonSize[] = ['s', 'm', 'l']
 
 const variants: ButtonVariant[] = [
-  'primary', 
-  'primaryDanger', 
-  'secondary', 
-  'secondaryDanger', 
-  'outlined'
+  'primary',
+  'primaryDanger',
+  'secondary',
+  'secondaryDanger',
+  'outlined',
 ]
 
 const loadingStates: ButtonLoadingState[] = [
   'initial',
   'loading',
   'error',
-  'success'
+  'success',
 ]
 
 const alignSelfOptions: ButtonAlignSelf[] = [
@@ -36,14 +38,14 @@ const alignSelfOptions: ButtonAlignSelf[] = [
   'end',
   'center',
   'stretch',
-  'baseline'
+  'baseline',
 ]
 
 export default {
   title: 'UI Elements/Button',
   component: AButton,
   parameters: {
-    viewMode: 'docs'
+    viewMode: 'docs',
   },
   argTypes: {
     size: {
@@ -51,50 +53,51 @@ export default {
       defaultValue: 'm',
       table: {
         type: {
-          summary: sizes.join(',').replace(/,/g, ' | ')
-        }
-      }
+          summary: sizes.join(',').replace(/,/g, ' | '),
+        },
+      },
     },
     variant: {
       options: variants,
       defaultValue: 'primary',
       table: {
         type: {
-          summary: variants.join(',').replace(/,/g, ' | ')
-        }
-      }
+          summary: variants.join(',').replace(/,/g, ' | '),
+        },
+      },
     },
     loadingState: {
       options: loadingStates,
       defaultValue: 'initial',
       table: {
         type: {
-          summary: loadingStates.join(',').replace(/,/g, ' | ')
-        }
-      }
+          summary: loadingStates.join(',').replace(/,/g, ' | '),
+        },
+      },
     },
     alignSelf: {
       options: alignSelfOptions,
       defaultValue: 'auto',
       table: {
         type: {
-          summary: alignSelfOptions.join(',').replace(/,/g, ' | ')
-        }
-      }
+          summary: alignSelfOptions.join(',').replace(/,/g, ' | '),
+        },
+      },
     },
     default: {
-      description: 'Replaces the button content, excluding icons and loading state',
+      description:
+        'Replaces the button content, excluding icons and loading state',
       defaultValue: 'Button',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     leftIcon: {
-      description: 'Will add a given icon to the left of the button text.'
+      description: 'Will add a given icon to the left of the button text.',
     },
     rightIcon: {
-      description: 'Will add a given icon to the right of the button text.'
-    }
+      description: 'Will add a given icon to the right of the button text.',
+    },
   },
   parameter: {
     viewMode: 'docs',
@@ -106,7 +109,7 @@ const Template: Story<StoryArgs> = (args) => ({
   setup() {
     return { args }
   },
-  template: '<a-button v-bind="args">{{ args.default }}</a-button>'
+  template: '<a-button v-bind="args">{{ args.default }}</a-button>',
 })
 
 const TemplateWithIcon: Story<StoryArgs> = (args) => ({
@@ -129,7 +132,7 @@ const TemplateWithIcon: Story<StoryArgs> = (args) => ({
         {{ args.default }}
       </a-button>
     </div>
-    `
+    `,
 })
 
 const TemplateSubmissionStates: Story<StoryArgs> = (args) => ({
@@ -164,23 +167,22 @@ const TemplateSubmissionStates: Story<StoryArgs> = (args) => ({
         <a-button variant="secondaryDanger" loadingState="success">Success</a-button>
       </div>
     </div>
-    `
+    `,
 })
 
 export const API = Template.bind({})
 API.parameters = {
   docs: {
     source: {
-      code: 
-`<a-button 
+      code: `<a-button 
   @click="someMethod" 
   size="m"
   variant="primary"
 >
   Button
-</a-button>`
-    }
-  }
+</a-button>`,
+    },
+  },
 }
 
 export const AsLink = Template.bind({})
@@ -188,17 +190,21 @@ AsLink.args = { default: 'Take me to example.com', to: 'http://example.com/' }
 AsLink.parameters = {
   docs: {
     source: {
-      code: `<a-button to="http://example.com">Take me to example.com</a-button>`
-    }
-  }
+      code: `<a-button to="http://example.com">Take me to example.com</a-button>`,
+    },
+  },
 }
 
 export const WithIcons = TemplateWithIcon.bind({})
-WithIcons.args = { leftIcon: '<CheckIcon class="w-5 h-5 text-white" />', rightIcon: '<CheckIcon class="w-5 h-5 text-white" />' }
+WithIcons.args = {
+  leftIcon: '<CheckIcon class="w-5 h-5 text-white" />',
+  rightIcon: '<CheckIcon class="w-5 h-5 text-white" />',
+}
 WithIcons.parameters = {
   docs: {
     description: {
-      story: 'Icons can be aligned both to the left and right of the slot text through the <code>leftIcon</code> or <code>rightIcon</code> props.'
+      story:
+        'Icons can be aligned both to the left and right of the slot text through the <code>leftIcon</code> or <code>rightIcon</code> props.',
     },
     source: {
       code: `
@@ -223,9 +229,9 @@ WithIcons.parameters = {
     </template>
   </a-button>
 </div>
-      `
-    }
-  }
+      `,
+    },
+  },
 }
 
 export const SubmissionButton = TemplateSubmissionStates.bind({})
@@ -259,7 +265,7 @@ SubmissionButton.parameters = {
     <a-button variant="secondaryDanger" loadingState="success">Success</a-button>
   </div>
 </div>
-`
-    }
-  }
+`,
+    },
+  },
 }

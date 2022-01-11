@@ -8,7 +8,11 @@
   "scripts": {
     "build": "rollup -c && rollup -c --environment MINIFY",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prettier:check": "prettier --check \"**/*.{js,ts,tsx,vue,css,json,md}\"",
+    "prettier:fix": "prettier --write \"**/*.{js,ts,tsx,css,vue,json,md}\"",
+    "lint": "npm run prettier:check",
+    "lint:fix": "npm run prettier:fix"
   },
   "author": "Daniel Kjellid",
   "license": "ISC",
@@ -38,6 +42,7 @@
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
     "postcss": "^8.4.4",
+    "prettier": "2.5.1",
     "rollup": "^2.60.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",

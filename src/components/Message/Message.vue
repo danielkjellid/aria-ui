@@ -1,29 +1,28 @@
 <template>
-  <div v-if="display" class="relative top-0 left-0 right-0 z-40 bg-white shadow-md">
+  <div
+    v-if="display"
+    class="relative top-0 left-0 right-0 z-40 bg-white shadow-md"
+  >
     <a-container>
-      <div style="max-width: 1600px;" class="sm:px-8 px-5 py-3 mx-auto">
+      <div style="max-width: 1600px" class="sm:px-8 px-5 py-3 mx-auto">
         <div class="flex items-center text-sm font-medium text-gray-700">
-          <span 
+          <span
             class="flex p-2 mr-3 -ml-1 rounded-lg"
-            :class="
-              {
-                'bg-green-200': variant === 'success',
-                'bg-blue-200': variant === 'info',
-                'bg-yellow-200': variant === 'warning',
-                'bg-red-200': variant === 'danger'
-              }
-            "
+            :class="{
+              'bg-green-200': variant === 'success',
+              'bg-blue-200': variant === 'info',
+              'bg-yellow-200': variant === 'warning',
+              'bg-red-200': variant === 'danger',
+            }"
           >
-            <BellIcon 
+            <BellIcon
               class="w-6 h-6"
-              :class="
-                {
-                  'text-green-600': variant === 'success',
-                  'text-blue-600': variant === 'info',
-                  'text-yellow-600': variant === 'warning',
-                  'text-red-600': variant === 'danger'
-                }
-              "
+              :class="{
+                'text-green-600': variant === 'success',
+                'text-blue-600': variant === 'info',
+                'text-yellow-600': variant === 'warning',
+                'text-red-600': variant === 'danger',
+              }"
             />
           </span>
           <div class="flex-col items-center">
@@ -46,7 +45,7 @@ export default {
   name: 'AMessage',
   components: {
     BellIcon,
-    AContainer
+    AContainer,
   },
   props: {
     /**
@@ -54,7 +53,7 @@ export default {
      */
     display: {
       type: Boolean,
-      required: true
+      required: true,
     },
     /**
      * Message variant.
@@ -62,8 +61,8 @@ export default {
     variant: {
       required: false,
       default: 'warning',
-      type: String as PropType<MessageVariant>
+      type: String as PropType<MessageVariant>,
     },
-  }
+  },
 }
 </script>

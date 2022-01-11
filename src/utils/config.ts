@@ -15,15 +15,19 @@ let config: ConfigType = {
     'n-link',
     'RouterLink',
     'NuxtLink',
-    'NLink'
+    'NLink',
   ],
   defaultBreadcrumbTag: 'a',
 }
 
 export { config as default }
 
-export const setOptions = (options: ConfigType) => { config = options }
+export const setOptions = (options: ConfigType) => {
+  config = options
+}
 
-export const setVueInstance = (instance: Application) => { VueInstance = instance }
+export const setVueInstance = (instance: Application) => {
+  VueInstance = instance
+}
 
 export let VueInstance: Application

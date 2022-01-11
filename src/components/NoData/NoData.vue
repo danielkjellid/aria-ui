@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'ANoData',
   props: {
@@ -17,8 +16,8 @@ export default {
     errorMessage: {
       type: String,
       required: false,
-      default: 'Ingen data'
-    }
-  }
+      default: 'Ingen data',
+    },
+  },
 }
 </script>
