@@ -2,18 +2,18 @@ module.exports = {
   parser: 'vue-eslint-parser',
   root: true,
   env: {
-    node: true,
+    node: true
   },
-  extends: ['plugin:vue/vue3-essential', '@vue/airbnb', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ["plugin:vue/vue3-essential", "@vue/airbnb", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "prettier", "plugin:storybook/recommended"],
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: '@typescript-eslint/parser'
   },
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.ts', '.vue'],
-      },
-    },
+        extensions: ['.js', '.ts', '.vue']
+      }
+    }
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -33,5 +33,5 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-loss-of-precision': 'off'
-  },
-}
+  }
+};

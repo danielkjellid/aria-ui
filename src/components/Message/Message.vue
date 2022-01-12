@@ -39,7 +39,7 @@ import { PropType } from '@vue/runtime-core'
 import { BellIcon } from '@heroicons/vue/outline'
 import { MessageVariant } from './types'
 
-import AContainer from '../Container'
+import AContainer from '../Container/Container.vue'
 
 export default {
   name: 'AMessage',

@@ -41,7 +41,7 @@
 <script lang="ts">
 import { PropType } from '@vue/runtime-core'
 import { SubMenuItem } from './types'
-import AContainer from '../Container'
+import AContainer from '../Container/Container.vue'
 
 export default {
   name: 'AriaNavbarMobileMenu',

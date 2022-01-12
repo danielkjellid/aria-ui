@@ -65,7 +65,7 @@
 </template>
 
 <script lang="ts">
-import AContainer from '../Container'
+import AContainer from '../Container/Container.vue'
 
 export default {
   name: 'AFooter',

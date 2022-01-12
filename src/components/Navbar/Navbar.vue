@@ -187,7 +187,7 @@ import {
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/solid'
 import { computed, defineComponent, PropType, ref } from '@vue/runtime-core'
 import { SubMenuItem, AuthenticatedUser, MenuItem } from './types'
-import AContainer from '../Container'
+import AContainer from '../Container/Container.vue'
 import AriaNavbarMobileMenu from './AriaNavbarMobileMenu.vue'
 import AriaNavbarFlyoutMenu from './AriaNavbarFlyoutMenu.vue'
 import clickOutside from '../../directives/click-outside'
