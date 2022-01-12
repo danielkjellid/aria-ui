@@ -1,6 +1,6 @@
 import { App as Application } from 'vue'
 import Breadcrumbs from './Breadcrumbs.vue'
-import BreadcrumbItem from './BreadcrumbItems.vue'
+import BreadcrumbItem from './BreadcrumbItem.vue'
 
 import { use, registerComponent } from '../../utils/plugins'
 
