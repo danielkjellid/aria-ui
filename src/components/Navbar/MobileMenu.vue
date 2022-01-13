@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="lg:hidden fixed inset-y-0 top-0 right-0 z-40 flex"
+      class="lg:hidden fixed inset-0 z-40 flex"
       role="dialog"
       aria-modal="true"
     >
@@ -21,14 +21,14 @@
       </transition>
       <transition
         enter-active-class="transition duration-300 ease-in-out transform"
-        enter-class="translate-x-full"
-        enter-to-class="-translate-x-0"
+        enter-class="-translate-x-full"
+        enter-to-class="translate-x-0"
         leave-active-class="transition duration-300 ease-in-out transform"
-        leave-class="-translate-x-0"
-        leave-to-class="translate-x-full"
+        leave-class="translate-x-0"
+        leave-to-class="-translate-x-full"
       >
         <div
-          class="relative flex flex-col w-screen max-w-xs pb-12 overflow-y-auto bg-white shadow-xl"
+          class="relative flex flex-col w-full max-w-xs pb-12 overflow-y-auto bg-white shadow-xl"
         >
           <div class="flex items-center justify-between px-4 pt-5 pb-2">
             <h1 class="font-medium text-gray-900">Meny</h1>
@@ -44,7 +44,7 @@
             </div>
           </div>
           <div class="mt-2">
-            <slot name="menuItems" />
+            <slot />
           </div>
         </div>
       </transition>

@@ -5,9 +5,7 @@
       v-show="mobileMenuActive"
       @on-close-menu="mobileMenuActive = false"
     >
-      <template #menuItems>
-        <slot />
-      </template>
+      <slot />
     </mobile-menu>
 
     <!-- Header -->
@@ -58,7 +56,7 @@
                     "
                   >
                     <span class="sr-only">Open menu</span>
-                    <MenuAlt3Icon class="w-6 h-6" />
+                    <MenuAlt2Icon class="w-6 h-6" />
                   </button>
 
                   <!-- Search icon goes here -->
@@ -195,7 +193,7 @@
 import {
   CubeTransparentIcon,
   ShoppingBagIcon,
-  MenuAlt3Icon,
+  MenuAlt2Icon,
   UserCircleIcon,
 } from '@heroicons/vue/outline'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/solid'
@@ -210,7 +208,7 @@ export default defineComponent({
   components: {
     CubeTransparentIcon,
     ShoppingBagIcon,
-    MenuAlt3Icon,
+    MenuAlt2Icon,
     ChevronDownIcon,
     ChevronUpIcon,
     UserCircleIcon,
