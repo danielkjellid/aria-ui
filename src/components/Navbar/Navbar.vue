@@ -1,10 +1,7 @@
 <template>
   <div v-click-outside="cleanupMenus">
     <!-- Mobile menu -->
-    <mobile-menu
-      v-show="mobileMenuActive"
-      @on-close-menu="mobileMenuActive = false"
-    >
+    <mobile-menu v-show="mobileMenuActive" @on-close-menu="mobileMenuActive = false">
       <slot />
     </mobile-menu>
 
@@ -15,11 +12,7 @@
           <a-container :yPadding="null">
             <div
               class="border-b"
-              :class="
-                !isTransparent && flyoutMenuActive
-                  ? 'border-gray-200'
-                  : 'border-transparent'
-              "
+              :class="!isTransparent && flyoutMenuActive ? 'border-gray-200' : 'border-transparent'"
             >
               <div class="flex items-center justify-between h-20">
                 <!-- Logo (lg+) -->
@@ -45,21 +38,25 @@
 
                 <div class="lg:hidden flex items-center flex-1">
                   <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
-                  <button
-                    @click="mobileMenuActive = true"
-                    type="button"
-                    class="lg:hidden block p-2 -ml-2 rounded-md"
-                    :class="
-                      isTransparent
-                        ? 'bg-transparent text-white hover:text-gray-300'
-                        : 'bg-white text-gray-400 hover:text-brand-800'
-                    "
-                  >
-                    <span class="sr-only">Open menu</span>
-                    <MenuAlt2Icon class="w-6 h-6" />
-                  </button>
 
-                  <!-- Search icon goes here -->
+                  <div class="lg:hidden block">
+                    <a-icon
+                      tag="button"
+                      type="button"
+                      :transparentBg="isTransparent"
+                      @click="mobileMenuActive = true"
+                    >
+                      <span class="sr-only">Open menu</span>
+                      <MenuAlt2Icon
+                        class="w-6 h-6"
+                        :class="
+                          isTransparent
+                            ? 'text-white hover:text-gray-300'
+                            : 'text-gray-400 hover:text-brand-800'
+                        "
+                      />
+                    </a-icon>
+                  </div>
                 </div>
 
                 <!-- Logo (lg-) -->
@@ -83,14 +80,8 @@
                             <a-icon
                               tag="button"
                               type="button"
-                              :class="
-                                isTransparent
-                                  ? 'bg-transparent focus:ring-transparent focus:ring-offset-white'
-                                  : 'bg-white focus:ring-offset-brand-800'
-                              "
-                              :aria-expanded="
-                                userSubMenuActive ? 'true' : 'false'
-                              "
+                              :transparentBg="isTransparent"
+                              :aria-expanded="userSubMenuActive ? 'true' : 'false'"
                               aria-haspopup="true"
                               @click="userSubMenuActive = !userSubMenuActive"
                             >
@@ -102,6 +93,7 @@
                                     : 'text-gray-400 group-hover:text-brand-800'
                                 "
                               />
+                              <span class="sr-only">Your account, view account options</span>
                             </a-icon>
                           </div>
 
@@ -142,24 +134,18 @@
                       </div>
                     </div>
 
-                    <span
-                      class="lg:mx-6 w-px h-6 mx-4 bg-gray-200"
-                      aria-hidden="true"
-                    ></span>
+                    <span class="lg:mx-6 w-px h-6 mx-4 bg-gray-200" aria-hidden="true"></span>
 
                     <div class="flow-root">
                       <a-icon
-                        tag="a"
-                        href="#"
-                        class="group flex items-center p-2 -m-2"
-                        :class="
-                          isTransparent
-                            ? 'bg-transparent focus:ring-transparent focus:ring-offset-white'
-                            : 'bg-white focus:ring-offset-brand-800'
-                        "
+                        tag="button"
+                        type="button"
+                        :transparentBg="isTransparent"
+                        aria-expanded="false"
+                        class="relative"
                       >
                         <ShoppingBagIcon
-                          class="w-6 h-6"
+                          class="z-10 w-6 h-6"
                           :class="
                             isTransparent
                               ? 'text-white group-hover:text-gray-300'
@@ -167,15 +153,14 @@
                           "
                         />
                         <span
-                          class="ml-2 text-sm font-medium"
+                          class="absolute bottom-0 right-0 z-20 flex items-center justify-center w-4 h-4 mb-1 mr-1 text-xs font-light rounded-full"
                           :class="
-                            isTransparent
-                              ? 'text-white group-hover:text-gray-300'
-                              : 'text-gray-400 group-hover:text-brand-800'
+                            isTransparent ? 'text-brand-900 bg-white' : 'text-white bg-brand-800'
                           "
-                          >0</span
                         >
-                        <span class="sr-only">items in cart, view bag</span>
+                          0
+                        </span>
+                        <span class="sr-only"> items in cart, view bag </span>
                       </a-icon>
                     </div>
                   </div>
@@ -255,8 +240,7 @@ export default defineComponent({
     }
 
     const isTransparent = computed(() => {
-      if (props.renderTransparent && props.flyoutMenuActive === false)
-        return true
+      if (props.renderTransparent && props.flyoutMenuActive === false) return true
 
       return false
     })

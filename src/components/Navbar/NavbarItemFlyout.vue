@@ -33,7 +33,7 @@
         leave-class="opacity-100"
         leave-to-class="opacity-0"
       >
-        <flyout-menu v-show="flyoutActive">
+        <flyout-menu v-show="flyoutMenuActive">
           <slot name="items" />
         </flyout-menu>
       </transition>

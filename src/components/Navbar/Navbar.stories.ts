@@ -8,8 +8,8 @@ export default {
     viewMode: 'docs',
   },
   argTypes: {
-    toggleFlyoutMenu: { action: 'clicked' }
-  }
+    toggleFlyoutMenu: { action: 'clicked' },
+  },
 } as Meta
 
 const Template: Story<any> = (args: any) => ({
@@ -22,7 +22,7 @@ const Template: Story<any> = (args: any) => ({
 
 export const API = Template.bind({})
 API.args = {
-  flyoutMenuActive: false
+  flyoutMenuActive: false,
 }
 API.parameters = {
   backgrounds: { default: 'dark' },
