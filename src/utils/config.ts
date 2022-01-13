@@ -3,23 +3,13 @@ import { App as Application } from 'vue'
 
 export interface ConfigType {
   defaultHomePath: string
-  defaultLinkTags: string[]
+  defaultLinkTag: string
   defaultBreadcrumbTag: string
 }
 
 let config: ConfigType = {
   defaultHomePath: '/',
-  defaultLinkTags: [
-    'a',
-    'button',
-    'input',
-    'router-link',
-    'nuxt-link',
-    'n-link',
-    'RouterLink',
-    'NuxtLink',
-    'NLink',
-  ],
+  defaultLinkTag: 'a',
   defaultBreadcrumbTag: 'a',
 }
 
