@@ -1,10 +1,11 @@
 <template>
   <div class="h-96 relative">
-    <a-navbar :flyoutMenuActive="flyoutActive">
+    <a-navbar renderTransparent :flyoutMenuActive="flyoutActive" v-click-outside="cleanupMenus">
       <template #start="{ isTransparent }">
         <a-navbar-item-flyout
+          :active="flyoutActive"
           :renderTransparent="isTransparent"
-          @on-flyout-toggle="handleFlyoutToggle"
+          @on-flyout-toggle="flyoutActive = !flyoutActive"
         >
           Catalog
           <template #items>
@@ -129,8 +130,13 @@ export default {
       userSubMenuActive.value = false
     }
 
-    const handleFlyoutToggle = (val: boolean) => {
-      flyoutActive.value = val
+    const hideFlyoutMenu = () => {
+      flyoutActive.value = false
+    }
+
+    const cleanupMenus = () => {
+      hideUserSubMenu()
+      hideFlyoutMenu()
     }
 
     const subMenuItems = [
@@ -371,10 +377,10 @@ export default {
 
     return {
       flyoutActive,
-      handleFlyoutToggle,
       userSubMenuActive,
       hideUserSubMenu,
       subMenuItems,
+      cleanupMenus,
     }
   },
 }
