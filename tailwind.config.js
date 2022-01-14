@@ -17,8 +17,15 @@ module.exports = {
           900: '#1A202C',
         },
       },
+      keyframes: {
+        loading: {
+          '0%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0 50%' },
+        },
+      },
       animation: {
         'bounce-slow': 'bounce 2s infinite',
+        loading: 'loading 1.5s infinite',
       },
     },
   },

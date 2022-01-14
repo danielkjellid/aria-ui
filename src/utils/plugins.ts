@@ -7,10 +7,7 @@ export const use = (plugin: Plugin) => {
   }
 }
 
-export const registerComponent = (
-  instance: Application,
-  component: Component
-) => {
+export const registerComponent = (instance: Application, component: Component) => {
   if (component.name) {
     instance.component(component.name, component)
   }
@@ -21,8 +18,7 @@ export const registerComponentProgrammatic = (
   property: string,
   component: Component
 ) => {
-  if (!instance.config.globalProperties.$ariaUI)
-    instance.config.globalProperties.$ariaUI = {}
+  if (!instance.config.globalProperties.$ariaUI) instance.config.globalProperties.$ariaUI = {}
 
   instance.config.globalProperties.$ariaUI[property] = component
 }

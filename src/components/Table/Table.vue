@@ -1,13 +1,7 @@
 <template>
   <div>
     <form v-if="showSearchbar" @submit.prevent="emitQuery" class="px-2 mb-4">
-      <a-input
-        plain
-        label="search"
-        hiddenLabel
-        :placeholder="searchbarPlaceholder"
-        v-model="query"
-      >
+      <a-input plain label="search" hiddenLabel :placeholder="searchbarPlaceholder" v-model="query">
         <SearchIcon class="w-5 h-5 text-gray-800" />
       </a-input>
     </form>
@@ -34,11 +28,7 @@
         </thead>
         <tbody v-if="items && items.length > 0" class="bg-white">
           <!-- loop through items in the row items array -->
-          <tr
-            v-for="(item, index) in items"
-            :key="index"
-            class="hover:bg-gray-50 rounded-md"
-          >
+          <tr v-for="(item, index) in items" :key="index" class="hover:bg-gray-50 rounded-md">
             <td
               v-for="(value, property, index) in item"
               :key="index"
@@ -255,11 +245,7 @@ export default defineComponent({
     }
 
     const hasActions = computed(() => {
-      if (
-        props.headers.filter(
-          (header) => (header as HeaderObj).value === 'actions'
-        ).length > 0
-      ) {
+      if (props.headers.filter((header) => (header as HeaderObj).value === 'actions').length > 0) {
         return true
       }
       return false

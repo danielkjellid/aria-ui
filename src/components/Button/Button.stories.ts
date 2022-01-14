@@ -25,12 +25,7 @@ const variants: ButtonVariant[] = [
   'outlined',
 ]
 
-const loadingStates: ButtonLoadingState[] = [
-  'initial',
-  'loading',
-  'error',
-  'success',
-]
+const loadingStates: ButtonLoadingState[] = ['initial', 'loading', 'error', 'success']
 
 const alignSelfOptions: ButtonAlignSelf[] = [
   'auto',
@@ -85,8 +80,7 @@ export default {
       },
     },
     default: {
-      description:
-        'Replaces the button content, excluding icons and loading state',
+      description: 'Replaces the button content, excluding icons and loading state',
       defaultValue: 'Button',
       control: {
         type: 'text',

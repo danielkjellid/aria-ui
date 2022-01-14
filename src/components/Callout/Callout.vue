@@ -11,18 +11,9 @@
     <div class="flex">
       <div class="shrink-0">
         <XCircleIcon v-if="variant === 'danger'" class="w-5 h-5 text-red-400" />
-        <ExclamationCircleIcon
-          v-else-if="variant === 'warning'"
-          class="w-5 h-5 text-yellow-400"
-        />
-        <InformationCircleIcon
-          v-else-if="variant === 'info'"
-          class="w-5 h-5 text-blue-400"
-        />
-        <CheckCircleIcon
-          v-else-if="variant === 'success'"
-          class="w-5 h-5 text-green-400"
-        />
+        <ExclamationCircleIcon v-else-if="variant === 'warning'" class="w-5 h-5 text-yellow-400" />
+        <InformationCircleIcon v-else-if="variant === 'info'" class="w-5 h-5 text-blue-400" />
+        <CheckCircleIcon v-else-if="variant === 'success'" class="w-5 h-5 text-green-400" />
       </div>
       <div class="ml-3">
         <h3

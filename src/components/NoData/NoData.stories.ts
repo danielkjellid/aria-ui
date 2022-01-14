@@ -36,8 +36,7 @@ CustomErrorMessage.args = { errorMessage: 'This is a custom error message' }
 CustomErrorMessage.parameters = {
   docs: {
     description: {
-      story:
-        'If needed, a custom error message can also be provided for these cases.',
+      story: 'If needed, a custom error message can also be provided for these cases.',
     },
     source: {
       code: '<a-no-data errorMessage="This is a custom error message" />',

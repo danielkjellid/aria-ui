@@ -1,0 +1,43 @@
+<template>
+  <div>
+    <p v-if="!loading" class="font-medium text-gray-900">
+      {{ label }}
+    </p>
+    <a-skeleton-loader v-else :loading="loading" width="w-24" />
+
+    <ul role="list" class="mt-6 space-y-6">
+      <slot />
+    </ul>
+  </div>
+</template>
+
+<script lang="ts">
+import ASkeletonLoader from '../SkeletonLoader/SkeletonLoader.vue'
+
+/**
+ * `a-list-block` is a simple component which basically just renders an unordered list with a label, and
+ * WCAG appropriate attributes. The `a-list-block-item` blocks can be anything.
+ */
+export default {
+  name: 'AListBlock',
+  components: { ASkeletonLoader },
+  props: {
+    /**
+     * Label on top of list block.
+     */
+    label: {
+      type: String,
+      required: true,
+      default: 'ListBlock',
+    },
+    /**
+     * Loading prop, set to true when waiting for async content.
+     */
+    loading: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+}
+</script>

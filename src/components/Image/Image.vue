@@ -1,11 +1,6 @@
 <template>
-  <article
-    v-if="loading"
-    class="image-full-container relative col-span-2 overflow-hidden"
-  >
-    <div
-      class="animate-pulse w-full h-full bg-gray-400 border-t border-b border-gray-500"
-    />
+  <article v-if="loading" class="image-full-container relative col-span-2 overflow-hidden">
+    <div class="animate-pulse w-full h-full bg-gray-400 border-t border-b border-gray-500" />
   </article>
   <article
     v-else
@@ -40,10 +35,7 @@
       />
     </div>
     <!-- Filter overlay -->
-    <div
-      v-if="image.applyFilter"
-      class="opacity-20 absolute inset-0 bg-black"
-    />
+    <div v-if="image.applyFilter" class="opacity-20 absolute inset-0 bg-black" />
     <!-- Vertically and horizontally centered text (name) -->
     <div
       v-if="name"
@@ -58,9 +50,7 @@
     <div class="absolute bottom-0 left-0 right-0 mb-8 text-center">
       <slot>
         <button @click="onNavigateToContent">
-          <ChevronDownIcon
-            class="hover:text-gray-300 animate-bounce-slow w-12 h-12 text-white"
-          />
+          <ChevronDownIcon class="hover:text-gray-300 animate-bounce-slow w-12 h-12 text-white" />
         </button>
       </slot>
     </div>

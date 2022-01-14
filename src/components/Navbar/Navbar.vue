@@ -1,29 +1,25 @@
 <template>
-  <div v-click-outside="cleanupMenus">
+  <div v-click-outside="cleanupMenus" class="fixed top-0 left-0 right-0">
     <!-- Mobile menu -->
-    <aria-navbar-mobile-menu
-      v-show="mobileMenuActive"
-      :menuItems="menuItems"
-      :subMenuItems="subMenuItems"
-      :authenticatedUser="authenticatedUser"
-      @on-close-menu="mobileMenuActive = false"
-    />
+    <mobile-menu v-show="mobileMenuActive" @on-close-menu="mobileMenuActive = false">
+      <slot name="start" />
+    </mobile-menu>
 
     <!-- Header -->
     <header class="relative">
       <nav aria-label="Top">
-        <div :class="isTransparent ? 'bg-transparent-blur' : 'bg-white'">
+        <div :class="renderBgClass">
           <a-container :yPadding="null">
             <div
               class="border-b"
-              :class="isTransparent ? 'border-transparent' : 'border-gray-200'"
+              :class="!isTransparent && flyoutMenuActive ? 'border-gray-200' : 'border-transparent'"
             >
               <div class="flex items-center justify-between h-20">
                 <!-- Logo (lg+) -->
                 <div class="lg:flex lg:items-center hidden">
                   <a :href="homePath">
                     <span class="sr-only">{{ brandName }}</span>
-                    <slot name="logo">
+                    <slot name="brand">
                       <CubeTransparentIcon
                         class="w-8 h-8"
                         :class="isTransparent ? 'text-white' : 'text-brand-800'"
@@ -35,137 +31,46 @@
                 <div class="lg:flex hidden h-full">
                   <div class="ml-8">
                     <div class="flex justify-center h-full space-x-8">
-                      <div
-                        class="flex"
-                        v-for="menuItem in menuItems"
-                        :key="menuItem.slug"
-                      >
-                        <div
-                          v-if="menuItem.activatesSubMenu"
-                          class="relative flex"
-                        >
-                          <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
-                          <button
-                            type="button"
-                            class="relative z-10 flex items-center pt-px -mb-px text-sm font-medium transition-colors duration-200 ease-out border-b-2 border-transparent"
-                            :class="[
-                              isTransparent
-                                ? 'text-white hover:text-gray-300'
-                                : 'hover:text-gray-800 text-gray-700',
-                              {
-                                'border-brand-800 text-brand-800':
-                                  menuItem.active || flyoutMenuActive,
-                              },
-                            ]"
-                            aria-expanded="false"
-                            @click="flyoutMenuActive = !flyoutMenuActive"
-                          >
-                            {{ menuItem.name }}
-                          </button>
-                        </div>
-                        <component
-                          :is="menuItem.tag ? menuItem.tag : 'a'"
-                          href="/"
-                          v-else
-                          class="flex items-center text-sm font-medium"
-                          :class="
-                            isTransparent
-                              ? 'text-white hover:text-gray-300'
-                              : 'hover:text-gray-800 text-gray-700'
-                          "
-                          active-class="border-brand-800 text-brand-800"
-                        >
-                          {{ menuItem.name }}
-                        </component>
-                      </div>
-
-                      <!-- Flyout menu -->
-                      <div class="flex">
-                        <transition
-                          enter-active-class="transition duration-200 ease-out"
-                          enter-class="opacity-0"
-                          enter-to-class="opacity-100"
-                          leave-active-class="transition duration-150 ease-in"
-                          leave-class="opacity-00"
-                          leave-to-class="opacity-0"
-                        >
-                          <aria-navbar-flyout-menu
-                            v-show="flyoutMenuActive"
-                            :subMenuItems="subMenuItems"
-                          />
-                        </transition>
-                      </div>
+                      <slot name="start" :isTransparent="isTransparent" />
                     </div>
                   </div>
                 </div>
 
-                <!-- Header bellow LG breakpoint -->
                 <div class="lg:hidden flex items-center flex-1">
-                  <a :href="homePath" class="lg:hidden">
-                    <span class="sr-only">{{ brandName }}</span>
-                    <slot name="logo">
-                      <CubeTransparentIcon class="text-brand-800 w-8 h-8" />
-                    </slot>
-                  </a>
+                  <div class="lg:hidden block">
+                    <a-icon-wrapper
+                      tag="button"
+                      type="button"
+                      :transparentBg="isTransparent"
+                      @click="mobileMenuActive = true"
+                    >
+                      <span class="sr-only">Open menu</span>
+                      <MenuAlt2Icon
+                        class="w-6 h-6"
+                        :class="
+                          isTransparent
+                            ? 'text-white hover:text-gray-300'
+                            : 'text-gray-400 hover:text-brand-800'
+                        "
+                      />
+                    </a-icon-wrapper>
+                  </div>
                 </div>
 
-                <!-- Actions  -->
+                <!-- Logo (lg-) -->
+                <a :href="homePath" class="lg:hidden">
+                  <span class="sr-only">{{ brandName }}</span>
+                  <slot name="brand">
+                    <CubeTransparentIcon
+                      class="w-8 h-8"
+                      :class="isTransparent ? 'text-white' : 'text-brand-800'"
+                    />
+                  </slot>
+                </a>
+
                 <div class="flex items-center justify-end flex-1">
                   <div class="lg:ml-8 flex items-center">
-                    <div class="flex space-x-8">
-                      <div class="flex">
-                        <a href="#" class="group flex items-center p-2 -m-2">
-                          <ShoppingBagIcon
-                            class="group-hover:text-gray-800 w-6 h-6 text-gray-400"
-                          />
-                          <!-- <span class="group-hover:text-gray-800 ml-1 text-sm font-medium text-gray-700">4</span> -->
-                          <span class="sr-only">items in cart, view bag</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <!-- Separator -->
-                    <span
-                      class="lg:mx-6 w-px h-6 mx-4 bg-gray-200"
-                      aria-hidden="true"
-                    ></span>
-
-                    <div class="flow-root">
-                      <!-- User avatar and menu -->
-                      <div
-                        v-if="
-                          !authenticatedUser ||
-                          !authenticatedUser.isAuthenticated
-                        "
-                        class="lg:flex hidden"
-                      >
-                        <a href="#" class="group flex items-center p-2 -m-2">
-                          <UserCircleIcon
-                            class="group-hover:text-gray-800 w-6 h-6 text-gray-400"
-                          />
-                          <!-- <span class="group-hover:text-gray-800 ml-1 text-sm font-medium text-gray-700">4</span> -->
-                          <span class="sr-only">items in cart, view bag</span>
-                        </a>
-                      </div>
-                      <div v-else>
-                        <div
-                          style="background-color: #60a5fa"
-                          class="lg:flex items-center justify-center hidden w-8 h-8 rounded-full"
-                        >
-                          <span class="text-sm text-white">D</span>
-                        </div>
-                      </div>
-
-                      <!-- Menu button -->
-                      <button
-                        @click="mobileMenuActive = true"
-                        type="button"
-                        class="lg:hidden hover:text-gray-800 block p-2 -ml-2 text-gray-400 bg-white rounded-md"
-                      >
-                        <span class="sr-only">Open menu</span>
-                        <MenuAlt3Icon class="w-6 h-6" />
-                      </button>
-                    </div>
+                    <slot name="end" :isTransparent="isTransparent" />
                   </div>
                 </div>
               </div>
@@ -178,85 +83,103 @@
 </template>
 
 <script lang="ts">
-import {
-  CubeTransparentIcon,
-  ShoppingBagIcon,
-  MenuAlt3Icon,
-  UserCircleIcon,
-} from '@heroicons/vue/outline'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/solid'
-import { computed, defineComponent, PropType, ref } from '@vue/runtime-core'
-import { SubMenuItem, AuthenticatedUser, MenuItem } from './types'
+import { CubeTransparentIcon, MenuAlt2Icon } from '@heroicons/vue/outline'
+import { computed, defineComponent, onUnmounted, ref } from '@vue/runtime-core'
 import AContainer from '../Container/Container.vue'
-import AriaNavbarMobileMenu from './AriaNavbarMobileMenu.vue'
-import AriaNavbarFlyoutMenu from './AriaNavbarFlyoutMenu.vue'
+import MobileMenu from './MobileMenu.vue'
 import clickOutside from '../../directives/click-outside'
 
 export default defineComponent({
   name: 'ANavbar',
   components: {
     CubeTransparentIcon,
-    ShoppingBagIcon,
-    MenuAlt3Icon,
-    ChevronDownIcon,
-    ChevronUpIcon,
-    UserCircleIcon,
+    MenuAlt2Icon,
     AContainer,
-    AriaNavbarMobileMenu,
-    AriaNavbarFlyoutMenu,
+    MobileMenu,
   },
   directives: {
     'click-outside': clickOutside,
   },
   props: {
+    /**
+     * Initially render navbar as see through. Will add a white tint on scroll, and full white if there is a flyout menu
+     * active.
+     */
     renderTransparent: {
       required: false,
       type: Boolean,
-      default: true,
+      default: false,
     },
+    /**
+     * Used for screen readers when focus is on logo.
+     */
     brandName: {
       required: false,
       type: String,
       default: 'Aria UI',
     },
+    /**
+     * Path to get home on the site.
+     */
     homePath: {
       required: false,
       type: String,
       default: '/',
     },
-    menuItems: {
+    /**
+     * Only used for setting correct state for navbar color wise.
+     * Flyout's has to be sent in as `a-navbar-item-flyout` and state
+     * has to be controlled within parent.
+     */
+    flyoutMenuActive: {
       required: true,
-      type: Array as PropType<MenuItem[]>,
-    },
-    subMenuItems: {
-      required: true,
-      type: Array as PropType<SubMenuItem[]>,
-    },
-    authenticatedUser: {
-      required: false,
-      type: Object as PropType<AuthenticatedUser>,
-      default: undefined,
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
-    const flyoutMenuActive = ref<boolean>(false)
     const mobileMenuActive = ref<boolean>(false)
 
+    const currentScrollState = ref<number>(0)
+
+    const handleScroll = () => {
+      currentScrollState.value = window.scrollY
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll)
+    })
+
     const cleanupMenus = () => {
-      flyoutMenuActive.value = false
       mobileMenuActive.value = false
     }
 
     const isTransparent = computed(() => {
-      if (props.renderTransparent && flyoutMenuActive.value === false)
+      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50)
         return true
 
       return false
     })
 
+    const renderBgClass = computed(() => {
+      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50) {
+        return 'bg-transparent-blur transition ease-in-out delay-75'
+      }
+      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value >= 50) {
+        return 'bg-transparent-white transition ease-in-out delay-75'
+      }
+      if (props.flyoutMenuActive) {
+        return 'bg-white'
+      }
+
+      return 'bg-white'
+    })
+
     return {
-      flyoutMenuActive,
       mobileMenuActive,
+      renderBgClass,
       cleanupMenus,
       isTransparent,
     }
@@ -269,5 +192,9 @@ export default defineComponent({
   background-color: rgba(145, 146, 140, 0.3);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+}
+
+.bg-transparent-white {
+  background-color: hsla(0, 0%, 100%, 0.92);
 }
 </style>

@@ -13,9 +13,7 @@ const mergeFn = (target: any, source: any, deep = false) => {
       isObject(target[prop])
     const replaced: any = Object.getOwnPropertyNames(source)
       .map((prop) => ({
-        [prop]: isDeep(prop)
-          ? mergeFn(target[prop], source[prop], deep)
-          : source[prop],
+        [prop]: isDeep(prop) ? mergeFn(target[prop], source[prop], deep) : source[prop],
       }))
       .reduce((a, b) => ({ ...a, ...b }), {})
 
