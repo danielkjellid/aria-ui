@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/vue3'
 import ANavbar from './Navbar.vue'
 import ANavbarItem from './NavbarItem.vue'
 import NavbarStorybookHandler from './NavbarStorybookHandler.vue'
+import { NavbarProps } from './types'
 
 export default {
   title: 'Menus/Navbar',
@@ -11,7 +12,7 @@ export default {
   },
 } as Meta
 
-const AdvancedTemplate: Story<any> = (args: any) => ({
+const AdvancedTemplate: Story<NavbarProps> = (args: NavbarProps) => ({
   components: { NavbarStorybookHandler },
   setup() {
     return { args }
@@ -19,7 +20,7 @@ const AdvancedTemplate: Story<any> = (args: any) => ({
   template: `<div class="transform scale-100 relative"><NavbarStorybookHandler/></div>`,
 })
 
-const Template: Story<any> = (args: any) => ({
+const Template: Story<NavbarProps> = (args: NavbarProps) => ({
   components: { ANavbar, ANavbarItem },
   setup() {
     return { args }
