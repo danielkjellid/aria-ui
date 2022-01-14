@@ -2,7 +2,7 @@
   <div v-click-outside="cleanupMenus" class="fixed top-0 left-0 right-0">
     <!-- Mobile menu -->
     <mobile-menu v-show="mobileMenuActive" @on-close-menu="mobileMenuActive = false">
-      <slot />
+      <slot name="start" />
     </mobile-menu>
 
     <!-- Header -->
@@ -111,21 +111,36 @@ export default defineComponent({
     'click-outside': clickOutside,
   },
   props: {
+    /**
+     * Initially render navbar as see through. Will add a white tint on scroll, and full white if there is a flyout menu
+     * active.
+     */
     renderTransparent: {
       required: false,
       type: Boolean,
-      default: true,
+      default: false,
     },
+    /**
+     * Used for screen readers when focus is on logo.
+     */
     brandName: {
       required: false,
       type: String,
       default: 'Aria UI',
     },
+    /**
+     * Path to get home on the site.
+     */
     homePath: {
       required: false,
       type: String,
       default: '/',
     },
+    /**
+     * Only used for setting correct state for navbar color wise.
+     * Flyout's has to be sent in as `a-navbar-item-flyout` and state
+     * has to be controlled within parent.
+     */
     flyoutMenuActive: {
       required: true,
       type: Boolean,
@@ -170,6 +185,8 @@ export default defineComponent({
       } else if (props.flyoutMenuActive) {
         return 'bg-white'
       }
+
+      return 'bg-white'
     })
 
     return {

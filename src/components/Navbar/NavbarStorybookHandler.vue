@@ -1,6 +1,12 @@
 <template>
   <div class="h-96 relative">
-    <a-navbar renderTransparent :flyoutMenuActive="flyoutActive" v-click-outside="cleanupMenus">
+    <a-navbar
+      brandName="Aria UI"
+      homePath="/"
+      renderTransparent
+      :flyoutMenuActive="flyoutActive"
+      v-click-outside="cleanupMenus"
+    >
       <template #start="{ isTransparent }">
         <a-navbar-item-flyout
           :active="flyoutActive"
@@ -13,12 +19,14 @@
               v-for="subMenuItem in subMenuItems"
               :key="subMenuItem.id"
               :label="subMenuItem.name"
+              :loading="loading"
             >
               <a-list-block-item
                 v-for="child in subMenuItem.children"
                 :key="child"
                 tag="a"
                 href="#"
+                :loading="loading"
               >
                 {{ child.name }}
               </a-list-block-item>
@@ -121,7 +129,51 @@ export default {
   directives: {
     'click-outside': clickOutside,
   },
-  props: {},
+  props: {
+    /**
+     * Path to get home on the site.
+     */
+    homePath: {
+      type: String,
+      required: false,
+      default: '/',
+    },
+    /**
+     * Used for screen readers when focus is on logo.
+     */
+    brandName: {
+      type: String,
+      required: false,
+      default: 'Aria UI',
+    },
+    /**
+     * If we're waiting for async content, the loading prop helps us display a skeleton loader
+     * to the user while waiting for data.
+     */
+    loading: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    /**
+     * Initially render navbar as see through. Will add a white tint on scroll, and full white if there is a flyout menu
+     * active.
+     */
+    renderTransparent: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    /**
+     * Control state for flyout menu. If multiple flyout menus are preset, state will need to be controlled individually for
+     * all of them.
+     */
+    flyoutMenuActive: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   setup(_, {}) {
     let flyoutActive = ref<boolean>(false)
     const userSubMenuActive = ref<boolean>(false)
