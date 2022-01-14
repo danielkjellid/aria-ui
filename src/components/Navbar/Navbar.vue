@@ -1,5 +1,5 @@
 <template>
-  <div v-click-outside="cleanupMenus">
+  <div v-click-outside="cleanupMenus" class="fixed top-0 left-0 right-0">
     <!-- Mobile menu -->
     <mobile-menu v-show="mobileMenuActive" @on-close-menu="mobileMenuActive = false">
       <slot />
@@ -8,7 +8,7 @@
     <!-- Header -->
     <header class="relative">
       <nav aria-label="Top">
-        <div :class="isTransparent ? 'bg-transparent-blur' : 'bg-white'">
+        <div class="transition ease-in-out delay-75" :class="renderBgClass">
           <a-container :yPadding="null">
             <div
               class="border-b"
@@ -182,7 +182,7 @@ import {
   UserCircleIcon,
 } from '@heroicons/vue/outline'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/solid'
-import { computed, defineComponent, ref } from '@vue/runtime-core'
+import { computed, defineComponent, onUnmounted, ref } from '@vue/runtime-core'
 import AContainer from '../Container/Container.vue'
 import MobileMenu from './MobileMenu.vue'
 import clickOutside from '../../directives/click-outside'
@@ -230,6 +230,18 @@ export default defineComponent({
     const mobileMenuActive = ref<boolean>(false)
     const userSubMenuActive = ref<boolean>(false)
 
+    const currentScrollState = ref<number>(0)
+
+    const handleScroll = (event: Event) => {
+      currentScrollState.value = window.scrollY
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll)
+    })
+
     const hideUserSubMenu = () => {
       userSubMenuActive.value = false
     }
@@ -240,13 +252,29 @@ export default defineComponent({
     }
 
     const isTransparent = computed(() => {
-      if (props.renderTransparent && props.flyoutMenuActive === false) return true
+      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50)
+        return true
 
       return false
     })
 
+    const renderBgClass = computed(() => {
+      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50) {
+        return 'bg-transparent-blur'
+      } else if (
+        props.renderTransparent &&
+        !props.flyoutMenuActive &&
+        currentScrollState.value >= 50
+      ) {
+        return 'bg-transparent-white'
+      } else if (props.flyoutMenuActive) {
+        return 'bg-white'
+      }
+    })
+
     return {
       mobileMenuActive,
+      renderBgClass,
       cleanupMenus,
       hideUserSubMenu,
       isTransparent,
@@ -261,5 +289,9 @@ export default defineComponent({
   background-color: rgba(145, 146, 140, 0.3);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+}
+
+.bg-transparent-white {
+  background-color: hsla(0, 0%, 100%, 0.92);
 }
 </style>

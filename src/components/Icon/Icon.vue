@@ -6,7 +6,7 @@
     :class="
       transparentBg
         ? 'bg-transparent focus:ring-transparent focus:ring-offset-white'
-        : 'bg-white focus:ring-offset-brand-800 focus:ring-white'
+        : 'bg-inherit focus:ring-offset-brand-800 focus:ring-transparent'
     "
   >
     <slot />
