@@ -38,7 +38,7 @@
 
                 <div class="lg:hidden flex items-center flex-1">
                   <div class="lg:hidden block">
-                    <a-icon
+                    <a-icon-wrapper
                       tag="button"
                       type="button"
                       :transparentBg="isTransparent"
@@ -53,7 +53,7 @@
                             : 'text-gray-400 hover:text-brand-800'
                         "
                       />
-                    </a-icon>
+                    </a-icon-wrapper>
                   </div>
                 </div>
 
@@ -94,7 +94,6 @@ import { computed, defineComponent, onUnmounted, ref } from '@vue/runtime-core'
 import AContainer from '../Container/Container.vue'
 import MobileMenu from './MobileMenu.vue'
 import clickOutside from '../../directives/click-outside'
-import AIcon from '../Icon/Icon.vue'
 
 export default defineComponent({
   name: 'ANavbar',
@@ -107,7 +106,6 @@ export default defineComponent({
     UserCircleIcon,
     AContainer,
     MobileMenu,
-    AIcon,
   },
   directives: {
     'click-outside': clickOutside,

@@ -34,70 +34,32 @@
       <template #end="{ isTransparent }">
         <div class="flex space-x-8">
           <!-- Search goes here -->
-          <div class="flex">
-            <div v-click-outside="hideUserSubMenu" class="relative">
-              <div>
-                <a-icon
-                  tag="button"
-                  type="button"
-                  :transparentBg="isTransparent"
-                  :aria-expanded="userSubMenuActive ? 'true' : 'false'"
-                  aria-haspopup="true"
-                  @click="userSubMenuActive = !userSubMenuActive"
-                >
-                  <UserCircleIcon
-                    class="w-6 h-6"
-                    :class="
-                      isTransparent
-                        ? 'text-white group-hover:text-gray-300'
-                        : 'text-gray-400 group-hover:text-brand-800'
-                    "
-                  />
-                  <span class="sr-only">Your account, view account options</span>
-                </a-icon>
-              </div>
-
-              <transition
-                enter-active-class="transition duration-100 ease-out"
-                enter-class="transform scale-95 opacity-0"
-                enter-to-class="transform scale-100 opacity-100"
-                leave-active-class="transition duration-75 ease-in"
-                leave-class="transform scale-100 opacity-100"
-                leave-to-class="transform scale-95 opacity-0"
-              >
-                <div
-                  class="ring-1 ring-black ring-opacity-5 focus:outline-none absolute right-0 w-48 py-1 mt-3 origin-top-right bg-white rounded-md shadow-lg"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="user-menu-button"
-                  tabindex="-1"
-                  v-show="userSubMenuActive"
-                >
-                  <a
-                    href="#"
-                    class="hover:text-gray-800 hover:bg-gray-100 block px-4 py-2 text-sm text-gray-600"
-                    >Your Profile</a
-                  >
-                  <a
-                    href="#"
-                    class="hover:text-gray-800 hover:bg-gray-100 block px-4 py-2 text-sm text-gray-600"
-                    >Settings</a
-                  >
-                  <a
-                    href="#"
-                    class="hover:text-gray-800 hover:bg-gray-100 block px-4 py-2 text-sm text-gray-600"
-                    >Sign out</a
-                  >
-                </div>
-              </transition>
-            </div>
+          <div class="relative flex">
+            <a-action-menu :transparentBg="isTransparent" alignment="right">
+              <UserCircleIcon
+                class="w-6 h-6"
+                :class="
+                  isTransparent
+                    ? 'text-white group-hover:text-gray-300'
+                    : 'text-gray-400 group-hover:text-brand-800'
+                "
+              />
+              <span class="sr-only">Your account, view account options</span>
+              <template #items>
+                <a-action-menu-section>
+                  <a-action-menu-item>Your profile</a-action-menu-item>
+                  <a-action-menu-item>Settings</a-action-menu-item>
+                  <a-action-menu-item>Sign out</a-action-menu-item>
+                </a-action-menu-section>
+              </template>
+            </a-action-menu>
           </div>
         </div>
 
         <span class="lg:mx-6 sm:mx-4 w-px h-6 mx-2 bg-gray-200" aria-hidden="true"></span>
 
         <div class="flow-root">
-          <a-icon
+          <a-icon-wrapper
             tag="button"
             type="button"
             :transparentBg="isTransparent"
@@ -119,7 +81,7 @@
               0
             </span>
             <span class="sr-only"> items in cart, view bag </span>
-          </a-icon>
+          </a-icon-wrapper>
         </div>
       </template>
     </a-navbar>
@@ -133,9 +95,12 @@ import ANavbarItem from './NavbarItem.vue'
 import AListBlock from '../ListBlock/ListBlock.vue'
 import AListBlockItem from '../ListBlock/ListBlockItem.vue'
 import { ref } from '@vue/reactivity'
-import AIcon from '../Icon/Icon.vue'
+import AIconWrapper from '../IconWrapper/IconWrapper.vue'
 import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/vue/outline'
 import clickOutside from '../../directives/click-outside'
+import AActionMenu from '../ActionMenu/ActionMenu.vue'
+import AActionMenuSection from '../ActionMenu/ActionMenuSection.vue'
+import AActionMenuItem from '../ActionMenu/ActionMenuItem.vue'
 
 export default {
   name: 'NavbarStorybookHandler',
@@ -145,9 +110,12 @@ export default {
     ANavbarItem,
     AListBlock,
     AListBlockItem,
-    AIcon,
+    AIconWrapper,
     ShoppingBagIcon,
     UserCircleIcon,
+    AActionMenu,
+    AActionMenuSection,
+    AActionMenuItem,
   },
   directives: {
     'click-outside': clickOutside,

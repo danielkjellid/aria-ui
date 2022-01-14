@@ -17,7 +17,7 @@ const Template: Story<any> = (args: any) => ({
   setup() {
     return { args }
   },
-  template: `<div class="transform scale-100 relative overflow-y-auto"><NavbarStorybookHandler/></div>`,
+  template: `<div class="transform scale-100 relative"><NavbarStorybookHandler/></div>`,
 })
 
 export const API = Template.bind({})
