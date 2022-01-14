@@ -24,7 +24,6 @@ export default {
   argTypes: {
     alignment: {
       options: alignments,
-      defaultValue: 'm',
       table: {
         type: {
           summary: alignments.join(',').replace(/,/g, ' | '),
