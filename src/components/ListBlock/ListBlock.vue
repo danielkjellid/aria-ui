@@ -14,15 +14,25 @@
 <script lang="ts">
 import ASkeletonLoader from '../SkeletonLoader/SkeletonLoader.vue'
 
+/**
+ * `a-list-block` is a simple component which basically just renders an unordered list with a label, and
+ * WCAG appropriate attributes. The `a-list-block-item` blocks can be anything.
+ */
 export default {
   name: 'AListBlock',
   components: { ASkeletonLoader },
   props: {
+    /**
+     * Label on top of list block.
+     */
     label: {
       type: String,
       required: true,
       default: 'ListBlock',
     },
+    /**
+     * Loading prop, set to true when waiting for async content.
+     */
     loading: {
       type: Boolean,
       required: false,
