@@ -1,7 +1,7 @@
 <template>
   <div class="h-96 relative">
     <a-navbar :flyoutMenuActive="flyoutActive">
-      <template #default="{ isTransparent }">
+      <template #start="{ isTransparent }">
         <a-navbar-item-flyout
           :renderTransparent="isTransparent"
           @on-flyout-toggle="handleFlyoutToggle"
@@ -27,25 +27,99 @@
         <a-navbar-item tag="a" href="#" :renderTransparent="isTransparent">
           About us
         </a-navbar-item>
-        <a-navbar-item
-          tag="a"
-          href="#"
-          :renderTransparent="isTransparent"
-          active
-        >
+        <a-navbar-item tag="a" href="#" :renderTransparent="isTransparent" active>
           Contact us
         </a-navbar-item>
       </template>
-      <template #userMenu>
-        <div class="flow-root">
-          <a href="#" class="block p-2 -m-2 font-medium text-gray-900"
-            >Opprett en konto</a
-          >
+      <template #end="{ isTransparent }">
+        <div class="flex space-x-8">
+          <!-- Search goes here -->
+          <div class="flex">
+            <div v-click-outside="hideUserSubMenu" class="relative">
+              <div>
+                <a-icon
+                  tag="button"
+                  type="button"
+                  :transparentBg="isTransparent"
+                  :aria-expanded="userSubMenuActive ? 'true' : 'false'"
+                  aria-haspopup="true"
+                  @click="userSubMenuActive = !userSubMenuActive"
+                >
+                  <UserCircleIcon
+                    class="w-6 h-6"
+                    :class="
+                      isTransparent
+                        ? 'text-white group-hover:text-gray-300'
+                        : 'text-gray-400 group-hover:text-brand-800'
+                    "
+                  />
+                  <span class="sr-only">Your account, view account options</span>
+                </a-icon>
+              </div>
+
+              <transition
+                enter-active-class="transition duration-100 ease-out"
+                enter-class="transform scale-95 opacity-0"
+                enter-to-class="transform scale-100 opacity-100"
+                leave-active-class="transition duration-75 ease-in"
+                leave-class="transform scale-100 opacity-100"
+                leave-to-class="transform scale-95 opacity-0"
+              >
+                <div
+                  class="ring-1 ring-black ring-opacity-5 focus:outline-none absolute right-0 w-48 py-1 mt-3 origin-top-right bg-white rounded-md shadow-lg"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu-button"
+                  tabindex="-1"
+                  v-show="userSubMenuActive"
+                >
+                  <a
+                    href="#"
+                    class="hover:text-gray-800 hover:bg-gray-100 block px-4 py-2 text-sm text-gray-600"
+                    >Your Profile</a
+                  >
+                  <a
+                    href="#"
+                    class="hover:text-gray-800 hover:bg-gray-100 block px-4 py-2 text-sm text-gray-600"
+                    >Settings</a
+                  >
+                  <a
+                    href="#"
+                    class="hover:text-gray-800 hover:bg-gray-100 block px-4 py-2 text-sm text-gray-600"
+                    >Sign out</a
+                  >
+                </div>
+              </transition>
+            </div>
+          </div>
         </div>
+
+        <span class="lg:mx-6 sm:mx-4 w-px h-6 mx-2 bg-gray-200" aria-hidden="true"></span>
+
         <div class="flow-root">
-          <a href="#" class="block p-2 -m-2 font-medium text-gray-900"
-            >Logg inn</a
+          <a-icon
+            tag="button"
+            type="button"
+            :transparentBg="isTransparent"
+            aria-expanded="false"
+            class="relative"
           >
+            <ShoppingBagIcon
+              class="z-10 w-6 h-6"
+              :class="
+                isTransparent
+                  ? 'text-white group-hover:text-gray-300'
+                  : 'text-gray-400 group-hover:text-brand-800'
+              "
+            />
+            <span
+              class="absolute bottom-0 right-0 z-20 flex items-center justify-center w-4 h-4 mb-1 mr-1 text-xs font-light rounded-full"
+              :class="isTransparent ? 'text-brand-900 bg-white' : 'text-white bg-brand-800'"
+            >
+              0
+            </span>
+            <span class="sr-only"> items in cart, view bag </span>
+          </a-icon>
         </div>
       </template>
     </a-navbar>
@@ -59,6 +133,9 @@ import ANavbarItem from './NavbarItem.vue'
 import AListBlock from '../ListBlock/ListBlock.vue'
 import AListBlockItem from '../ListBlock/ListBlockItem.vue'
 import { ref } from '@vue/reactivity'
+import AIcon from '../Icon/Icon.vue'
+import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/vue/outline'
+import clickOutside from '../../directives/click-outside'
 
 export default {
   name: 'NavbarStorybookHandler',
@@ -68,10 +145,21 @@ export default {
     ANavbarItem,
     AListBlock,
     AListBlockItem,
+    AIcon,
+    ShoppingBagIcon,
+    UserCircleIcon,
+  },
+  directives: {
+    'click-outside': clickOutside,
   },
   props: {},
   setup(_, {}) {
     let flyoutActive = ref<boolean>(false)
+    const userSubMenuActive = ref<boolean>(false)
+
+    const hideUserSubMenu = () => {
+      userSubMenuActive.value = false
+    }
 
     const handleFlyoutToggle = (val: boolean) => {
       flyoutActive.value = val
@@ -316,6 +404,8 @@ export default {
     return {
       flyoutActive,
       handleFlyoutToggle,
+      userSubMenuActive,
+      hideUserSubMenu,
       subMenuItems,
     }
   },
