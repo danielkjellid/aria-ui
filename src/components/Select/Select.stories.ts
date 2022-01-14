@@ -105,8 +105,7 @@ Fluid.args = { ...API.args, fluid: true }
 Fluid.parameters = {
   docs: {
     description: {
-      story:
-        'Adding the fluid prop will make the select the length of the content.',
+      story: 'Adding the fluid prop will make the select the length of the content.',
     },
     source: {
       code: `<a-select 

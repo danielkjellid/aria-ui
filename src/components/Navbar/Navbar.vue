@@ -83,13 +83,7 @@
 </template>
 
 <script lang="ts">
-import {
-  CubeTransparentIcon,
-  ShoppingBagIcon,
-  MenuAlt2Icon,
-  UserCircleIcon,
-} from '@heroicons/vue/outline'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/solid'
+import { CubeTransparentIcon, MenuAlt2Icon } from '@heroicons/vue/outline'
 import { computed, defineComponent, onUnmounted, ref } from '@vue/runtime-core'
 import AContainer from '../Container/Container.vue'
 import MobileMenu from './MobileMenu.vue'
@@ -99,11 +93,7 @@ export default defineComponent({
   name: 'ANavbar',
   components: {
     CubeTransparentIcon,
-    ShoppingBagIcon,
     MenuAlt2Icon,
-    ChevronDownIcon,
-    ChevronUpIcon,
-    UserCircleIcon,
     AContainer,
     MobileMenu,
   },
@@ -147,12 +137,12 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, { emit }) {
+  setup(props) {
     const mobileMenuActive = ref<boolean>(false)
 
     const currentScrollState = ref<number>(0)
 
-    const handleScroll = (event: Event) => {
+    const handleScroll = () => {
       currentScrollState.value = window.scrollY
     }
 
@@ -176,13 +166,11 @@ export default defineComponent({
     const renderBgClass = computed(() => {
       if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50) {
         return 'bg-transparent-blur transition ease-in-out delay-75'
-      } else if (
-        props.renderTransparent &&
-        !props.flyoutMenuActive &&
-        currentScrollState.value >= 50
-      ) {
+      }
+      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value >= 50) {
         return 'bg-transparent-white transition ease-in-out delay-75'
-      } else if (props.flyoutMenuActive) {
+      }
+      if (props.flyoutMenuActive) {
         return 'bg-white'
       }
 

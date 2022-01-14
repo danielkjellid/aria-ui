@@ -30,9 +30,7 @@
         v-if="error"
         class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
       >
-        <div
-          class="absolute top-0 bottom-0 right-0 w-5 h-5 mt-2 mr-3 bg-white rounded-full"
-        />
+        <div class="absolute top-0 bottom-0 right-0 w-5 h-5 mt-2 mr-3 bg-white rounded-full" />
         <ExclamationCircleIcon class="z-10 w-5 h-5 text-red-500" />
       </div>
     </div>

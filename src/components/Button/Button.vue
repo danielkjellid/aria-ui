@@ -37,16 +37,11 @@
       class="flex items-center ml-2 -mr-1"
     >
       <slot name="rightIcon" />
-      <div
-        v-if="loadingState === 'loading' && !rightIcon"
-        class="flex items-center w-5 h-5"
-      >
+      <div v-if="loadingState === 'loading' && !rightIcon" class="flex items-center w-5 h-5">
         <svg
           :class="{
             'text-white':
-              variant === 'primary' ||
-              variant === 'primaryDanger' ||
-              variant === 'outlined',
+              variant === 'primary' || variant === 'primaryDanger' || variant === 'outlined',
             'text-brand-700': variant === 'secondary',
             'text-red-600': variant === 'secondaryDanger',
           }"
@@ -74,9 +69,7 @@
         v-else-if="loadingState === 'error' && !rightIcon"
         :class="{
           'text-white':
-            variant === 'primary' ||
-            variant === 'primaryDanger' ||
-            variant === 'outlined',
+            variant === 'primary' || variant === 'primaryDanger' || variant === 'outlined',
           'text-brand-700': variant === 'secondary',
           'text-red-600': variant === 'secondaryDanger',
         }"
@@ -86,9 +79,7 @@
         v-else-if="loadingState === 'success' && !rightIcon"
         :class="{
           'text-white':
-            variant === 'primary' ||
-            variant === 'primaryDanger' ||
-            variant === 'outlined',
+            variant === 'primary' || variant === 'primaryDanger' || variant === 'outlined',
           'text-brand-700': variant === 'secondary',
           'text-red-600': variant === 'secondaryDanger',
         }"
@@ -101,12 +92,7 @@
 <script lang="ts">
 import { computed, PropType, defineComponent } from '@vue/runtime-core'
 import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/vue/solid'
-import {
-  ButtonSize,
-  ButtonVariant,
-  ButtonLoadingState,
-  ButtonAlignSelf,
-} from './types'
+import { ButtonSize, ButtonVariant, ButtonLoadingState, ButtonAlignSelf } from './types'
 
 export default defineComponent({
   name: 'AButton',

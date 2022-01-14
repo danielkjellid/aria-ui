@@ -3,10 +3,7 @@
     <ol role="list" class="flex items-center space-x-2">
       <li class="sm:hidden block">
         <div class="flex items-center">
-          <ChevronLeftIcon
-            class="flex-shrink-0 w-5 h-5 text-gray-400"
-            aria-hidden="true"
-          />
+          <ChevronLeftIcon class="flex-shrink-0 w-5 h-5 text-gray-400" aria-hidden="true" />
           <component
             :is="tag"
             :href="tag === 'a' ? homePath : undefined"

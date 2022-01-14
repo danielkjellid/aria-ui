@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/vue3'
+import { ExclamationCircleIcon } from '@heroicons/vue/outline'
 import AIconWrapper from './IconWrapper.vue'
 import { IconProps } from './types'
-import { ExclamationCircleIcon } from '@heroicons/vue/outline'
 
 export default {
   title: 'UI Elements/Icon Wrapper',

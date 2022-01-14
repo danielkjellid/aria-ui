@@ -59,13 +59,13 @@ WithHelpText.parameters = {
   },
 }
 
-export const hiddenLabel = Template.bind({})
-hiddenLabel.args = {
+export const HiddenLabel = Template.bind({})
+HiddenLabel.args = {
   label: 'This is a hidden label',
   checked: true,
   hiddenLabel: true,
 }
-hiddenLabel.parameters = {
+HiddenLabel.parameters = {
   docs: {
     description: {
       story:

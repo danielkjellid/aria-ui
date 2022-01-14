@@ -25,8 +25,7 @@ const TemplateWithIconSlot: Story<InputProps> = (args: InputProps) => ({
   setup() {
     return { args }
   },
-  template:
-    '<a-input v-bind="args"><MailIcon class="h-5 w-5 text-gray-400" /></AInput>',
+  template: '<a-input v-bind="args"><MailIcon class="h-5 w-5 text-gray-400" /></AInput>',
 })
 
 const TemplateWithIconSlotPlain: Story<InputProps> = (args: InputProps) => ({
@@ -34,8 +33,7 @@ const TemplateWithIconSlotPlain: Story<InputProps> = (args: InputProps) => ({
   setup() {
     return { args }
   },
-  template:
-    '<a-input v-bind="args"><SearchIcon class="h-5 w-5 text-gray-800" /></AInput>',
+  template: '<a-input v-bind="args"><SearchIcon class="h-5 w-5 text-gray-800" /></AInput>',
 })
 
 export const API = Template.bind({})

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div
-      class="lg:hidden fixed inset-0 z-40 flex"
-      role="dialog"
-      aria-modal="true"
-    >
+    <div class="lg:hidden fixed inset-0 z-40 flex" role="dialog" aria-modal="true">
       <transition
         enter-active-class="transition-opacity duration-300 ease-linear"
         enter-class="opacity-0"
@@ -13,11 +9,7 @@
         leave-class="opacity-100"
         leave-to-class="opacity-0"
       >
-        <div
-          class="fixed inset-0 bg-black bg-opacity-25"
-          aria-hidden="true"
-          @click="closeMenu"
-        />
+        <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true" @click="closeMenu" />
       </transition>
       <transition
         enter-active-class="transition duration-300 ease-in-out transform"
@@ -54,14 +46,11 @@
 
 <script lang="ts">
 import { XIcon } from '@heroicons/vue/outline'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/solid'
 import { computed, defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
   name: 'AriaNavbarMobileMenu',
   components: {
-    ChevronDownIcon,
-    ChevronUpIcon,
     XIcon,
   },
   setup(_, { slots, emit }) {

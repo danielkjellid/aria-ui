@@ -4,29 +4,18 @@
     v-if="display"
     class="sm:p-6 sm:items-start sm:justify-end sticky inset-0 z-50 flex items-end justify-center px-4 py-6 pointer-events-none"
   >
-    <div
-      class="w-full max-w-sm bg-white rounded-lg shadow-lg pointer-events-auto"
-    >
+    <div class="w-full max-w-sm bg-white rounded-lg shadow-lg pointer-events-auto">
       <div class="overflow-hidden rounded-lg shadow-xs">
         <div class="p-4">
           <div class="flex" :class="subtitle ? 'items-start' : 'items-center'">
             <div class="shrink-0">
-              <XCircleIcon
-                v-if="variant === 'danger'"
-                class="w-5 h-5 text-red-400"
-              />
+              <XCircleIcon v-if="variant === 'danger'" class="w-5 h-5 text-red-400" />
               <ExclamationCircleIcon
                 v-else-if="variant === 'warning'"
                 class="w-5 h-5 text-yellow-400"
               />
-              <InformationCircleIcon
-                v-else-if="variant === 'info'"
-                class="w-5 h-5 text-blue-400"
-              />
-              <CheckCircleIcon
-                v-else-if="variant === 'success'"
-                class="w-5 h-5 text-green-400"
-              />
+              <InformationCircleIcon v-else-if="variant === 'info'" class="w-5 h-5 text-blue-400" />
+              <CheckCircleIcon v-else-if="variant === 'success'" class="w-5 h-5 text-green-400" />
             </div>
             <div class="ml-3 w-0 flex-1 pt-0.5">
               <p class="text-sm font-semibold leading-5 text-gray-900">
@@ -63,12 +52,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  onUpdated,
-  PropType,
-} from '@vue/runtime-core'
+import { defineComponent, onMounted, onUpdated, PropType } from '@vue/runtime-core'
 import {
   ExclamationCircleIcon,
   XCircleIcon,

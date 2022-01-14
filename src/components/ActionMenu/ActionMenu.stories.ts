@@ -1,7 +1,4 @@
 import { Meta, Story } from '@storybook/vue3'
-import AActionMenu from './ActionMenu.vue'
-import AActionMenuItem from './ActionMenuItem.vue'
-import AActionMenuSection from './ActionMenuSection.vue'
 import {
   PencilIcon,
   DuplicateIcon,
@@ -11,6 +8,9 @@ import {
   HeartIcon,
   TrashIcon,
 } from '@heroicons/vue/solid'
+import AActionMenu from './ActionMenu.vue'
+import AActionMenuItem from './ActionMenuItem.vue'
+import AActionMenuSection from './ActionMenuSection.vue'
 import { ActionMenuProps, MenuAlignment } from './types'
 
 const alignments: MenuAlignment[] = ['center', 'left', 'right']

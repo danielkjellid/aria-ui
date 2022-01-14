@@ -46,10 +46,10 @@
 
 <script lang="ts">
 import { ref } from '@vue/reactivity'
+import { PropType } from '@vue/runtime-core'
 import clickOutside from '../../directives/click-outside'
 import AIconWrapper from '../IconWrapper/IconWrapper.vue'
 import { MenuAlignment } from './types'
-import { PropType } from '@vue/runtime-core'
 
 /**
  * Action menu is a hidden menu that opens upon an action, and displays multiple sub actions.
@@ -80,7 +80,7 @@ export default {
     },
   },
   setup() {
-    let actionMenuActive = ref<boolean>(false)
+    const actionMenuActive = ref<boolean>(false)
 
     const hideActionMenu = () => {
       actionMenuActive.value = false

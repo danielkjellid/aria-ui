@@ -98,14 +98,14 @@
 </template>
 
 <script lang="ts">
+import { ref } from '@vue/reactivity'
+import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/vue/outline'
 import ANavbar from './Navbar.vue'
 import ANavbarItemFlyout from './NavbarItemFlyout.vue'
 import ANavbarItem from './NavbarItem.vue'
 import AListBlock from '../ListBlock/ListBlock.vue'
 import AListBlockItem from '../ListBlock/ListBlockItem.vue'
-import { ref } from '@vue/reactivity'
 import AIconWrapper from '../IconWrapper/IconWrapper.vue'
-import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/vue/outline'
 import clickOutside from '../../directives/click-outside'
 import AActionMenu from '../ActionMenu/ActionMenu.vue'
 import AActionMenuSection from '../ActionMenu/ActionMenuSection.vue'
@@ -174,8 +174,8 @@ export default {
       default: false,
     },
   },
-  setup(_, {}) {
-    let flyoutActive = ref<boolean>(false)
+  setup() {
+    const flyoutActive = ref<boolean>(false)
     const userSubMenuActive = ref<boolean>(false)
 
     const hideUserSubMenu = () => {

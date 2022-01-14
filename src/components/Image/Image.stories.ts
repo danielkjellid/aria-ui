@@ -34,8 +34,7 @@ const Template: Story<ImageProps> = (args: ImageProps) => ({
   setup() {
     return { args }
   },
-  template:
-    '<div class="sm:grid-cols-2 grid grid-cols-1 gap-0"><a-image v-bind="args" /></div>',
+  template: '<div class="sm:grid-cols-2 grid grid-cols-1 gap-0"><a-image v-bind="args" /></div>',
 })
 
 const TwoHalfWidthImagesTemplate: Story<ImageProps> = (args: ImageProps) => ({

@@ -2,15 +2,7 @@ import { Meta, Story } from '@storybook/vue3'
 import AContainer from './Container.vue'
 import { MaxWidthOptions } from './types'
 
-const maxWidthOptions: MaxWidthOptions[] = [
-  'none',
-  'prose',
-  'xs',
-  'sm',
-  'md',
-  'xl',
-  '2xl',
-]
+const maxWidthOptions: MaxWidthOptions[] = ['none', 'prose', 'xs', 'sm', 'md', 'xl', '2xl']
 
 export default {
   title: 'UI Elements/Container',
