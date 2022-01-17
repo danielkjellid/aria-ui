@@ -56,7 +56,7 @@ API.parameters = {
   width="full"
   :loading="false"
   :image="{applyFilter: false, imageXs: 'some/image/path.jpeg'...}"
-  @onon-navigate-to-content="someMethod"
+  @on-navigate-to-content="someMethod"
 />`,
     },
   },
@@ -83,7 +83,7 @@ ExampleWithImage.parameters = {
   width="full"
   :loading="false"
   :image: {applyFilter: false, imageSm: 'https://source.unsplash.com/random'...}"
-  @onon-navigate-to-content="someMethod"
+  @on-navigate-to-content="someMethod"
 />`,
     },
   },
@@ -100,7 +100,7 @@ TwoHalfWidthImages.parameters = {
     width="full"
     :loading="false"
     :image: {applyFilter: false, imageSm: 'https://source.unsplash.com/random'...}"
-    @onon-navigate-to-content="someMethod"
+    @on-navigate-to-content="someMethod"
   >
     <a-button variant="outlined">AImage 1</a-button>
   </AImage>
@@ -109,7 +109,7 @@ TwoHalfWidthImages.parameters = {
     width="full"
     :loading="false"
     :image: {applyFilter: false, imageSm: 'https://source.unsplash.com/random'...}"
-    @onon-navigate-to-content="someMethod"
+    @on-navigate-to-content="someMethod"
   >
     <a-button variant="outlined">AImage 2</a-button>
   </AImage>

@@ -1,15 +1,12 @@
 <template>
   <section>
     <div
-      class="bg-gray-50 px-4 py-3 text-sm font-medium text-gray-900 rounded-lg"
+      class="bg-gray-50 px-4 py-3 text-sm font-medium text-gray-900 rounded-lg cursor-pointer"
       :class="{ 'flex items-center justify-between': !disableCollapse }"
+      @click="collapsed = !collapsed"
     >
       <h1>{{ title }}</h1>
-      <button
-        v-if="!disableCollapse"
-        @click="collapsed = !collapsed"
-        class="hover:text-gray-900 text-gray-600"
-      >
+      <button v-if="!disableCollapse" class="hover:text-gray-900 text-gray-600">
         <ChevronUpIcon v-if="!collapsed" class="w-5 h-5" />
         <ChevronDownIcon v-else class="w-5 h-5" />
       </button>
