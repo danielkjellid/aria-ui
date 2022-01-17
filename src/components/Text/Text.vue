@@ -1,9 +1,13 @@
 <template>
   <component
     :is="tag"
+    v-bind="$attrs"
     :class="[
-      muted ? 'text-gray-500' : 'text-gray-900',
+      color ? color : 'text-gray-800',
       prose ? 'max-w-prose' : 'max-w-full',
+      {
+        'text-gray-500': muted,
+      },
       {
         'text-3xl font-extrabold': variant === 'title1',
         'text-3xl font-medium': variant === 'title2',
@@ -49,6 +53,13 @@ export default {
     variant: {
       type: String as PropType<TextVariant>,
       required: true,
+    },
+    /**
+     * Override the default color of the text.
+     */
+    color: {
+      type: String,
+      required: false,
     },
     /**
      * Will dim the text in a lighter color.
