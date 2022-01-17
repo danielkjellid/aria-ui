@@ -29,8 +29,8 @@ const loadingStates: ButtonLoadingState[] = ['initial', 'loading', 'error', 'suc
 
 const alignSelfOptions: ButtonAlignSelf[] = [
   'auto',
-  'start',
-  'end',
+  'left',
+  'right',
   'center',
   'stretch',
   'baseline',
