@@ -67,12 +67,12 @@ ExampleWithImage.args = {
   name: 'With images!',
   image: {
     applyFilter: false,
-    imageXs: 'https://source.unsplash.com/random',
-    imageSm: 'https://source.unsplash.com/random',
-    imageMd: 'https://source.unsplash.com/random',
-    imageLg: 'https://source.unsplash.com/random',
-    imageXl: 'https://source.unsplash.com/random',
-    image2xl: 'https://source.unsplash.com/random',
+    image512x512: 'https://source.unsplash.com/random',
+    image640x275: 'https://source.unsplash.com/random',
+    image1024x1024: 'https://source.unsplash.com/random',
+    image1024x575: 'https://source.unsplash.com/random',
+    image1536x860: 'https://source.unsplash.com/random',
+    image2048x1150: 'https://source.unsplash.com/random',
   },
 }
 ExampleWithImage.parameters = {

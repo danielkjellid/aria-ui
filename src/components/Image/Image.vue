@@ -1,7 +1,9 @@
 <template>
-  <article v-if="loading" class="image-full-container relative col-span-2 overflow-hidden">
-    <div class="animate-pulse w-full h-full bg-gray-400 border-t border-b border-gray-500" />
-  </article>
+  <a-skeleton-loader
+    v-if="loading"
+    :loading="loading"
+    class="image-full-container relative col-span-2 overflow-hidden"
+  />
   <article
     v-else
     class="relative overflow-hidden"
@@ -16,26 +18,26 @@
       <img
         v-if="width === 'full'"
         class="absolute inset-0 object-cover w-full h-full"
-        :src="image.imageXl"
+        :src="images.image1536x860"
         :alt="`Få inspirasjon og veiledning rundt ${name} hos oss, med fokus på bærekraft og ro.`"
-        :srcset="`${image.imageXs} 512w,
-                  ${image.imageSm} 640w,
-                  ${image.imageMd} 1024w,
-                  ${image.imageLg} 1024w,
-                  ${image.imageXl} 1536w,
-                  ${image.image2xl} 2048w`"
+        :srcset="`${images.image512x512} 512w,
+                  ${images.image640x275} 640w,
+                  ${images.image1024x1024} 1024w,
+                  ${images.image1024x575} 1024w,
+                  ${images.image1536x860} 1536w,
+                  ${images.image2048x1150} 2048w`"
       />
       <img
         v-else
         class="object-cover"
-        :src="image.imageMd"
+        :src="images.image1024x1024"
         :alt="`Få inspirasjon og veiledning rundt ${name} hos oss, med fokus på bærekraft og ro.`"
-        :srcset="`${image.imageXs} 512w,
-                  ${image.imageMd} 1024w`"
+        :srcset="`${images.image512x512} 512w,
+                  ${images.image1024x1024} 1024w`"
       />
     </div>
     <!-- Filter overlay -->
-    <div v-if="image.applyFilter" class="opacity-20 absolute inset-0 bg-black" />
+    <div v-if="images.applyFilter" class="opacity-20 absolute inset-0 bg-black" />
     <!-- Vertically and horizontally centered text (name) -->
     <div
       v-if="name"
@@ -61,18 +63,20 @@
 import { PropType, defineComponent } from '@vue/runtime-core'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
 import { ImageWidth, ImageType } from './types'
+import ASkeletonLoader from '../SkeletonLoader/SkeletonLoader.vue'
 
-import imageXsSrc from '../../../static/images/default_512x512.jpeg'
-import imageSmSrc from '../../../static/images/default_640x275.jpeg'
-import imageMdSrc from '../../../static/images/default_1024x1024.jpeg'
-import imageLgSrc from '../../../static/images/default_1024x575.jpeg'
-import imageXlSrc from '../../../static/images/default_1536x860.jpeg'
-import image2xlSrc from '../../../static/images/default_2048x1150.jpeg'
+import image512x512 from '../../../static/images/default_512x512.jpeg'
+import image640x275 from '../../../static/images/default_640x275.jpeg'
+import image1024x1024 from '../../../static/images/default_1024x1024.jpeg'
+import image1024x575 from '../../../static/images/default_1024x575.jpeg'
+import image1536x860 from '../../../static/images/default_1536x860.jpeg'
+import image2048x1150 from '../../../static/images/default_2048x1150.jpeg'
 
 export default defineComponent({
   name: 'AImage',
   components: {
     ChevronDownIcon,
+    ASkeletonLoader,
   },
   props: {
     /**
@@ -102,16 +106,16 @@ export default defineComponent({
      * Images to display. Uses srcset to toggle between the sizes 2048x1150,
      * 1536x860, 1024x575, 1024x1024, 640x275 and 512x512.
      */
-    image: {
+    images: {
       required: true,
       default: {
         applyFilter: false,
-        imageXs: imageXsSrc,
-        imageSm: imageSmSrc,
-        imageMd: imageMdSrc,
-        imageLg: imageLgSrc,
-        imageXl: imageXlSrc,
-        image2xl: image2xlSrc,
+        image512x512: image512x512,
+        image640x275: image640x275,
+        image1024x1024: image1024x1024,
+        image1024x575: image1024x575,
+        image1536x860: image1536x860,
+        image2048x1150: image2048x1150,
       },
       type: Object as PropType<ImageType>,
     },
