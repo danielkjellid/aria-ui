@@ -34,10 +34,10 @@
 </template>
 
 <script lang="ts">
+import { PropType } from '@vue/runtime-core'
 import ASkeletonLoader from '../SkeletonLoader/SkeletonLoader.vue'
 import ALink from '../Link/Link.vue'
 import AText from '../Text/Text.vue'
-import { PropType } from '@vue/runtime-core'
 import { ImageType } from './types'
 
 import image500x305 from '../../../static/images/default_500x305.jpeg'
@@ -86,9 +86,9 @@ export default {
       type: Object as PropType<ImageType>,
       required: true,
       default: {
-        image500x305: image500x305,
-        image660x400: image660x400,
-        image850x520: image850x520,
+        image500x305,
+        image660x400,
+        image850x520,
       },
     },
   },
