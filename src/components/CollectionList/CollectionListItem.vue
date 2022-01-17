@@ -20,14 +20,26 @@
       :class="reverse ? 'order-2 lg:order-1' : 'order-2'"
     >
       <div class="flex items-center justify-between mt-4">
-        <a-text tag="h1" variant="title4">{{ title }}</a-text>
+        <a-text v-if="!loading" tag="h1" variant="title4">{{ title }}</a-text>
+        <a-skeleton-loader v-else :loading="loading" height="h-6" />
         <slot>
-          <a-link tag="a" href="#" class="lg:hidden">Read more</a-link>
+          <a-link v-if="!loading" tag="a" href="#" class="lg:hidden">Read more</a-link>
         </slot>
       </div>
-      <a-text variant="body2" class="mt-2 mb-4" color="text-gray-700">{{ description }}.</a-text>
+      <div>
+        <a-text v-if="!loading" variant="body2" class="mt-2 mb-4" color="text-gray-700">
+          {{ description }}.
+        </a-text>
+        <div v-else class="mt-2 mb-4">
+          <a-skeleton-loader :loading="loading" />
+          <a-skeleton-loader :loading="loading" width="w-3/4" />
+          <a-skeleton-loader :loading="loading" />
+          <a-skeleton-loader :loading="loading" width="w-1/2" />
+        </div>
+      </div>
       <slot>
-        <a-link tag="a" href="#" class="lg:inline-flex hidden">Read more</a-link>
+        <a-link v-if="!loading" tag="a" href="#" class="lg:inline-flex hidden">Read more</a-link>
+        <a-skeleton-loader v-else :loading="loading" width="w-1/3" class="lg:inline-flex hidden" />
       </slot>
     </div>
   </div>
