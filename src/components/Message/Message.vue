@@ -1,6 +1,6 @@
 <template>
   <div v-if="display" class="relative top-0 left-0 right-0 z-40 bg-white shadow-md">
-    <a-container>
+    <a-container :yPadding="null">
       <div style="max-width: 1600px" class="sm:px-8 px-5 py-3 mx-auto">
         <div class="flex items-center text-sm font-medium text-gray-700">
           <span
