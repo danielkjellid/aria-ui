@@ -57,7 +57,7 @@ export default {
     },
   },
   setup() {
-    const tag = computed(() => config.defaultBreadcrumbTag)
+    const tag = computed(() => config.defaultLinkTag)
 
     return { tag }
   },
