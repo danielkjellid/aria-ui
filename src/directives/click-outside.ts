@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { DirectiveBinding } from 'vue'
 
-interface ClickOutsideElement extends HTMLElement {
+export interface ClickOutsideElement extends HTMLElement {
   __vueClickEventHandler__: any
 }
 

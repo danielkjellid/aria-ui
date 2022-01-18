@@ -8,7 +8,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import image from 'rollup-plugin-img'
 import { terser } from 'rollup-plugin-terser'
 
-import fs, { truncateSync } from 'fs'
+import fs from 'fs'
 import path from 'path'
 
 import pack from './package.json'
@@ -72,8 +72,8 @@ export default () => {
         },
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
         vue(vuePluginConfig),
+        typescript({ useTsconfigDeclarationDir: true }),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -101,8 +101,8 @@ export default () => {
         dir: 'dist/esm',
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
         vue(vuePluginConfig),
+        typescript({ useTsconfigDeclarationDir: true }),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -128,8 +128,8 @@ export default () => {
         exports: 'named',
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
         vue(vuePluginConfig),
+        typescript({ useTsconfigDeclarationDir: true }),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -162,8 +162,8 @@ export default () => {
         },
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: truncateSync }),
         vue(vuePluginConfig),
+        typescript({ useTsconfigDeclarationDir: true }),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -189,8 +189,8 @@ export default () => {
         banner: bannerTxt,
       },
       plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
         vue(vuePluginConfig),
+        typescript({ useTsconfigDeclarationDir: true }),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
