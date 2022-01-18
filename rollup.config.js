@@ -72,8 +72,8 @@ export default () => {
         },
       },
       plugins: [
-        vue(vuePluginConfig),
         typescript({ useTsconfigDeclarationDir: true }),
+        vue(vuePluginConfig),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -101,8 +101,8 @@ export default () => {
         dir: 'dist/esm',
       },
       plugins: [
-        vue(vuePluginConfig),
         typescript({ useTsconfigDeclarationDir: true }),
+        vue(vuePluginConfig),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -128,8 +128,8 @@ export default () => {
         exports: 'named',
       },
       plugins: [
-        vue(vuePluginConfig),
         typescript({ useTsconfigDeclarationDir: true }),
+        vue(vuePluginConfig),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -162,8 +162,8 @@ export default () => {
         },
       },
       plugins: [
-        vue(vuePluginConfig),
         typescript({ useTsconfigDeclarationDir: true }),
+        vue(vuePluginConfig),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],
@@ -189,8 +189,8 @@ export default () => {
         banner: bannerTxt,
       },
       plugins: [
-        vue(vuePluginConfig),
         typescript({ useTsconfigDeclarationDir: true }),
+        vue(vuePluginConfig),
         peerDepsExternal(),
         node({
           extensions: ['.vue', '.js', '.ts'],

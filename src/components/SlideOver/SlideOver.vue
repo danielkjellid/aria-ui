@@ -75,8 +75,9 @@ import { computed } from '@vue/reactivity'
 import { XIcon } from '@heroicons/vue/outline'
 import AIconWrapper from '../IconWrapper/IconWrapper.vue'
 import AText from '../Text/Text.vue'
+import { defineComponent } from '@vue/runtime-core'
 
-export default {
+export default defineComponent({
   name: 'ASlideOver',
   components: { AIconWrapper, AText, XIcon },
   props: {
@@ -118,5 +119,5 @@ export default {
 
     return { actionsSlot, onClose }
   },
-}
+})
 </script>
