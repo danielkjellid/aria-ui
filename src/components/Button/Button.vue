@@ -94,6 +94,8 @@ import { computed, PropType, defineComponent } from '@vue/runtime-core'
 import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/vue/solid'
 import { ButtonSize, ButtonVariant, ButtonLoadingState, ButtonAlignSelf } from './types'
 
+import config from '../../utils/config'
+
 export default defineComponent({
   name: 'AButton',
   components: {
@@ -125,6 +127,13 @@ export default defineComponent({
       type: String,
     },
     /**
+     * Render as a different tag than default, if to prop is present.
+     */
+    tag: {
+      required: false,
+      type: String,
+    },
+    /**
      * To be used in submission forms where we want to visualize the current state of
      * the submission.
      */
@@ -151,14 +160,16 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
-    // Render element either as nuxt-link or button based on
-    // if the to prop is given.
-    // const element = computed(() => {
-    //   if (props.to) return 'nuxt-link'
-    //   return 'button'
-    // })
+    // Render element as either link or button
+    const element = computed(() => {
+      if (props.to) {
+        if (props.tag) return props.tag
 
-    const element = 'button'
+        return config.defaultLinkTag
+      }
+
+      return 'button'
+    })
 
     const rightIcon = computed(() => !!slots.rightIcon)
     const leftIcon = computed(() => !!slots.leftIcon)

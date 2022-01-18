@@ -34,7 +34,7 @@ export default {
     tag: {
       type: String,
       required: false,
-      default: () => config.defaultBreadcrumbTag,
+      default: () => config.defaultLinkTag,
     },
     active: {
       type: Boolean,
