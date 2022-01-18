@@ -13,5 +13,5 @@ export interface ImageProps {
   name?: string
   loading?: boolean
   width?: ImageWidth
-  image: ImageType
+  images?: ImageType
 }

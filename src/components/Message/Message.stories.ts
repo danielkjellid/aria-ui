@@ -11,12 +11,8 @@ const config = {
     viewMode: 'docs',
   },
   argTypes: {
-    display: {
-      defaultValue: true,
-    },
     variant: {
       options: variants,
-      defaultValue: 'warning',
       table: {
         type: {
           summary: variants.join(',').replace(/,/g, ' | '),
@@ -38,6 +34,7 @@ const Template: Story<MessageProps> = (args: MessageProps) => ({
 })
 
 export const API = Template.bind({})
+API.args = { display: true }
 API.parameters = {
   docs: {
     source: {

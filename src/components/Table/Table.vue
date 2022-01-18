@@ -1,7 +1,14 @@
 <template>
   <div>
     <form v-if="showSearchbar" @submit.prevent="emitQuery" class="px-2 mb-4">
-      <a-input plain label="search" hiddenLabel :placeholder="searchbarPlaceholder" v-model="query">
+      <a-input
+        id="search"
+        plain
+        label="search"
+        hiddenLabel
+        :placeholder="searchbarPlaceholder"
+        v-model="query"
+      >
         <SearchIcon class="w-5 h-5 text-gray-800" />
       </a-input>
     </form>
@@ -146,8 +153,8 @@
 import { SearchIcon } from '@heroicons/vue/outline'
 import { computed, ref } from '@vue/reactivity'
 import { defineComponent, PropType } from '@vue/runtime-core'
-import AInput from '../Input'
-import ANoData from '../NoData'
+import AInput from '../Input/Input.vue'
+import ANoData from '../NoData/NoData.vue'
 import { TableMeta } from './types'
 
 export default defineComponent({

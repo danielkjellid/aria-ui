@@ -19,6 +19,7 @@ const Template: Story<LinkProps> = (args: LinkProps) => ({
 })
 
 export const API = Template.bind({})
+API.args = { tag: 'a' }
 API.parameters = {
   docs: {
     source: {

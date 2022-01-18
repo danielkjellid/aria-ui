@@ -13,7 +13,6 @@ export default {
   argTypes: {
     variant: {
       options: variants,
-      defaultValue: 'success',
       table: {
         type: {
           summary: variants.join(',').replace(/,/g, ' | '),

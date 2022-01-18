@@ -45,7 +45,6 @@ export default {
   argTypes: {
     size: {
       options: sizes,
-      defaultValue: 'm',
       table: {
         type: {
           summary: sizes.join(',').replace(/,/g, ' | '),
@@ -54,7 +53,6 @@ export default {
     },
     variant: {
       options: variants,
-      defaultValue: 'primary',
       table: {
         type: {
           summary: variants.join(',').replace(/,/g, ' | '),
@@ -63,7 +61,6 @@ export default {
     },
     loadingState: {
       options: loadingStates,
-      defaultValue: 'initial',
       table: {
         type: {
           summary: loadingStates.join(',').replace(/,/g, ' | '),
@@ -72,7 +69,6 @@ export default {
     },
     alignSelf: {
       options: alignSelfOptions,
-      defaultValue: 'auto',
       table: {
         type: {
           summary: alignSelfOptions.join(',').replace(/,/g, ' | '),
@@ -81,7 +77,6 @@ export default {
     },
     default: {
       description: 'Replaces the button content, excluding icons and loading state',
-      defaultValue: 'Button',
       control: {
         type: 'text',
       },
@@ -103,7 +98,7 @@ const Template: Story<StoryArgs> = (args) => ({
   setup() {
     return { args }
   },
-  template: '<a-button v-bind="args">{{ args.default }}</a-button>',
+  template: '<a-button v-bind="args">Button</a-button>',
 })
 
 const TemplateWithIcon: Story<StoryArgs> = (args) => ({
@@ -165,6 +160,7 @@ const TemplateSubmissionStates: Story<StoryArgs> = (args) => ({
 })
 
 export const API = Template.bind({})
+API.args = { size: 'm', variant: 'primary', loadingState: 'initial' }
 API.parameters = {
   docs: {
     source: {

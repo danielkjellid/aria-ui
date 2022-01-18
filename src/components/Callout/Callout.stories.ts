@@ -18,7 +18,6 @@ export default {
     },
     variant: {
       options: variants,
-      defaultValue: 'danger',
       table: {
         type: {
           summary: variants.join(',').replace(/,/g, ' | '),
@@ -33,7 +32,7 @@ const Template: Story<CalloutProps> = (args: CalloutProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-callout v-bind="args"></ACallout>',
+  template: '<a-callout v-bind="args"></a-callout>',
 })
 
 export const API = Template.bind({})

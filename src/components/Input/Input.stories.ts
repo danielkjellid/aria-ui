@@ -17,7 +17,7 @@ const Template: Story<InputProps> = (args: InputProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-input v-bind="args"></AInput>',
+  template: '<a-input v-bind="args"></a-input>',
 })
 
 const TemplateWithIconSlot: Story<InputProps> = (args: InputProps) => ({
@@ -25,7 +25,7 @@ const TemplateWithIconSlot: Story<InputProps> = (args: InputProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-input v-bind="args"><MailIcon class="h-5 w-5 text-gray-400" /></AInput>',
+  template: '<a-input v-bind="args"><MailIcon class="h-5 w-5 text-gray-400" /></a-input>',
 })
 
 const TemplateWithIconSlotPlain: Story<InputProps> = (args: InputProps) => ({
@@ -33,7 +33,7 @@ const TemplateWithIconSlotPlain: Story<InputProps> = (args: InputProps) => ({
   setup() {
     return { args }
   },
-  template: '<a-input v-bind="args"><SearchIcon class="h-5 w-5 text-gray-800" /></AInput>',
+  template: '<a-input v-bind="args"><SearchIcon class="h-5 w-5 text-gray-800" /></a-input>',
 })
 
 export const API = Template.bind({})
@@ -47,7 +47,7 @@ API.parameters = {
 }
 
 export const WithPlaceholder = Template.bind({})
-WithPlaceholder.args = { ...API.args, placeholder: 'AInput your name here' }
+WithPlaceholder.args = { ...API.args, placeholder: 'Input your name here' }
 WithPlaceholder.parameters = {
   docs: {
     source: {
@@ -55,7 +55,7 @@ WithPlaceholder.parameters = {
   id="name" 
   label="Name" 
   :error="error" 
-  placeholder="AInput your name here"
+  placeholder="Input your name here"
   block
   v-model="var"
 />`,
@@ -119,6 +119,7 @@ Fluid.parameters = {
 
 export const Plain = TemplateWithIconSlotPlain.bind({})
 Plain.args = {
+  id: 'someInput',
   plain: true,
   label: 'search',
   hiddenLabel: true,

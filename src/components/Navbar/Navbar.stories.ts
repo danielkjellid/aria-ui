@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/vue3'
 import ANavbar from './Navbar.vue'
 import ANavbarItem from './NavbarItem.vue'
 import NavbarStorybookHandler from './NavbarStorybookHandler.vue'
+import AIconWrapper from '../IconWrapper/IconWrapper.vue'
 import { NavbarProps } from './types'
 
 export default {
@@ -13,7 +14,7 @@ export default {
 } as Meta
 
 const AdvancedTemplate: Story<NavbarProps> = (args: NavbarProps) => ({
-  components: { NavbarStorybookHandler },
+  components: { NavbarStorybookHandler, AIconWrapper },
   setup() {
     return { args }
   },
@@ -30,6 +31,7 @@ const Template: Story<NavbarProps> = (args: NavbarProps) => ({
 })
 
 export const API = Template.bind({})
+API.args = { flyoutMenuActive: false }
 API.parameters = {
   backgrounds: { default: 'dark' },
   docs: {

@@ -9,5 +9,5 @@ export interface CollectionListItemProps {
   description: string
   loading?: boolean
   reverse?: boolean
-  images: ImageType
+  images?: ImageType
 }

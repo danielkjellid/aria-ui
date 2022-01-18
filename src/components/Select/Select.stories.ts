@@ -24,7 +24,7 @@ const Template: Story<SelectProps> = (args: SelectProps) => ({
     return { args }
   },
   template:
-    '<a-select v-bind="args"><option v-for="i in 31" :key="i" :value="i" :selected="I == 1">{{i}}</option></a-select>',
+    '<a-select v-bind="args"><option v-for="i in 31" :key="i" :value="i" :selected="i == 1">{{ i }}</option></a-select>',
 })
 
 const TemplateWithIconSlot: Story<SelectProps> = (args: SelectProps) => ({
@@ -33,11 +33,11 @@ const TemplateWithIconSlot: Story<SelectProps> = (args: SelectProps) => ({
     return { args }
   },
   template:
-    '<a-select v-bind="args"><template #icon><PrinterIcon class="h-5 w-5 text-gray-400"/></template><option v-for="i in 31" :key="i" :value="i" :selected="I == 1">{{i}}</option></a-select>',
+    '<a-select v-bind="args"><template #icon><PrinterIcon class="h-5 w-5 text-gray-400"/></template><option v-for="i in 31" :key="i" :value="i" :selected="i == 1">{{ i }}</option></a-select>',
 })
 
 export const API = Template.bind({})
-API.args = { label: 'Select a number' }
+API.args = { id: 'someId', label: 'Select a number' }
 API.parameters = {
   docs: {
     source: {
@@ -78,7 +78,7 @@ WithHiddenLabel.parameters = {
 }
 
 export const WithIcon = TemplateWithIconSlot.bind({})
-WithIcon.args = { label: 'Select a printer' }
+WithIcon.args = { id: 'someId', label: 'Select a printer' }
 WithIcon.parameters = {
   docs: {
     source: {

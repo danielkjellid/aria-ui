@@ -24,6 +24,7 @@ const Template: Story<SectionProps> = (args: SectionProps) => ({
 })
 
 export const API = Template.bind({})
+API.args = { title: 'Section title' }
 API.parameters = {
   docs: {
     source: {

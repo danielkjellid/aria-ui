@@ -96,7 +96,7 @@ export default {
      */
     images: {
       type: Object as PropType<ImageType>,
-      required: true,
+      required: false,
       default: {
         image500x305,
         image660x400,

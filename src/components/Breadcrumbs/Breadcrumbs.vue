@@ -9,7 +9,6 @@
             :href="tag === 'a' ? homePath : undefined"
             :to="tag !== 'a' ? homePath : undefined"
             v-bind="$attrs"
-            :aria-current="active ? 'page' : undefined"
             class="hover:text-brand-600 text-brand-800 ml-2 text-sm font-medium cursor-pointer"
           >
             {{ homeTitle }}

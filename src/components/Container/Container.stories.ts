@@ -13,7 +13,6 @@ export default {
   argTypes: {
     maxWidth: {
       options: maxWidthOptions,
-      defaultValue: undefined,
       table: {
         type: {
           summary: maxWidthOptions.join(',').replace(/,/g, ' | '),

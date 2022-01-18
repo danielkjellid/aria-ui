@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/vue3'
 import AImage from './Image.vue'
-import AButton from '../Button'
+import AButton from '../Button/Button.vue'
 import { ImageProps, ImageWidth } from './types'
 
 const widths: ImageWidth[] = ['full', 'half']
@@ -14,7 +14,6 @@ export default {
   argTypes: {
     width: {
       options: widths,
-      defaultValue: 'full',
       table: {
         type: {
           summary: widths.join(',').replace(/,/g, ' | '),
@@ -55,7 +54,7 @@ API.parameters = {
   name="Example"
   width="full"
   :loading="false"
-  :image="{applyFilter: false, imageXs: 'some/image/path.jpeg'...}"
+  :images="{applyFilter: false, imageXs: 'some/image/path.jpeg'...}"
   @on-navigate-to-content="someMethod"
 />`,
     },
@@ -65,7 +64,7 @@ API.parameters = {
 export const ExampleWithImage = Template.bind({})
 ExampleWithImage.args = {
   name: 'With images!',
-  image: {
+  images: {
     applyFilter: false,
     image512x512: 'https://source.unsplash.com/random',
     image640x275: 'https://source.unsplash.com/random',
@@ -97,7 +96,7 @@ TwoHalfWidthImages.parameters = {
 <div class="sm:grid-cols-2 grid grid-cols-1 gap-0">
   <a-image 
     name="With images!"
-    width="full"
+    width="half"
     :loading="false"
     :image: {applyFilter: false, imageSm: 'https://source.unsplash.com/random'...}"
     @on-navigate-to-content="someMethod"
@@ -106,7 +105,7 @@ TwoHalfWidthImages.parameters = {
   </AImage>
   <a-image 
     name="With images!"
-    width="full"
+    width="half"
     :loading="false"
     :image: {applyFilter: false, imageSm: 'https://source.unsplash.com/random'...}"
     @on-navigate-to-content="someMethod"

@@ -107,7 +107,7 @@ export default defineComponent({
      * 1536x860, 1024x575, 1024x1024, 640x275 and 512x512.
      */
     images: {
-      required: true,
+      required: false,
       default: {
         applyFilter: false,
         image512x512,
