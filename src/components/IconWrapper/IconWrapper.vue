@@ -2,7 +2,7 @@
   <component
     :is="tag"
     v-bind="$attrs"
-    class="focus:outline-none focus:ring-2 focus:ring-offset-2 inline-flex p-2 rounded-md"
+    class="focus:outline-none focus:ring-2 focus:ring-offset-2 inline-flex rounded-md"
     :class="
       transparentBg
         ? 'bg-transparent focus:ring-transparent focus:ring-offset-white'
