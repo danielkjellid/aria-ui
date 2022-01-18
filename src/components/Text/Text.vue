@@ -11,7 +11,7 @@
       {
         'text-3xl font-extrabold': variant === 'title1',
         'text-3xl font-medium': variant === 'title2',
-        'text-2xl semibold': variant === 'title3',
+        'text-2xl font-semibold': variant === 'title3',
         'text-xl font-medium': variant === 'title4',
         'text-lg font-medium': variant === 'title5',
         'text-base font-medium': variant === 'subtitle1',
