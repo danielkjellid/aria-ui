@@ -21,6 +21,10 @@
   },
   "author": "Daniel Kjellid",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielkjellid/aria-ui.git"
+  },
   "peerDependencies": {
     "@heroicons/vue": "^1.0.5",
     "@storybook/addon-actions": "^6.4.12",
