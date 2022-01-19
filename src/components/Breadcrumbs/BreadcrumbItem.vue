@@ -29,6 +29,7 @@ import config from '../../utils/config'
 
 export default {
   name: 'ABreadcrumbItem',
+  inheritAttrs: false,
   components: { ChevronRightIcon },
   props: {
     tag: {

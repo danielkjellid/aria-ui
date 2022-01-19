@@ -31,6 +31,7 @@ import config from '../../utils/config'
 
 export default {
   name: 'ABreadcrumbs',
+  inheritAttrs: false,
   components: {
     ChevronLeftIcon,
   },
