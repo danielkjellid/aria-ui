@@ -1,5 +1,5 @@
 {
-  "name": "@aria-ui/core",
+  "name": "aria-ui-core",
   "version": "1.0.0",
   "description": "A component library for the Aria project.",
   "main": "dist/cjs/index.js",
