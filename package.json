@@ -16,8 +16,8 @@
     "build:js": "rollup -c && rollup -c --environment MINIFY",
     "build:js:watch": "rollup -c --watch",
     "build:lib": "rimraf dist && npm run build:js",
-    "build:storybook": "build-storybook --output-dir storybook --docs",
-    "build": "npm run build:lib"
+    "build:storybook": "build-storybook --output-dir docs --docs -s static/images",
+    "build": "npm run build:lib && npm run build:storybook"
   },
   "author": "Daniel Kjellid",
   "license": "ISC",
