@@ -19,7 +19,7 @@
       class="lg:self-center self-start order-1 col-span-1"
       :class="reverse ? 'order-2 lg:order-1' : 'order-2'"
     >
-      <div class="flex items-center justify-between mt-4">
+      <div class="flex items-center justify-between">
         <a-text v-if="!loading" tag="h1" variant="title4">{{ title }}</a-text>
         <a-skeleton-loader v-else :loading="loading" height="h-6" />
         <slot>
@@ -115,19 +115,19 @@ export default {
 
 @media (min-width: 640px) {
   .image-container {
-    height: 300px;
+    height: 350px;
   }
 }
 
 @media (min-width: 768px) {
   .image-container {
-    height: 350px;
+    height: 440px;
   }
 }
 
 @media (min-width: 1024px) {
   .image-container {
-    height: 400px;
+    height: 500px;
     width: 100%;
     max-width: 850px;
   }
