@@ -6,6 +6,7 @@ import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import image from 'rollup-plugin-img'
+import url from '@rollup/plugin-url'
 import { terser } from 'rollup-plugin-terser'
 
 import fs from 'fs'
@@ -88,6 +89,12 @@ export default () => {
         cjs(),
         babel(babelConfig),
         image({ output: 'dist/images' }),
+        url({
+          include: ["**/*.jpeg"],
+          limit: Infinity,
+          publicPath: '/public',
+          destDir: 'dist/images'
+        })
       ],
     },
   ]
@@ -117,6 +124,12 @@ export default () => {
         }),
         cjs(),
         image({ output: 'dist/images' }),
+        url({
+          include: ["**/*.jpeg"],
+          limit: Infinity,
+          publicPath: '/public',
+          destDir: 'dist/images'
+        })
       ],
     },
     {
@@ -144,6 +157,12 @@ export default () => {
         }),
         cjs(),
         image({ output: 'dist/images' }),
+        url({
+          include: ["**/*.jpeg"],
+          limit: Infinity,
+          publicPath: '/public',
+          destDir: 'dist/images'
+        })
       ],
     },
     {
@@ -178,6 +197,12 @@ export default () => {
         }),
         cjs(),
         image({ output: 'dist/images' }),
+        url({
+          include: ["**/*.jpeg"],
+          limit: Infinity,
+          publicPath: '/public',
+          destDir: 'dist/images'
+        })
       ],
     },
     {
@@ -205,6 +230,12 @@ export default () => {
         }),
         cjs(),
         image({ output: 'dist/images' }),
+        url({
+          include: ["**/*.jpeg"],
+          limit: Infinity,
+          publicPath: '/public',
+          destDir: 'dist/images'
+        })
       ],
     },
     // individual components
