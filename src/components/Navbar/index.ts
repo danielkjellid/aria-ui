@@ -10,8 +10,6 @@ import { use, registerComponent } from '../../utils/plugins'
 const Plugin = {
   install(instance: Application) {
     registerComponent(instance, Navbar)
-    registerComponent(instance, FlyoutMenu)
-    registerComponent(instance, MobileMenu)
     registerComponent(instance, NavbarItem)
     registerComponent(instance, NavbarItemFlyout)
   },
@@ -22,3 +20,5 @@ use(Plugin)
 export default Plugin
 
 export { Navbar as ANavbar }
+export { NavbarItem as ANavbarItem }
+export { NavbarItemFlyout as ANavbarItemFlyout }
