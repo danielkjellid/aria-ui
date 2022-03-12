@@ -1,7 +1,5 @@
 import { App as Application } from 'vue'
 import Navbar from './Navbar.vue'
-import FlyoutMenu from "./FlyoutMenu.vue"
-import MobileMenu from "./MobileMenu.vue"
 import NavbarItem from "./NavbarItem.vue"
 import NavbarItemFlyout from "./NavbarItemFlyout.vue"
 
@@ -19,6 +17,4 @@ use(Plugin)
 
 export default Plugin
 
-export { Navbar as ANavbar }
-export { NavbarItem as ANavbarItem }
-export { NavbarItemFlyout as ANavbarItemFlyout }
+export { Navbar as ANavbar, NavbarItem as ANavbarItem, NavbarItemFlyout as ANavbarItemFlyout }

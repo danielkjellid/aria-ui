@@ -84,7 +84,7 @@
 
 <script lang="ts">
 import { CubeTransparentIcon, MenuAlt2Icon } from '@heroicons/vue/outline'
-import { computed, defineComponent, onUnmounted, ref } from '@vue/runtime-core'
+import { computed, defineComponent, onUnmounted, onMounted, ref } from '@vue/runtime-core'
 import AContainer from '../Container/Container.vue'
 import MobileMenu from './MobileMenu.vue'
 import clickOutside from '../../directives/click-outside'
@@ -146,7 +146,9 @@ export default defineComponent({
       currentScrollState.value = window.scrollY
     }
 
-    window.addEventListener('scroll', handleScroll)
+    onMounted(() => {
+      window.addEventListener('scroll', handleScroll)
+    })
 
     onUnmounted(() => {
       window.removeEventListener('scroll', handleScroll)
@@ -157,10 +159,7 @@ export default defineComponent({
     }
 
     const isTransparent = computed(() => {
-      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50)
-        return true
-
-      return false
+      return !!(props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50)
     })
 
     const renderBgClass = computed(() => {
