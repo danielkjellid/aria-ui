@@ -40,9 +40,10 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "@vue/runtime-core";
 import FlyoutMenu from './FlyoutMenu.vue'
 
-export default {
+export default defineComponent({
   name: 'ANavbarFlyoutItem',
   components: { FlyoutMenu },
   props: {
@@ -64,5 +65,5 @@ export default {
 
     return { toggleFlyoutMenu }
   },
-}
+})
 </script>
