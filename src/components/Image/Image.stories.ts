@@ -54,7 +54,7 @@ API.parameters = {
   name="Example"
   width="full"
   :loading="false"
-  :images="{applyFilter: false, imageXs: 'some/image/path.jpeg'...}"
+  :images="{applyFilter: false, image512x512: 'some/image/path.jpeg'...}"
   @on-navigate-to-content="someMethod"
 />`,
     },

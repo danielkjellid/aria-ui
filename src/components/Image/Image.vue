@@ -18,26 +18,26 @@
       <img
         v-if="width === 'full'"
         class="absolute inset-0 object-cover w-full h-full"
-        :src="images.image1536x860"
+        :src="imageObj.image1536x860"
         :alt="`Få inspirasjon og veiledning rundt ${name} hos oss, med fokus på bærekraft og ro.`"
-        :srcset="`${images.image512x512} 512w,
-                  ${images.image640x275} 640w,
-                  ${images.image1024x1024} 1024w,
-                  ${images.image1024x575} 1024w,
-                  ${images.image1536x860} 1536w,
-                  ${images.image2048x1150} 2048w`"
+        :srcset="`${imageObj.image512x512} 512w,
+                  ${imageObj.image640x275} 640w,
+                  ${imageObj.image1024x1024} 1024w,
+                  ${imageObj.image1024x575} 1024w,
+                  ${imageObj.image1536x860} 1536w,
+                  ${imageObj.image2048x1150} 2048w`"
       />
       <img
         v-else
-        class="object-cover"
-        :src="images.image1024x1024"
+        class="object-cover w-full w-full"
+        :src="imageObj.image1024x1024"
         :alt="`Få inspirasjon og veiledning rundt ${name} hos oss, med fokus på bærekraft og ro.`"
-        :srcset="`${images.image512x512} 512w,
-                  ${images.image1024x1024} 1024w`"
+        :srcset="`${imageObj.image512x512} 512w,
+                  ${imageObj.image1024x1024} 1024w`"
       />
     </div>
     <!-- Filter overlay -->
-    <div v-if="images.applyFilter" class="opacity-20 absolute inset-0 bg-black" />
+    <div v-if="imageObj.applyFilter" class="opacity-20 absolute inset-0 bg-black" />
     <!-- Vertically and horizontally centered text (name) -->
     <div
       v-if="name"
@@ -108,25 +108,29 @@ export default defineComponent({
      */
     images: {
       required: false,
-      default: {
-        applyFilter: false,
-        image512x512,
-        image640x275,
-        image1024x1024,
-        image1024x575,
-        image1536x860,
-        image2048x1150,
-      },
       type: Object as PropType<ImageType>,
     },
   },
-  setup(_, { emit }) {
+  setup(props, { emit }) {
     const onNavigateToContent = (): void => {
       emit('on-navigate-to-content')
     }
 
+    const defaultImageObj = {
+      applyFilter: false,
+      image512x512,
+      image640x275,
+      image1024x1024,
+      image1024x575,
+      image1536x860,
+      image2048x1150,
+    }
+
+    const imageObj: ImageType = props.images ? props.images : defaultImageObj
+
     return {
       onNavigateToContent,
+      imageObj
     }
   },
 })
