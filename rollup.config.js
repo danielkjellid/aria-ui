@@ -5,20 +5,13 @@ import babel from 'rollup-plugin-babel'
 import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import image from 'rollup-plugin-img'
 import { terser } from 'rollup-plugin-terser'
+import image from 'rollup-plugin-img'
 
 import fs from 'fs'
 import path from 'path'
 
 import pack from './package.json'
-
-const babelConfig = {
-  exclude: 'node_modules/**',
-  runtimeHelpers: true,
-  babelrc: false,
-  presets: [['@babel/preset-env', { modules: false }]],
-}
 
 const bannerTxt = `/*! AriaUI v${pack.version} */`
 
@@ -45,14 +38,36 @@ const capitalize = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-const vuePluginConfig = {
-  template: {
-    isProduction: true,
-    compilerOptions: {
-      whitespace: 'condense',
+const basePluginConfig = [
+  typescript({ useTsconfigDeclarationDir: true }),
+  vue({
+    template: {
+      isProduction: true,
+      compilerOptions: {
+        whitespace: 'condense',
+      },
     },
-  },
-}
+  }),
+  peerDepsExternal(),
+  node({
+    extensions: ['.vue', '.js', '.ts'],
+  }),
+  postcss({
+    config: {
+      path: './postcss.config.js',
+    },
+    extensions: ['.css'],
+    extract: false,
+  }),
+  image({limit: 100000}),
+  cjs(),
+  babel({
+    exclude: 'node_modules/**',
+    runtimeHelpers: true,
+    babelrc: false,
+    presets: [['@babel/preset-env', { modules: false }]],
+  }),
+]
 
 export default () => {
   const mapComponent = (name) => [
@@ -71,24 +86,7 @@ export default () => {
           '@heroicons/vue/outline': '@heroicons/vue/outline',
         },
       },
-      plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
-        vue(vuePluginConfig),
-        peerDepsExternal(),
-        node({
-          extensions: ['.vue', '.js', '.ts'],
-        }),
-        postcss({
-          config: {
-            path: './postcss.config.js',
-          },
-          extensions: ['.css'],
-          extract: false,
-        }),
-        cjs(),
-        babel(babelConfig),
-        image({ output: 'dist/images' }),
-      ],
+      plugins: [...basePluginConfig],
     },
   ]
 
@@ -100,24 +98,7 @@ export default () => {
         format: 'esm',
         dir: 'dist/esm',
       },
-      plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
-        vue(vuePluginConfig),
-        peerDepsExternal(),
-        node({
-          extensions: ['.vue', '.js', '.ts'],
-        }),
-        babel(babelConfig),
-        postcss({
-          config: {
-            path: './postcss.config.js',
-          },
-          extensions: ['.css'],
-          extract: false,
-        }),
-        cjs(),
-        image({ output: 'dist/images' }),
-      ],
+      plugins: [...basePluginConfig],
     },
     {
       input: entries,
@@ -127,24 +108,7 @@ export default () => {
         dir: 'dist/cjs',
         exports: 'named',
       },
-      plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
-        vue(vuePluginConfig),
-        peerDepsExternal(),
-        node({
-          extensions: ['.vue', '.js', '.ts'],
-        }),
-        babel(babelConfig),
-        postcss({
-          config: {
-            path: './postcss.config.js',
-          },
-          extensions: ['.css'],
-          extract: false,
-        }),
-        cjs(),
-        image({ output: 'dist/images' }),
-      ],
+      plugins: [...basePluginConfig],
     },
     {
       input: 'src/index.ts',
@@ -161,24 +125,7 @@ export default () => {
           '@heroicons/vue/outline': '@heroicons/vue/outline',
         },
       },
-      plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
-        vue(vuePluginConfig),
-        peerDepsExternal(),
-        node({
-          extensions: ['.vue', '.js', '.ts'],
-        }),
-        babel(babelConfig),
-        postcss({
-          config: {
-            path: './postcss.config.js',
-          },
-          extensions: ['.css'],
-          extract: false,
-        }),
-        cjs(),
-        image({ output: 'dist/images' }),
-      ],
+      plugins: [...basePluginConfig],
     },
     {
       input: 'src/index.ts',
@@ -188,24 +135,7 @@ export default () => {
         file: 'dist/ariaUI.esm.js',
         banner: bannerTxt,
       },
-      plugins: [
-        typescript({ useTsconfigDeclarationDir: true }),
-        vue(vuePluginConfig),
-        peerDepsExternal(),
-        node({
-          extensions: ['.vue', '.js', '.ts'],
-        }),
-        babel(babelConfig),
-        postcss({
-          config: {
-            path: './postcss.config.js',
-          },
-          extensions: ['.css'],
-          extract: false,
-        }),
-        cjs(),
-        image({ output: 'dist/images' }),
-      ],
+      plugins: [...basePluginConfig],
     },
     // individual components
     ...components.map((f) => mapComponent(f)).reduce((r, a) => r.concat(a), []),

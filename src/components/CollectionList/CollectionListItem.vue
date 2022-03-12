@@ -6,12 +6,12 @@
     >
       <img
         v-if="!loading"
-        :src="images.image660x400"
+        :src="imageObj.image660x400"
         alt=""
         class="absolute inset-0 object-cover w-full h-full"
-        :srcset="`${images.image500x305} 500w,
-                ${images.image660x400} 660w,
-                ${images.image850x520} 850w`"
+        :srcset="`${imageObj.image500x305} 500w,
+                ${imageObj.image660x400} 660w,
+                ${imageObj.image850x520} 850w`"
       />
       <a-skeleton-loader v-else :loading="loading" class="image-container" />
     </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { PropType } from '@vue/runtime-core'
+import { PropType, defineComponent } from '@vue/runtime-core'
 import ASkeletonLoader from '../SkeletonLoader/SkeletonLoader.vue'
 import ALink from '../Link/Link.vue'
 import AText from '../Text/Text.vue'
@@ -56,7 +56,7 @@ import image500x305 from '../../../static/images/default_500x305.jpeg'
 import image660x400 from '../../../static/images/default_660x400.jpeg'
 import image850x520 from '../../../static/images/default_850x520.jpeg'
 
-export default {
+export default defineComponent({
   name: 'ACollectionListItem',
   components: { ASkeletonLoader, ALink, AText },
   props: {
@@ -97,14 +97,20 @@ export default {
     images: {
       type: Object as PropType<ImageType>,
       required: false,
-      default: {
-        image500x305,
-        image660x400,
-        image850x520,
-      },
     },
+    },
+  setup(props) {
+    const defaultImageObj = {
+      image500x305,
+      image660x400,
+      image850x520,
+    }
+
+    const imageObj: ImageType = props.images ? props.images : defaultImageObj
+
+    return { imageObj }
   },
-}
+})
 </script>
 
 <style scoped>

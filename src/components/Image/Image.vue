@@ -65,6 +65,13 @@ import { ChevronDownIcon } from '@heroicons/vue/solid'
 import { ImageWidth, ImageType } from './types'
 import ASkeletonLoader from '../SkeletonLoader/SkeletonLoader.vue'
 
+import image512x512 from '../../../static/images/default_512x512.jpeg'
+import image640x275 from '../../../static/images/default_640x275.jpeg'
+import image1024x1024 from '../../../static/images/default_1024x1024.jpeg'
+import image1024x575  from '../../../static/images/default_1024x575.jpeg'
+import image1536x860  from '../../../static/images/default_1536x860.jpeg'
+import image2048x1150 from '../../../static/images/default_2048x1150.jpeg'
+
 export default defineComponent({
   name: 'AImage',
   components: {
@@ -108,15 +115,6 @@ export default defineComponent({
     const onNavigateToContent = (): void => {
       emit('on-navigate-to-content')
     }
-
-    /* eslint global-require: "off" */
-    /* eslint @typescript-eslint/no-var-requires: "off" */
-    const image512x512 = require('../../../static/images/default_512x512.jpeg')
-    const image640x275 = require('../../../static/images/default_640x275.jpeg')
-    const image1024x1024 = require('../../../static/images/default_1024x1024.jpeg')
-    const image1024x575  = require('../../../static/images/default_1024x575.jpeg')
-    const image1536x860  = require('../../../static/images/default_1536x860.jpeg')
-    const image2048x1150 = require('../../../static/images/default_2048x1150.jpeg')
 
     const defaultImageObj = {
       applyFilter: false,
