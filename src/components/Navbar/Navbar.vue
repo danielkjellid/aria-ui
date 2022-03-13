@@ -1,5 +1,5 @@
 <template>
-  <div v-click-outside="cleanupMenus" class="fixed top-0 left-0 right-0">
+  <div v-click-outside="cleanupMenus" class="sticky top-0 left-0 right-0">
     <!-- Mobile menu -->
     <mobile-menu v-show="mobileMenuActive" @on-close-menu="mobileMenuActive = false">
       <slot name="start" />
