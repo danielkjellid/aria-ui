@@ -142,14 +142,16 @@ export default defineComponent({
 
     const currentScrollState = ref<number>(0)
 
-
-    const handleScroll = () => {
-      currentScrollState.value = window.scrollY
+    // @ts-ignore
+    if (process && process.browser) {
+      const handleScroll = () => {
+        currentScrollState.value = window.scrollY
+      }
+  
+      window.addEventListener('scroll', handleScroll)
+  
+      window.removeEventListener('scroll', handleScroll)
     }
-
-    window.addEventListener('scroll', handleScroll)
-
-    window.removeEventListener('scroll', handleScroll)
 
     const cleanupMenus = () => {
       mobileMenuActive.value = false
