@@ -142,25 +142,20 @@ export default defineComponent({
 
     const currentScrollState = ref<number>(0)
 
+
     const handleScroll = () => {
       currentScrollState.value = window.scrollY
     }
 
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll)
-    })
+    window.addEventListener('scroll', handleScroll)
 
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll)
-    })
+    window.removeEventListener('scroll', handleScroll)
 
     const cleanupMenus = () => {
       mobileMenuActive.value = false
     }
 
-    const isTransparent = computed(() => {
-      return !!(props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50)
-    })
+    const isTransparent = computed(() => !!(props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50))
 
     const renderBgClass = computed(() => {
       if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50) {

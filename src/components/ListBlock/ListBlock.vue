@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component v-if="!loading" :is="tag" v-bind="$attrs" class="font-medium text-gray-900">
+    <component v-if="!loading" :is="labelTag" v-bind="$attrs" class="font-medium text-gray-900">
       {{ label }}
     </component>
     <a-skeleton-loader v-else :loading="loading" width="w-24" />
