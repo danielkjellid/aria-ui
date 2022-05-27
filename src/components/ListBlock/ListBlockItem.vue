@@ -11,7 +11,7 @@
 import ASkeletonLoader from '../SkeletonLoader/SkeletonLoader.vue'
 
 export default {
-  name: 'ListBlockItem',
+  name: 'AListBlockItem',
   inheritAttrs: false,
   components: { ASkeletonLoader },
   props: {

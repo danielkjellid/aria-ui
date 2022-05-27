@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:top-full sm:text-sm lg:absolute lg:inset-x-0 lg:m-0 m-2 text-gray-600">
+  <div class="lg:top-full sm:text-sm lg:absolute lg:inset-x-0 lg:m-0 z-40 m-2 text-gray-600">
     <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
     <div class="lg:block top-1/2 absolute inset-0 hidden bg-white shadow" aria-hidden="true" />
 

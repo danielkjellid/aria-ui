@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p v-if="!loading" class="font-medium text-gray-900">
+    <component v-if="!loading" :is="tag" v-bind="$attrs" class="font-medium text-gray-900">
       {{ label }}
-    </p>
+    </component>
     <a-skeleton-loader v-else :loading="loading" width="w-24" />
 
     <ul role="list" class="mt-6 space-y-6">
@@ -22,6 +22,14 @@ export default {
   name: 'AListBlock',
   components: { ASkeletonLoader },
   props: {
+    /**
+    * Tag enclosing label.
+    */
+    labelTag: {
+      label:String,
+      required: false,
+      default: 'p'
+    },
     /**
      * Label on top of list block.
      */
