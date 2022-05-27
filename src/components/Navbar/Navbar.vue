@@ -84,7 +84,7 @@
 
 <script lang="ts">
 import { CubeTransparentIcon, MenuAlt2Icon } from '@heroicons/vue/outline'
-import { computed, defineComponent, onUnmounted, onMounted, ref } from '@vue/runtime-core'
+import { computed, defineComponent, ref, toRef } from '@vue/runtime-core'
 import AContainer from '../Container/Container.vue'
 import MobileMenu from './MobileMenu.vue'
 import clickOutside from '../../directives/click-outside'
@@ -138,35 +138,25 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const renderTransparent = toRef(props, 'renderTransparent')
+    const flyoutMenuActive = toRef(props, 'flyoutMenuActive')
+
     const mobileMenuActive = ref<boolean>(false)
-
-    const currentScrollState = ref<number>(0)
-
-    // @ts-ignore
-    if (process && process.browser) {
-      const handleScroll = () => {
-        currentScrollState.value = window.scrollY
-      }
-  
-      window.addEventListener('scroll', handleScroll)
-  
-      window.removeEventListener('scroll', handleScroll)
-    }
 
     const cleanupMenus = () => {
       mobileMenuActive.value = false
     }
 
-    const isTransparent = computed(() => !!(props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50))
+    const isTransparent = computed(() => !!(renderTransparent.value && !flyoutMenuActive.value))
 
     const renderBgClass = computed(() => {
-      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value < 50) {
+      if (renderTransparent.value && !flyoutMenuActive.value) {
         return 'bg-transparent-blur transition ease-in-out delay-75'
       }
-      if (props.renderTransparent && !props.flyoutMenuActive && currentScrollState.value >= 50) {
+      if (renderTransparent.value && !flyoutMenuActive.value) {
         return 'bg-transparent-white transition ease-in-out delay-75'
       }
-      if (props.flyoutMenuActive) {
+      if (flyoutMenuActive.value) {
         return 'bg-white'
       }
 

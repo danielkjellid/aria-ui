@@ -29,7 +29,7 @@
       />
       <img
         v-else
-        class="object-cover w-full w-full"
+        class="object-cover w-full"
         :src="imageObj.image1024x1024"
         :alt="`Få inspirasjon og veiledning rundt ${name} hos oss, med fokus på bærekraft og ro.`"
         :srcset="`${imageObj.image512x512} 512w,
@@ -45,6 +45,9 @@
     >
       <div class="text-center">
         <h2 class="text-3xl font-medium text-white">{{ name }}</h2>
+        <h3 v-if="subTitle" class="mt-3 text-xl text-white">
+          {{ subtitle }}
+        </h3>
       </div>
     </div>
     <!-- Action aligned horizontally centered towards the bottom of the image. -->
@@ -80,9 +83,13 @@ export default defineComponent({
   },
   props: {
     /**
-     * Name of the image.
+     * Title of the image to be displayed.
      */
-    name: {
+    title: {
+      required: false,
+      type: String,
+    },
+    subTitle: {
       required: false,
       type: String,
     },
